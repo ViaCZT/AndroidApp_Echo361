@@ -1,4 +1,4 @@
-# [G3]
+# G3
 This following is a very simple team meeting template. You should expand it based on the scope and nature of your discussion.
 
 ## Team Meeting 1 - Week 7 - 2023-04-22 (13:00-15:20)
@@ -31,12 +31,7 @@ Sixth Procedure: Assign tasks and schedule.
 
 ## Meeting Minutes
 - The features: <br>Search-Invalid, Search-Filter, UI-Layout, Data-Deletion, Privacy-Block, P2P-DM, P2P-Restriction
-- The protocol: <br>We set deadline for each stage.
- <br> Everyone should focus on physical and mental health. If unforeseen incidents happen, we will reassign tasks.
- <br>From last meeting to that deadline, we are requested to report our process regularly to the group like "I have finished 40%. I can finish my task on time" or "I get stuck and need help now". 
- <br>In that case, there will be an additional emergency meeting that we will try to solve the problems together. 
- <br>If all goes well, in the day before the deadline, we will demonstrate our achievement in the group chat such as screenshots.
- <br> In the deadline day, we will make a new face-to-face meeting, combine the task results, and discuss for the next stage.
+ 
 
 
 ## TODO Items
