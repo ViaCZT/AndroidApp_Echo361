@@ -1,4 +1,6 @@
-public class AVLTree<T extends Comparable<T>> {
+package com.example.echo361;
+
+public class AVLTree<T extends Comparable<T> > {
     public final T value;
     public AVLTree<T> leftNode;
     public AVLTree<T> rightNode;
@@ -30,11 +32,11 @@ public class AVLTree<T extends Comparable<T>> {
 
     public  T min(){
 
-            return (leftNode instanceof EmptyAVLTree<T>) ? value : leftNode.min();
-        }
+        return (leftNode instanceof EmptyAVLTree<T>) ? value : leftNode.min();
+    }
     public  T max(){
-            return (rightNode instanceof EmptyAVLTree<T>) ? value : rightNode.max();
-        }
+        return (rightNode instanceof EmptyAVLTree<T>) ? value : rightNode.max();
+    }
 
     public AVLTree<T> find(T element){
         if (element == null)
@@ -130,7 +132,4 @@ public class AVLTree<T extends Comparable<T>> {
             return new AVLTree<>(element);
         }
     }
-
-
 }
-

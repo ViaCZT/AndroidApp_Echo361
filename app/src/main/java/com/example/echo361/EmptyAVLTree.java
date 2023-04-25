@@ -1,3 +1,5 @@
+package com.example.echo361;
+
 public abstract class EmptyAVLTree<T extends Comparable<T>> extends AVLTree<T> {
     public abstract AVLTree<T> insert(T element);
 
