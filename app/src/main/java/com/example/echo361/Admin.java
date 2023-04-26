@@ -4,4 +4,10 @@ public class Admin extends User{
     public Admin(String userName, String passWord) {
         super(userName, passWord);
     }
+
+    public void createCourse(Course course){}
+
+    public void deleteCourse(Course course){}
+
+    public void block(ForumPost forumPost){}
 }
