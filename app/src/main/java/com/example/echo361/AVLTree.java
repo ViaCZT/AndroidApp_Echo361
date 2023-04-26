@@ -32,10 +32,10 @@ public class AVLTree<T extends Comparable<T> > {
 
     public  T min(){
 
-        return (leftNode instanceof EmptyAVLTree<T>) ? value : leftNode.min();
+        return (leftNode instanceof EmptyAVLTree<?>) ? value : leftNode.min();
     }
     public  T max(){
-        return (rightNode instanceof EmptyAVLTree<T>) ? value : rightNode.max();
+        return (rightNode instanceof EmptyAVLTree<?>) ? value : rightNode.max();
     }
 
     public AVLTree<T> find(T element){
@@ -74,14 +74,14 @@ public class AVLTree<T extends Comparable<T> > {
             // COMPLETE
         }
 
-        if (newTree.getBalanceFactor()==-2&&newTree.rightNode instanceof AVLTree<T>){
+        if (newTree.getBalanceFactor()==-2&& newTree.rightNode != null){
             if (((AVLTree<T>) newTree.rightNode).getBalanceFactor() == 1){
                 newTree.rightNode = ((AVLTree<T>) newTree.rightNode).rightRotate();
                 newTree = newTree.leftRotate();
             }else if (((AVLTree<T>) newTree.rightNode).getBalanceFactor() == -1){
                 newTree = newTree.leftRotate();
             }
-        }else if (newTree.getBalanceFactor() == 2 && newTree.leftNode instanceof AVLTree<T>){
+        }else if (newTree.getBalanceFactor() == 2 && newTree.leftNode != null){
             if (((AVLTree<T>) newTree.leftNode).getBalanceFactor() == 1){
                 newTree = newTree.rightRotate();
             }else if (((AVLTree<T>) newTree.leftNode).getBalanceFactor() == -1){
@@ -96,8 +96,8 @@ public class AVLTree<T extends Comparable<T> > {
     }
     public int getHeight() {
         // Check whether leftNode or rightNode are EmptyTree
-        int leftNodeHeight = leftNode instanceof EmptyAVLTree<T> ? 0 : 1 + leftNode.getHeight();
-        int rightNodeHeight = rightNode instanceof EmptyAVLTree<T> ? 0 : 1 + rightNode.getHeight();
+        int leftNodeHeight = leftNode instanceof EmptyAVLTree<?> ? 0 : 1 + leftNode.getHeight();
+        int rightNodeHeight = rightNode instanceof EmptyAVLTree<?> ? 0 : 1 + rightNode.getHeight();
         return Math.max(leftNodeHeight, rightNodeHeight);
     }
 
