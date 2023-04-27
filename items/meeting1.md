@@ -55,7 +55,7 @@ Sixth Procedure: Assign tasks and schedule.
 | Deadlines         |                          What we should achieve |
 |:------------------|------------------------------------------------:|
 | Saturday, Week7   |                                   First meeting |
-| Wednesday, Week8  | Initial code structure, and learn for own tasks |
+| Saturday, Week8   | Initial code structure, and learn for own tasks |
 | Saturday, Week9   |           Implement the features we have chosen |
 | Wednesday, week10 |      Discuss the new requirements, write report |
 | Saturday, Week10  |    Change according to requirements, final code |

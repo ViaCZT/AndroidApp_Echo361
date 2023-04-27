@@ -12,6 +12,30 @@
         android:theme="@style/Theme.Echo361"
         tools:targetApi="31">
         <activity
+            android:name=".ForumTeacherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForumStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CourseMainpageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MyCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DropActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EnrollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentMainpageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
