@@ -5,17 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".ChatActivity">
+    tools:context=".ChatActivity"
+    android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/ChatName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         android:text="Hi! Let's chat!"
         android:textColor="@color/white"
-        android:textStyle="bold|italic"
         android:textSize="25sp"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"/>
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/Typing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <Button
+        android:id="@+id/Send"
+        android:layout_width="14dp"
+        android:layout_height="96dp"
+        android:layout_weight="1"
+        android:text="Send" />
 
 </LinearLayout>

@@ -6,11 +6,17 @@ public class Student extends User{
 
     AVLTree<Course> courseAVLTree;
     List<String> conversation;
+
+    String name;
     public Student(String userName, String passWord, AVLTree<Course> courseAVLTree,List<String> conversation)  {
         super(userName, passWord);
+        name = userName;
         this.conversation = conversation;
         this.courseAVLTree = courseAVLTree;
     }
+
+
+
 
     public void enrol(Course course){}
 
