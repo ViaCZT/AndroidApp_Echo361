@@ -15,6 +15,9 @@
             android:name=".SearchChatTarget"
             android:exported="false" />
         <activity
+            android:name=".AdminDeletionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ForumTeacherActivity"
             android:exported="false" />
         <activity
