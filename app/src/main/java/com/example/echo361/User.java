@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class User {
 
-    private String userName;
+    private static String userName;
     private String passWord;
 
     public User(String userName, String passWord){
@@ -14,8 +14,8 @@ public abstract class User {
         this.passWord = passWord;
     }
 
-    public String getname(){
-        return this.userName;
+    public static String getname(){
+        return userName;
     }
     public void login(){}
 

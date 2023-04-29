@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +22,29 @@ public class SearchChatTarget extends AppCompatActivity {
         setContentView(R.layout.activity_search_chat_target);
 
         EditText name = findViewById(R.id.editTextTextPersonName);
-        String target = name.getText().toString();
+
+     /*   这段是想用searchView，还是由你决定怎么写
+        SearchView searchPerson = findViewById(R.id.searchPerson);
+        searchPerson.setQueryHint("Search the person to chat");
+        searchPerson.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // 在用户提交搜索时回调
+                // 根据搜索关键字进行搜索操作
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // 在搜索关键字改变时回调
+                // 可以根据搜索关键字进行实时搜索操作
+                return false;
+            }
+        });
+
+        String target = searchPerson.getQuery().toString();*/
+
+       String target = name.getText().toString();
         ArrayList<String> arrayList = new ArrayList<>();
         Button search = findViewById(R.id.button);
         search.setOnClickListener(view -> {

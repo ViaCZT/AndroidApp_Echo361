@@ -4,11 +4,10 @@
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="login">login</string>
-    <string name="what_next">What next?</string>
+    <string name="what_next">What\'s next?</string>
     <string name="enroll">Enroll</string>
     <string name="drop">Drop</string>
     <string name="mycourse">MyCourse</string>
-    <string name="back">Back</string>
     <string name="enroll_course_s">enroll course(s)</string>
     <string name="drop_course_s">Drop course(s)</string>
     <string name="go_to_forum">Go to forum</string>
