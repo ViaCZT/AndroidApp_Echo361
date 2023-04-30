@@ -112,7 +112,7 @@
         android:text="@string/enroll_course"
         android:textAllCaps="false"
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="italic"
         android:layout_marginTop="10dp"
         android:layout_gravity="center"
