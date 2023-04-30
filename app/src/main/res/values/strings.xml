@@ -8,8 +8,9 @@
     <string name="enroll">Enroll</string>
     <string name="drop">Drop</string>
     <string name="mycourse">MyCourse</string>
-    <string name="enroll_course_s">enroll course(s)</string>
-    <string name="drop_course_s">Drop course(s)</string>
+    <string name="enroll_course">Enroll course</string>
+    <string name="drop_course">Drop course</string>
     <string name="go_to_forum">Go to forum</string>
     <string name="go_to_chat">Let\'s chat</string>
+    <string name="delete_course">Delete course</string>
 </resources>
