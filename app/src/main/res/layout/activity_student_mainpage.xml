@@ -20,7 +20,7 @@
         android:layout_marginTop="200dp"/>
 
     <Button
-        android:id="@+id/btn_enroll"
+        android:id="@+id/btn_toEnroll"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/enroll"
@@ -34,7 +34,7 @@
         />
 
     <Button
-        android:id="@+id/btn_drop"
+        android:id="@+id/btn_toDrop"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/drop"
@@ -48,7 +48,7 @@
         />
 
     <Button
-        android:id="@+id/btn_myCourse"
+        android:id="@+id/btn_toMyCourse"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/mycourse"

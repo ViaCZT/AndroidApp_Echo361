@@ -24,16 +24,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/drop_course_s"
+        android:text="@string/drop_course"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="italic"
         android:layout_marginTop="50dp"/>
 
-
     <ListView
-        android:id="@+id/listCurrCourse"
+        android:id="@+id/list_currCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
