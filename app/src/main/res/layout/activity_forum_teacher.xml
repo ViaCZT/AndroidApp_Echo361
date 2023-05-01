@@ -8,44 +8,31 @@
     android:background="@drawable/gradient_background"
     tools:context=".ForumTeacherActivity">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:text="This is the forum main page. You can block the unpleasant ones."
-            android:textColor="@color/white"
-            android:textSize="17dp"
-            android:textStyle="italic"
-            />
-
-        <Button
-            android:id="@+id/btn_block"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="25dp"
-            android:text="Block"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textStyle="bold|italic" />
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/list_forumTotal"
+    <Button
+        android:id="@+id/btn_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_gravity="center"
+        android:text="post"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingBottom="20dp"
-        />
+        android:layout_marginStart="100dp"/>
+
+    <Button
+        android:id="@+id/btn_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="block"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"/>
+
 
 </LinearLayout>
