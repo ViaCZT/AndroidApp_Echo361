@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     tools:context=".ChatActivity"
-    android:orientation="vertical">
+    android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/ChatName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -19,44 +20,19 @@
         android:textSize="25sp"
         android:textStyle="bold|italic" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/msg_recycler_view"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <LinearLayout
+    <EditText
+        android:id="@+id/Typing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:orientation="horizontal">
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="" />
 
-        <EditText
-            android:id="@+id/input_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Type message here"
-            android:textAllCaps="false"
-            android:maxLines="2"
-            android:gravity="left"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="20sp"
-            android:textStyle="italic"/>
-
-        <Button
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Send"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:textStyle="bold|italic"/>
-    </LinearLayout>
+    <Button
+        android:id="@+id/Send"
+        android:layout_width="14dp"
+        android:layout_height="96dp"
+        android:layout_weight="1"
+        android:text="Send" />
 
 </LinearLayout>

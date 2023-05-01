@@ -20,7 +20,7 @@
         android:layout_marginTop="200dp"/>
 
     <Button
-        android:id="@+id/btn_toEnroll"
+        android:id="@+id/btn_enroll"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/enroll"
@@ -28,12 +28,13 @@
         android:textStyle="bold|italic"
         android:textColor="@color/white"
         android:textSize="25sp"
+        android:background="@color/purple_200"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         />
 
     <Button
-        android:id="@+id/btn_toDrop"
+        android:id="@+id/btn_drop"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/drop"
@@ -41,12 +42,13 @@
         android:textStyle="bold|italic"
         android:textColor="@color/white"
         android:textSize="25sp"
+        android:background="@color/purple_200"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         />
 
     <Button
-        android:id="@+id/btn_toMyCourse"
+        android:id="@+id/btn_myCourse"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="@string/mycourse"
@@ -54,6 +56,7 @@
         android:textStyle="bold|italic"
         android:textColor="@color/white"
         android:textSize="25sp"
+        android:background="@color/purple_200"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         />

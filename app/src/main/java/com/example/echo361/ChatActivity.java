@@ -17,20 +17,20 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-//        Intent intent = getIntent();
-//        String name = intent.getStringExtra("targetName");
-//
-//        TextView textView = findViewById(R.id.ChatName);
-//        textView.setText(name);
-//
-//        EditText editText = findViewById(R.id.Typing);
-//        String message = editText.getText().toString();
-//
-//
-//        Button send = findViewById(R.id.Send);
-//        send.setOnClickListener(view -> {
-//
-//
-//        });
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("targetName");
+
+        TextView textView = findViewById(R.id.ChatName);
+        textView.setText(name);
+
+        EditText editText = findViewById(R.id.Typing);
+        String message = editText.getText().toString();
+        
+
+        Button send = findViewById(R.id.Send);
+        send.setOnClickListener(view -> {
+
+
+        });
     }
 }

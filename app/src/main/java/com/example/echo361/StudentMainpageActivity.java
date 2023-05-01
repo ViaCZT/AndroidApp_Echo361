@@ -16,19 +16,19 @@ public class StudentMainpageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Student student = (Student) intent.getSerializableExtra("Student");
 
-        Button toEnroll = findViewById(R.id.btn_toEnroll);
+        Button toEnroll = findViewById(R.id.btn_enroll);
         toEnroll.setOnClickListener(view -> {
             Intent intent0 = new Intent(StudentMainpageActivity.this, EnrollActivity.class);
             StudentMainpageActivity.this.startActivity(intent0);
         });
 
-        Button toDrop = findViewById(R.id.btn_toDrop);
+        Button toDrop = findViewById(R.id.btn_drop);
         toDrop.setOnClickListener(view -> {
             Intent intent0 = new Intent(StudentMainpageActivity.this, DropActivity.class);
             StudentMainpageActivity.this.startActivity(intent0);
         });
 
-        Button ToMyCourse = findViewById(R.id.btn_toMyCourse);
+        Button ToMyCourse = findViewById(R.id.btn_myCourse);
         ToMyCourse.setOnClickListener(view -> {
             Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
             StudentMainpageActivity.this.startActivity(intent0);
