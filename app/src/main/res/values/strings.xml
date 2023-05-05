@@ -12,4 +12,7 @@
     <string name="drop_course_s">Drop course(s)</string>
     <string name="go_to_forum">Go to forum</string>
     <string name="go_to_chat">Let\'s chat</string>
+    <string name="delete_course">Delete this course</string>
+    <string name="drop_course">Drop this course</string>
+    <string name="enroll_course">Enroll this course</string>
 </resources>

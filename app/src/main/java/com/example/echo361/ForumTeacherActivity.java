@@ -17,7 +17,7 @@ public class ForumTeacherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum_teacher);
-        ListView listView = findViewById(R.id.posts_list);
+        ListView listView = findViewById(R.id.list_forumTotal);
         ForumPost forumPost0 = new ForumPost("Tokenizer & Parser", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student1");
         ForumPost forumPost1 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student2");
         ForumPost forumPost2 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student3");
@@ -39,10 +39,10 @@ public class ForumTeacherActivity extends AppCompatActivity {
             ForumTeacherActivity.this.startActivity(intent);
         });
 
-        EditText title = findViewById(R.id.editTextNewPostTitleTeacher);
-        EditText content = findViewById(R.id.editTextNewPostContentTeacher);
+        EditText title = findViewById(R.id.ed_teaPostTitle);
+        EditText content = findViewById(R.id.ed_teaPostContent);
 
-        Button newPost = findViewById(R.id.btn_teacher_post);
+        Button newPost = findViewById(R.id.btn_teaPost);
         newPost.setOnClickListener(view -> {
             String title0 = title.getText().toString();
             String content0 = content.getText().toString();

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class CourseMainpageActivity extends AppCompatActivity {
@@ -13,22 +14,27 @@ public class CourseMainpageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_mainpage);
 
-        Button toForum = findViewById(R.id.btn_gotoForum);
-        String courseName = "comp6442";
-        toForum.setOnClickListener(view -> {
-            Intent intent0 = new Intent(CourseMainpageActivity.this, ForumTeacherActivity.class);
-            intent0.putExtra("course",courseName);
-            CourseMainpageActivity.this.startActivity(intent0);
-            Intent intent =getIntent();
-            String name = intent.getStringExtra("name");
-        });
-
         Button toChat = findViewById(R.id.btn_gotoChat);
         toChat.setOnClickListener(view -> {
             Intent intent0 = new Intent(CourseMainpageActivity.this, SearchChatTarget.class);
             CourseMainpageActivity.this.startActivity(intent0);
-
-
         });
+
+        Button toForum = findViewById(R.id.btn_gotoForum);
+
+        toForum.setOnClickListener(v -> {
+            String username = User.getname();
+            if (username.equals("Zihan")) {
+                Intent intent = new Intent(CourseMainpageActivity.this, ForumStudentActivity.class);
+                startActivity(intent);
+            } else if (username.equals("Bernardo")) {
+                Intent intent = new Intent(CourseMainpageActivity.this, ForumTeacherActivity.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(CourseMainpageActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
