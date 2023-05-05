@@ -21,7 +21,7 @@ public class SearchChatTarget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_chat_target);
 
-        EditText name = findViewById(R.id.editTextTextPersonName);
+        EditText name = findViewById(R.id.ed_searchName);
 
      /*   这段是想用searchView，还是由你决定怎么写
         SearchView searchPerson = findViewById(R.id.searchPerson);
@@ -46,7 +46,7 @@ public class SearchChatTarget extends AppCompatActivity {
 
        String target = name.getText().toString();
         ArrayList<String> arrayList = new ArrayList<>();
-        Button search = findViewById(R.id.button);
+        Button search = findViewById(R.id.btn_searchChat);
         search.setOnClickListener(view -> {
             ArrayList<Student> students = (ArrayList<Student>) Student.search(target);
             for(Student s:students){
@@ -54,7 +54,7 @@ public class SearchChatTarget extends AppCompatActivity {
             }
         });
 
-        ListView listView = findViewById(R.id.studentList);
+        ListView listView = findViewById(R.id.list_name);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
