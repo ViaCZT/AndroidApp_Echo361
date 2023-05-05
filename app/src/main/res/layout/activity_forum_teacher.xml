@@ -9,11 +9,11 @@
     tools:context=".ForumTeacherActivity">
 
     <Button
-        android:id="@+id/btn_post"
+        android:id="@+id/btn_teacher_post"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="post"
+        android:text="new post"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -33,6 +33,27 @@
         android:textStyle="italic"
         android:layout_marginTop="20dp"
         android:layout_marginStart="100dp"/>
+
+    <ListView
+        android:id="@+id/posts_list"
+        android:layout_width="match_parent"
+        android:layout_height="493dp" />
+
+    <EditText
+        android:id="@+id/editTextNewPostTitleTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name" />
+
+    <EditText
+        android:id="@+id/editTextNewPostContentTeacher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Name" />
 
 
 </LinearLayout>

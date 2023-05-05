@@ -8,6 +8,7 @@ public class ForumPost {
     private String author;
     private Date createdTime;
     private Date updatedTime;
+    private Boolean visible;
 
     public ForumPost(String title, String content, String author) {
         this.title = title;
@@ -31,6 +32,15 @@ public class ForumPost {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void block(){
+        boolean b = false;
+        this.visible = b;
+    }
+
+    public boolean getVisible(){
+        return this.visible;
     }
 
     public String getAuthor() {

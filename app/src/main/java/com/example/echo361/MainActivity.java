@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 String loginOk = "Welcome! "+User.getname();
                 ToastUtil.showMsg(MainActivity.this,loginOk);
                 Intent intent = new Intent(MainActivity.this, CourseMainpageActivity.class);
+                intent.putExtra("name","Bernardo");
                 MainActivity.this.startActivity(intent);
             }
             else if (username.equals("admin")&&password.equals("admin")){

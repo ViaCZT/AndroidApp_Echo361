@@ -19,4 +19,5 @@ public class Teacher extends User{
     public void chat(User user, String message){}
 
     public void uploadVideo(Course course, MediaStore.Video video){}
+
 }
