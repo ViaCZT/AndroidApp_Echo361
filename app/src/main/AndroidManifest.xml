@@ -15,9 +15,6 @@
             android:name=".ForumDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".PostActivity"
-            android:exported="false" />
-        <activity
             android:name=".SearchChatTarget"
             android:exported="false" />
         <activity

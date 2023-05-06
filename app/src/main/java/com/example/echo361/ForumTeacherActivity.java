@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,10 +31,13 @@ public class ForumTeacherActivity extends AppCompatActivity {
         posts.add(forumPost1);
         posts.add(forumPost2);
 
+        Intent intent0 = getIntent();
+        boolean isTeacher = intent0.getBooleanExtra("isTeacher",true);
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,postTitles);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            Intent intent = new Intent(ForumTeacherActivity.this, PostActivity.class);
+            Intent intent = new Intent(ForumTeacherActivity.this, ForumDetailActivity.class);
             intent.putExtra("postTitle", posts.get(i).getTitle().toString());
             intent.putExtra("postContent", posts.get(i).getContent().toString());
             ForumTeacherActivity.this.startActivity(intent);
@@ -43,6 +47,9 @@ public class ForumTeacherActivity extends AppCompatActivity {
         EditText content = findViewById(R.id.ed_teaPostContent);
 
         Button newPost = findViewById(R.id.btn_teaPost);
+        Button block = findViewById(R.id.btn_block);
+        if(isTeacher==false)
+        block.setVisibility(View.INVISIBLE);
         newPost.setOnClickListener(view -> {
             String title0 = title.getText().toString();
             String content0 = content.getText().toString();

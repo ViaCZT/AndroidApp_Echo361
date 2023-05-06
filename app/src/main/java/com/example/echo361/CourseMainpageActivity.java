@@ -25,10 +25,12 @@ public class CourseMainpageActivity extends AppCompatActivity {
         toForum.setOnClickListener(v -> {
             String username = User.getname();
             if (username.equals("Zihan")) {
-                Intent intent = new Intent(CourseMainpageActivity.this, ForumStudentActivity.class);
+                Intent intent = new Intent(CourseMainpageActivity.this, ForumTeacherActivity.class);
+                intent.putExtra("isTeacher",false);
                 startActivity(intent);
             } else if (username.equals("Bernardo")) {
                 Intent intent = new Intent(CourseMainpageActivity.this, ForumTeacherActivity.class);
+                intent.putExtra("isTeacher",true);
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(CourseMainpageActivity.this, MainActivity.class);
