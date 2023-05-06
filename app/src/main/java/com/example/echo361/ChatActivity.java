@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ChatActivity extends AppCompatActivity {
 
-    public class MainActivity extends AppCompatActivity {
+
 
         private static final String TAG = "MainActivity";
         private List<Msg> msgList = new ArrayList<>();
@@ -30,7 +30,7 @@ public class ChatActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+            setContentView(R.layout.activity_chat);
             msgRecyclerView = findViewById(R.id.msg_recycler_view);
             inputText = findViewById(R.id.input_text);
             send = findViewById(R.id.send);
@@ -66,5 +66,5 @@ public class ChatActivity extends AppCompatActivity {
             list.add(new Msg("Hello",Msg.TYPE_RECEIVED));
             return list;
         }
-    }
+
 }

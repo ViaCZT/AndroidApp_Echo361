@@ -16,7 +16,7 @@ public class CourseMainpageActivity extends AppCompatActivity {
 
         Button toChat = findViewById(R.id.btn_gotoChat);
         toChat.setOnClickListener(view -> {
-            Intent intent0 = new Intent(CourseMainpageActivity.this, SearchChatTarget.class);
+            Intent intent0 = new Intent(CourseMainpageActivity.this, ChatActivity.class);
             CourseMainpageActivity.this.startActivity(intent0);
         });
 
