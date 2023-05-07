@@ -21,13 +21,10 @@
             android:name=".AdminDeletionActivity"
             android:exported="false" />
         <activity
-            android:name=".ForumTeacherActivity"
+            android:name=".ForumTotalActivity"
             android:exported="false" />
         <activity
             android:name=".ChatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ForumStudentActivity"
             android:exported="false" />
         <activity
             android:name=".CourseMainpageActivity"

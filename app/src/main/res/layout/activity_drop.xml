@@ -1,46 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
+    android:id="@+id/linearLayout4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="@drawable/gradient_background"
     tools:context=".DropActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tx_currCourse"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your current course(s)"
-        android:textColor="@color/white"
-        android:textStyle="bold|italic"
-        android:textSize="30sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
-        android:layout_marginTop="50dp"/>
+        android:text="@string/your_current_course"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_dropCourse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_dropCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/drop_course"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="italic"
-        android:layout_marginTop="50dp"/>
+        app:layout_constraintBottom_toTopOf="@+id/list_currCourse"
+        app:layout_constraintStart_toStartOf="@+id/list_currCourse" />
 
     <ListView
         android:id="@+id/list_currCourse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_width="272dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="49dp"
         android:layout_marginBottom="100dp"
         android:textColor="@color/white"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_dropCourse" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

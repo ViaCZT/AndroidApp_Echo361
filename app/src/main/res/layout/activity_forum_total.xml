@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     android:orientation="vertical"
-    tools:context=".ForumStudentActivity">
+    tools:context=".ForumTotalActivity">
 
 
     <TextView
-        android:id="@+id/tx_StuForum"
+        android:id="@+id/tx_forumSlogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -20,7 +20,7 @@
         android:gravity="center"
         android:text="The forum is supposed to be collaborative and supportive."
         android:textColor="@color/white"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,44 +34,46 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toTopOf="@id/ed_stuPostTitle"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@id/ed_postTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tx_StuForum"
+        app:layout_constraintTop_toBottomOf="@id/tx_forumSlogan"
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/ed_stuPostTitle"
+        android:id="@+id/ed_postTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
         android:gravity="left"
-        android:hint="Type the title here."
+        android:hint="@string/type_the_title_here"
         android:maxLines="2"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="20sp"
         android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@id/ed_stuPostContent"
-        app:layout_constraintEnd_toStartOf="@id/btn_stuPost"
+        app:layout_constraintBottom_toTopOf="@id/ed_postContent"
+        app:layout_constraintEnd_toStartOf="@id/btn_postForum"
         app:layout_constraintHorizontal_bias="0.112"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/list_forumTotal" />
 
     <EditText
-        android:id="@+id/ed_stuPostContent"
+        android:id="@+id/ed_postContent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
         android:gravity="left"
-        android:hint="Type the content here"
+        android:hint="@string/type_the_content_here"
         android:maxLines="2"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -79,26 +81,47 @@
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_blockForum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ed_stuPostTitle" />
+        app:layout_constraintTop_toBottomOf="@id/ed_postTitle" />
 
     <Button
-        android:id="@+id/btn_stuPost"
+        android:id="@+id/btn_postForum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:text="Post"
+        android:layout_marginBottom="5dp"
+        android:text="Post "
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_blockForum"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ed_stuPostTitle"
+        app:layout_constraintStart_toEndOf="@+id/ed_postTitle"
         app:layout_constraintTop_toBottomOf="@+id/list_forumTotal" />
+
+    <Button
+        android:id="@+id/btn_blockForum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Block"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ed_postContent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_postForum" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

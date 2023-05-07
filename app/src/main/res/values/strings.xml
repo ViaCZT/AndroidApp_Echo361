@@ -15,4 +15,7 @@
     <string name="delete_course">Delete this course</string>
     <string name="drop_course">Drop this course</string>
     <string name="enroll_course">Enroll this course</string>
+    <string name="type_the_title_here">Type the title here.</string>
+    <string name="type_the_content_here">Type the content here</string>
+    <string name="your_current_course">Your current course</string>
 </resources>

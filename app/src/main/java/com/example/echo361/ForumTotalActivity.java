@@ -12,12 +12,12 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class ForumTeacherActivity extends AppCompatActivity {
+public class ForumTotalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forum_teacher);
+        setContentView(R.layout.activity_forum_total);
         ListView listView = findViewById(R.id.list_forumTotal);
         ForumPost forumPost0 = new ForumPost("Tokenizer & Parser", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student1");
         ForumPost forumPost1 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student2");
@@ -37,17 +37,17 @@ public class ForumTeacherActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,postTitles);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
-            Intent intent = new Intent(ForumTeacherActivity.this, ForumDetailActivity.class);
+            Intent intent = new Intent(ForumTotalActivity.this, ForumDetailActivity.class);
             intent.putExtra("postTitle", posts.get(i).getTitle().toString());
             intent.putExtra("postContent", posts.get(i).getContent().toString());
-            ForumTeacherActivity.this.startActivity(intent);
+            ForumTotalActivity.this.startActivity(intent);
         });
 
-        EditText title = findViewById(R.id.ed_teaPostTitle);
-        EditText content = findViewById(R.id.ed_teaPostContent);
+        EditText title = findViewById(R.id.ed_postTitle);
+        EditText content = findViewById(R.id.ed_postContent);
 
-        Button newPost = findViewById(R.id.btn_teaPost);
-        Button block = findViewById(R.id.btn_block);
+        Button newPost = findViewById(R.id.btn_postForum);
+        Button block = findViewById(R.id.btn_blockForum);
         if(isTeacher==false)
         block.setVisibility(View.INVISIBLE);
         newPost.setOnClickListener(view -> {

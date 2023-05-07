@@ -33,9 +33,9 @@ public class ForumDetailActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,floors);
         listView.setAdapter(arrayAdapter);
 
-        EditText editText = findViewById(R.id.ed_post);
+        EditText editText = findViewById(R.id.ed_postIdea);
 
-        Button newPost = findViewById(R.id.btn_post);
+        Button newPost = findViewById(R.id.btn_postIdea);
         newPost.setOnClickListener(view -> {
             String content0 = editText.getText().toString();
             floors.add(content0);
