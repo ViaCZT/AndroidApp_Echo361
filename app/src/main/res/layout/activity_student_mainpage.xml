@@ -1,61 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout10"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
     android:background="@drawable/gradient_background"
     tools:context=".StudentMainpageActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tx_whatNext"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:text="@string/what_next"
         android:textColor="@color/white"
-        android:textStyle="bold|italic"
         android:textSize="30sp"
-        android:gravity="center"
-        android:layout_marginTop="200dp"/>
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_toEnroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_toEnroll"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/enroll"
         android:textAllCaps="false"
-        android:textStyle="bold|italic"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_toDrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tx_whatNext" />
 
     <Button
         android:id="@+id/btn_toDrop"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/drop"
         android:textAllCaps="false"
-        android:textStyle="bold|italic"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/btn_toMyCourse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_toEnroll" />
 
     <Button
         android:id="@+id/btn_toMyCourse"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="200dp"
         android:text="@string/mycourse"
         android:textAllCaps="false"
-        android:textStyle="bold|italic"
         android:textColor="@color/white"
         android:textSize="25sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        />
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_toDrop" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
