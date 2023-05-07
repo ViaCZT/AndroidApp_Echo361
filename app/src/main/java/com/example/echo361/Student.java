@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Student extends User{
 
-    AVLTree<Course> courseAVLTree;
+    CourseAVLtree courseAVLTree;
     List<String> conversation;
 
     String name;
-    public Student(String userName, String passWord, AVLTree<Course> courseAVLTree,List<String> conversation)  {
+    public Student(String userName, String passWord, CourseAVLtree courseAVLTree,List<String> conversation)  {
         super(userName, passWord);
         name = userName;
         this.conversation = conversation;

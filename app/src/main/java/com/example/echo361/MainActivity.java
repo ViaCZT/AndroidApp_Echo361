@@ -10,8 +10,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.echo361.R;
 import com.example.echo361.util.ToastUtil;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseApp.initializeApp(getBaseContext());
+
 
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
