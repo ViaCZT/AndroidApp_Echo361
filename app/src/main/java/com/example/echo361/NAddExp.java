@@ -8,8 +8,8 @@ public class NAddExp extends NExp{
     /**
      * Constructor for an addition expression.
      *
-     * @param the term first term in addition expression
-     * @param the exp second term in addition expression
+     * @param factor term first term in addition expression
+     * @param exp exp second term in addition expression
      */
     public NAddExp(NExp factor, NExp exp) {
         this.factor = factor;
@@ -18,6 +18,6 @@ public class NAddExp extends NExp{
 
     @Override
     public String show() {
-        return "" + factor.show() + exp.show();
+        return "" + factor.show() +" "+ exp.show();
     }
 }
