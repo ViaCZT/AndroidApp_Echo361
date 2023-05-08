@@ -106,19 +106,22 @@ public class CourseAVLtree {
                 return this.leftNode;
             }else {
                 CourseAVLtree successor = findSuccessor(this);
-                CourseAVLtree newTree = new CourseAVLtree(this.courseID,leftNode,rightNode,this.course);
-                newTree.delete(successor.courseID);
-                newTree.course = successor.course;
-                newTree.courseID = successor.courseID;
+                newtree = new CourseAVLtree(this.courseID,leftNode,rightNode,this.course);
+                newtree = newtree.delete(successor.courseID);
+                newtree.course = successor.course;
+                newtree.courseID = successor.courseID;
             }
         }else {
             throw new IllegalArgumentException("can not find this course");
         }
+
         if (newtree.getBalanceFactor()==-2&& newtree.rightNode != null){
             if (newtree.rightNode.getBalanceFactor() == 1){
                 newtree.rightNode = newtree.rightNode.rightRotate();
                 newtree = newtree.leftRotate();
             }else if (newtree.rightNode.getBalanceFactor() == -1){
+                newtree = newtree.leftRotate();
+            }else {
                 newtree = newtree.leftRotate();
             }
         }else if (newtree.getBalanceFactor() == 2 && newtree.leftNode != null){
@@ -126,6 +129,8 @@ public class CourseAVLtree {
                 newtree = newtree.rightRotate();
             }else if (newtree.leftNode.getBalanceFactor() == -1){
                 newtree.leftNode = newtree.leftNode.leftRotate();
+                newtree = newtree.rightRotate();
+            }else {
                 newtree = newtree.rightRotate();
             }
         }
@@ -184,10 +189,9 @@ public class CourseAVLtree {
     public String toString() {
         return "{" +
                 "CourseID=" + courseID +
-                ", Course=" + course.toString() +
                 ", leftNode=" + leftNode +
                 ", rightNode=" + rightNode +
-                '}';
+                '}' + "\r\n";
     }
 
 
