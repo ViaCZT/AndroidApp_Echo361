@@ -34,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
 
-
-
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
         EditText editText2 = findViewById(R.id.ed_password);

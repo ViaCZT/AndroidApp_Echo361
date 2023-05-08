@@ -1,5 +1,8 @@
 package com.example.echo361;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+
 public class CourseAVLtree {
     public Integer courseID;
     public Course course;
@@ -160,6 +163,25 @@ public class CourseAVLtree {
             inOrderBST(node.rightNode);
         }
     }
+
+    public ArrayList<Course> inOrderBSTqualify(ArrayList<Course> courses,Course.CAREER career, Course.DELIVERY delivery,
+                                               Course.TERM term, Course.CODE code,String searchCourseID){
+        if (!(this instanceof EmptyCourseAVLtree)){
+            courses = this.leftNode.inOrderBSTqualify(courses,career,delivery,term,code,searchCourseID);
+            DecimalFormat g1 = new DecimalFormat("0000");
+            if ( (career ==null ||  this.course.getCareer()==career )
+                    && (delivery==null || this.course.getDelivery()==delivery )
+                    && (term!=null || this.course.getTerm()==term )
+                    && (code!=null || this.course.getCode()==code )
+                    && (searchCourseID ==null ||  g1.format(this.courseID).contains(searchCourseID))
+                        ){
+                courses.add(this.course);
+            }
+            courses = this.rightNode.inOrderBSTqualify(courses,career,delivery,term,code,searchCourseID);
+        }
+        return courses;
+    }
+
     public int getBalanceFactor() {
         return leftNode.getHeight() - rightNode.getHeight();
     }
