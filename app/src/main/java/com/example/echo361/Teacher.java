@@ -2,16 +2,33 @@ package com.example.echo361;
 
 import android.provider.MediaStore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Teacher extends User{
-    CourseAVLtree courseAVLTree;
     List<String> conversation;
-    public Teacher(String userName, String passWord, CourseAVLtree courseAVLTree, List<String> conversation) {
-        super(userName, passWord);
-        this.conversation = conversation;
-        this.courseAVLTree = courseAVLTree;
+    String name;
+    public List<String> getConversation() {
+        return conversation;
+    }
 
+    public void setConversation(List<String> conversation) {
+        this.conversation = conversation;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public Teacher(String userName, String passWord, ArrayList<String> courses, List<String> conversation) {
+        super(userName, passWord,courses);
+        this.conversation = conversation;
+        this.name = userName;
     }
 
     public void block(ForumPost forumPost){}
