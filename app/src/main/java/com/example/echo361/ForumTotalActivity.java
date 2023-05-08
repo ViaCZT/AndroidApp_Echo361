@@ -17,11 +17,15 @@ public class ForumTotalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        这里获取一下数据库里的Forum
+        Intent intent1 = getIntent();
+//        forum.setCourseName(intent1.getStringExtra("courseName"));
+        String name0 = intent1.getStringExtra("name");
         setContentView(R.layout.activity_forum_total);
         ListView listView = findViewById(R.id.list_forumTotal);
-        ForumPost forumPost0 = new ForumPost("Tokenizer & Parser", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student1");
-        ForumPost forumPost1 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student2");
-        ForumPost forumPost2 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student3");
+        ForumPost forumPost0 = new ForumPost("Tokenizer & Parser", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student1",new ArrayList<>(),true);
+        ForumPost forumPost1 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student2",new ArrayList<>(),true);
+        ForumPost forumPost2 = new ForumPost("Problem about AVLtree", "Hi Teaching Team, Just for confirmation, is the implementation of parser and tokenizer compulsory in our app (mainly for assisting the search function)? Thanks in advance","Student3",new ArrayList<>(),true);
         ArrayList<String> postTitles = new ArrayList<>();
         postTitles.add(forumPost0.getTitle());
         postTitles.add(forumPost1.getTitle());
@@ -40,6 +44,7 @@ public class ForumTotalActivity extends AppCompatActivity {
             Intent intent = new Intent(ForumTotalActivity.this, ForumDetailActivity.class);
             intent.putExtra("postTitle", posts.get(i).getTitle().toString());
             intent.putExtra("postContent", posts.get(i).getContent().toString());
+            intent.putExtra("floors",posts.get(i).getFloors());
             ForumTotalActivity.this.startActivity(intent);
         });
 
@@ -53,13 +58,12 @@ public class ForumTotalActivity extends AppCompatActivity {
         newPost.setOnClickListener(view -> {
             String title0 = title.getText().toString();
             String content0 = content.getText().toString();
-            Intent intent = getIntent();
-            String name0 = intent.getStringExtra("name");
-            ForumPost forumPost = new ForumPost(title0,content0,name0);
+            ForumPost forumPost = new ForumPost(title0,content0,name0,new ArrayList<>(),true);
             postTitles.add(forumPost.getTitle());
             posts.add(forumPost);
             arrayAdapter.notifyDataSetChanged();
         });
+
 
 
 

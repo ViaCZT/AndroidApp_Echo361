@@ -26,10 +26,14 @@ public class CourseMainpageActivity extends AppCompatActivity {
             if (username.equals("Zihan")) {
                 Intent intent = new Intent(CourseMainpageActivity.this, ForumTotalActivity.class);
                 intent.putExtra("isTeacher",false);
+                Intent intent1 = getIntent();
+                String courseName = intent1.getStringExtra("courseName");
+                intent.putExtra("courseName",courseName);
                 startActivity(intent);
             } else if (username.equals("Bernardo")) {
                 Intent intent = new Intent(CourseMainpageActivity.this, ForumTotalActivity.class);
                 intent.putExtra("isTeacher",true);
+                intent.putExtra("courseName","COMP6442");
                 startActivity(intent);
             } else {
                 Intent intent = new Intent(CourseMainpageActivity.this, MainActivity.class);

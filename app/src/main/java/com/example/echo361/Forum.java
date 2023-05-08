@@ -12,5 +12,7 @@ public class Forum {
         this.posts = posts;
     }
 
+    public void setCourseName(String courseName){this.courseName = courseName;}
+
 
 }

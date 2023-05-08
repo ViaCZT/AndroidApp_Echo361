@@ -5,9 +5,9 @@ import android.provider.MediaStore;
 import java.util.List;
 
 public class Teacher extends User{
-    AVLTree<Course> courseAVLTree;
+    CourseAVLtree courseAVLTree;
     List<String> conversation;
-    public Teacher(String userName, String passWord, AVLTree<Course> courseAVLTree, List<String> conversation) {
+    public Teacher(String userName, String passWord, CourseAVLtree courseAVLTree, List<String> conversation) {
         super(userName, passWord);
         this.conversation = conversation;
         this.courseAVLTree = courseAVLTree;

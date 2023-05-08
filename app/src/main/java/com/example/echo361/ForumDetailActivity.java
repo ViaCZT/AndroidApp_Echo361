@@ -25,9 +25,8 @@ public class ForumDetailActivity extends AppCompatActivity {
         title.setText(intent.getStringExtra("postTitle"));
         content.setText(intent.getStringExtra("postContent"));
 
-        ArrayList<String> floors = new ArrayList<>();
-        floors.add("I don't know");
-        floors.add("lzsb");
+        ArrayList<String> floors = intent.getStringArrayListExtra("floors");
+
 
         ListView listView = findViewById(R.id.list_forumPost);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,floors);
