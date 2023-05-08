@@ -42,7 +42,6 @@
         app:layout_constraintBottom_toTopOf="@+id/list_currCourse"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tx_dropedCourse"
-        app:layout_constraintStart_toEndtOf="@+id/tx_dropedCourse"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
