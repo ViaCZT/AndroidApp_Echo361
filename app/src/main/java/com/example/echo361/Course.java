@@ -6,7 +6,7 @@ public class Course {
     private String title;
     private Integer courseID;
     private ArrayList<String> students;
-    private ArrayList<String> teachers;
+    private String teacher;
     private CODE code;
     private CAREER career;
     private DELIVERY delivery;
@@ -47,11 +47,11 @@ public class Course {
     }
 
     public Course(String title, Integer courseID,
-                  ArrayList<String> students, ArrayList<String> teachers, CODE code, CAREER career, DELIVERY delivery, TERM term, Forum forum, String videos) {
+                  ArrayList<String> students, String teacher, CODE code, CAREER career, DELIVERY delivery, TERM term, Forum forum, String videos) {
         this.title = title;
         this.courseID = courseID;
         this.students = students;
-        this.teachers = teachers;
+        this.teacher = teacher;
         this.code = code;
         this.career = career;
         this.delivery = delivery;
@@ -84,12 +84,12 @@ public class Course {
         this.students = students;
     }
 
-    public ArrayList<String> getTeachers() {
-        return teachers;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public void setTeachers(ArrayList<String> teachers) {
-        this.teachers = teachers;
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
     public Forum getForum() {

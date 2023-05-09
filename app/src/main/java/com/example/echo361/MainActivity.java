@@ -36,7 +36,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FirebaseApp.initializeApp(getBaseContext());
-
+        FirebaseOperator firebaseOperator = new FirebaseOperator();
+//        try {
+//            firebaseOperator.storeData(getApplicationContext());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+        firebaseOperator.storeCoursesData(getApplicationContext());
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
         EditText editText2 = findViewById(R.id.ed_password);
