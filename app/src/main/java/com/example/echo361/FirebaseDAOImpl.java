@@ -1,17 +1,24 @@
 package com.example.echo361;
 
 import android.content.Context;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.echo361.util.FirebaseDAO;
+import com.example.echo361.FirebaseDAO;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,6 +36,29 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
     }
 
     private static final String TAG = "FirebaseOperator";
+
+    public <E> void getData(String refPath, String childPath, Type dataClass, FirebaseDataCallback<E> callback) {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(refPath);
+
+        if (childPath != null && !childPath.equals("")) {
+            ref = ref.child(childPath);
+        }
+
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                GenericTypeIndicator<E> type = new GenericTypeIndicator<E>() {};
+                E result = dataSnapshot.getValue(type);
+                callback.onDataReceived(result);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("MainActivity","wrong");
+                callback.onError(error);
+            }
+        });
+    }
     @Override
     public <E> void storeData(String refpath,String childpath,E input){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

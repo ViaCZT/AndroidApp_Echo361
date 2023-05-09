@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +35,26 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
+//        firebaseDAOImpl.getData("Students", "", new TypeToken<ArrayList<Student>>() {}.getType(), new FirebaseDataCallback<ArrayList<Student>>() {
+//            @Override
+//            public void onDataReceived(ArrayList<Student> students) {
+//                Log.d(TAG,"asdadasasdaddasd"+ students.get(0).toString());
+//                // 在这里处理学生列表
+//            }
+//
+//            @Override
+//            public void onError(DatabaseError error) {
+//                // 在这里处理错误
+//            }
+//        });
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
-//        Student student = new Student("comp2100@anu.au","comp2100",null,null);
-//        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",null,null);
+        ArrayList<String> courseA = new ArrayList<>();
+        courseA.add("COMP0001");
+        Student student = new Student("comp2100@anu.au","comp2100",courseA,null);
+        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA,null);
 //        firebaseOperator.storeData("Admin",admin);
-//        firebaseOperator.storeData("Students","2000",student);
+        firebaseDAOImpl.storeData("Students","2000",student);
+        firebaseDAOImpl.storeData("Teachers","500",teacher);
 
 //        try {
 //            firebaseOperator.storeStudentAndTeacherData(getApplicationContext());
@@ -63,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         boolean userFound = false;
-                        Log.d(TAG, "Data snapshot: " + dataSnapshot.toString());
+//                        Log.d(TAG, "Data snapshot: " + dataSnapshot.toString());
                         for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                            Log.d(TAG, "Checking node");
+//                            Log.d(TAG, "Checking node");
                             String storedPassword = userSnapshot.child("passWord").getValue(String.class);
                             if (storedPassword != null && storedPassword.equals(inputPassword)) {
                                 userFound = true;
@@ -74,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
                                 // 获取课程列表
                                 GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
                                 List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
-                                Log.d(TAG, coursesList.get(0));
+//                                Log.d(TAG, coursesList.get(0));
                                 Intent intent = new Intent(MainActivity.this, StudentMainpageActivity.class);
                                 intent.putExtra("student_name", studentName);
                                 intent.putStringArrayListExtra("courses_list", new ArrayList<>(coursesList));
@@ -89,9 +105,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     boolean userFound = false;
-                                    Log.d(TAG, "Data snapshot: " + dataSnapshot.toString());
+//                                    Log.d(TAG, "Data snapshot: " + dataSnapshot.toString());
                                     for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                                        Log.d(TAG, "Checking node");
+//                                        Log.d(TAG, "Checking node");
                                         String storedPassword = userSnapshot.child("passWord").getValue(String.class);
                                         if (storedPassword != null && storedPassword.equals(inputPassword)) {
                                             userFound = true;
@@ -116,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-                                    Log.w(TAG, "loadTeacher:onCancelled", databaseError.toException());
+//                                    Log.w(TAG, "loadTeacher:onCancelled", databaseError.toException());
                                 }
                             });
                         }
@@ -124,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Log.w(TAG, "loadStudent:onCancelled", databaseError.toException());
+//                        Log.w(TAG, "loadStudent:onCancelled", databaseError.toException());
                     }
                 });
             } else {
