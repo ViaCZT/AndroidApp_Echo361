@@ -58,14 +58,6 @@ public class SearchChatTarget extends AppCompatActivity {
             }
 
             // search there are firstName, lastName
-
-
-
-
-
-
-
-
         };
         button.setOnClickListener(myListener2);
 
