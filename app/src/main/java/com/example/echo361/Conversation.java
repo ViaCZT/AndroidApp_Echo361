@@ -1,5 +1,7 @@
 package com.example.echo361;
 
+import com.example.echo361.LayoutActivity.Msg;
+
 import java.util.ArrayList;
 
 public class Conversation {

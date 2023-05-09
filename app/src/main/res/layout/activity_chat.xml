@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".ChatActivity"
+    tools:context=".LayoutActivity.ChatActivity"
     android:orientation="vertical">
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:text="Hi! Let's chat!"
+        android:text="@string/hi_let_s_chat"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold|italic" />
@@ -39,10 +38,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type message here"
+            android:hint="@string/type_message_here"
             android:textAllCaps="false"
             android:maxLines="2"
-            android:gravity="left"
+            android:gravity="start"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="20sp"
@@ -52,7 +51,7 @@
             android:id="@+id/send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"
+            android:text="@string/send"
             android:textAllCaps="false"
             android:textSize="20sp"
             android:textColor="@color/white"

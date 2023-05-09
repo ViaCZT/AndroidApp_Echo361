@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     android:orientation="vertical"
-    tools:context=".ForumTotalActivity">
+    tools:context=".LayoutActivity.ForumTotalActivity">
 
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="The forum is supposed to be collaborative and supportive."
+        android:text="@string/the_forum_is_supposed_to_be_collaborative_and_supportive"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold|italic"
@@ -50,7 +50,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        android:gravity="left"
+        android:gravity="start"
         android:hint="@string/type_the_title_here"
         android:maxLines="2"
         android:textAllCaps="false"
@@ -95,7 +95,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        android:text="Post "
+        android:text="@string/post"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -113,7 +113,7 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
-        android:text="Block"
+        android:text="@string/block"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
