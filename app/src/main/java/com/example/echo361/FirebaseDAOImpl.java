@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.echo361.util.FirebaseDAO;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
@@ -15,8 +16,20 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FirebaseOperator extends AppCompatActivity {
+public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
+    private static FirebaseDAOImpl instance = null;
+
+    private FirebaseDAOImpl() {}
+
+    public static synchronized FirebaseDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new FirebaseDAOImpl();
+        }
+        return instance;
+    }
+
     private static final String TAG = "FirebaseOperator";
+    @Override
     public <E> void storeData(String refpath,String childpath,E input){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference(refpath);
@@ -27,6 +40,7 @@ public class FirebaseOperator extends AppCompatActivity {
         }
     }
 
+    @Override
     public void storeStudentAndTeacherData(Context context) throws IOException {
 //        FirebaseApp.initializeApp()
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

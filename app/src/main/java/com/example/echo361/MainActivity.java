@@ -16,11 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         FirebaseApp.initializeApp(getBaseContext());
-        FirebaseOperator firebaseOperator = new FirebaseOperator();
+        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
 //        Student student = new Student("comp2100@anu.au","comp2100",null,null);
 //        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",null,null);
