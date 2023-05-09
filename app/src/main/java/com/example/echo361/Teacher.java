@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Teacher extends User{
     List<String> conversation;
-    String name;
     public List<String> getConversation() {
         return conversation;
     }
@@ -16,19 +15,10 @@ public class Teacher extends User{
         this.conversation = conversation;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 
     public Teacher(String userName, String passWord, ArrayList<String> courses, List<String> conversation) {
-        super(userName, passWord,courses);
+        super(userName, passWord, courses);
         this.conversation = conversation;
-        this.name = userName;
     }
 
     public void block(ForumPost forumPost){}

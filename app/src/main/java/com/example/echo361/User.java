@@ -7,19 +7,42 @@ import java.util.List;
 
 public abstract class User {
 
-    private static String userName;
+    private  String userName;
     private String passWord;
     private ArrayList<String> courses;
+    public  String getUserName() {
+        return userName;
+    }
 
-    public User(String userName, String passWord,ArrayList<String> courses){
-        User.userName = userName;
+    public  void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public ArrayList<String> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(ArrayList<String> courses) {
+        this.courses = courses;
+    }
+
+
+
+    public User(String userName, String passWord, ArrayList<String> courses){
+        this.userName = userName;
         this.passWord = passWord;
         this.courses = courses;
     }
 
-    public static String getname(){
-        return userName;
-    }
+
     public void login(){}
 
     public void logout(){}
