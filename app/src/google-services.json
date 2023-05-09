@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "89152220615",
+    "firebase_url": "https://echo361-default-rtdb.firebaseio.com",
+    "project_id": "echo361",
+    "storage_bucket": "echo361.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:89152220615:android:be0eaa2908c36632b33de2",
+        "android_client_info": {
+          "package_name": "com.example.echo361"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "89152220615-kru4d3k8h4805uqmlrkr576kdv3avsj1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnYExbgcmYGlnjA4f3fwnlErJQgnnf6kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "89152220615-kru4d3k8h4805uqmlrkr576kdv3avsj1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

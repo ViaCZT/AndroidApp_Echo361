@@ -4,28 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-
-import com.example.echo361.R;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
+
+    private DatabaseReference studentsReference;
+    private DatabaseReference teachersReference;
+
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,35 +34,84 @@ public class MainActivity extends AppCompatActivity {
         EditText editText1 = findViewById(R.id.ed_user);
         EditText editText2 = findViewById(R.id.ed_password);
 
-        mBtnLogin.setOnClickListener(view -> {
-            String username = editText1.getText().toString();
-            String password = editText2.getText().toString();
+        studentsReference = FirebaseDatabase.getInstance().getReference("Students");
+        teachersReference = FirebaseDatabase.getInstance().getReference("Teachers");
 
-            if(username.equals("comp2100@anu.au")&&password.equals("comp2100")){
-                Student student = new Student("Zihan","comp2100",null,null);
-                String loginOk = "Welcome! "+User.getname();
-                ToastUtil.showMsg(MainActivity.this,loginOk);
-                Intent intent = new Intent(MainActivity.this,StudentMainpageActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-            else if (username.equals("comp6442@anu.au")&&password.equals("comp6442")){
-                Teacher teacher = new Teacher("Bernardo","comp6442",null,null);
-                String loginOk = "Welcome! "+User.getname();
-                ToastUtil.showMsg(MainActivity.this,loginOk);
-                Intent intent = new Intent(MainActivity.this, CourseMainpageActivity.class);
-                intent.putExtra("name","Bernardo");
-                MainActivity.this.startActivity(intent);
-            }
-            else if (username.equals("admin")&&password.equals("admin")){
-                Admin admin = new Admin("Yuan Li","admin");
-                String loginOk = "Welcome! "+User.getname();
-                ToastUtil.showMsg(MainActivity.this,loginOk);
-                Intent intent = new Intent(MainActivity.this, AdminDeletionActivity.class);
-                MainActivity.this.startActivity(intent);
-            }
-            else {
-                String loginFail = "Please check your username and password";
-                ToastUtil.showMsg(MainActivity.this,loginFail);
+        mBtnLogin.setOnClickListener(view -> {
+            String inputUsername = editText1.getText().toString();
+            String inputPassword = editText2.getText().toString();
+
+            if (!inputUsername.isEmpty() && !inputPassword.isEmpty()) {
+                // 查询学生子节点
+                studentsReference.orderByChild("name").equalTo(inputUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        boolean userFound = false;
+                        Log.d(TAG, "Data snapshot: " + dataSnapshot.toString());
+
+                        for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                            Log.d(TAG, "Checking node");
+                            String storedPassword = userSnapshot.child("uid").getValue(String.class);
+                            if (storedPassword != null && storedPassword.equals(inputPassword)) {
+                                userFound = true;
+                                // 登录成功，学生用户
+                                String studentName = userSnapshot.child("name").getValue(String.class);
+                                Intent intent = new Intent(MainActivity.this, StudentMainpageActivity.class);
+                                intent.putExtra("student_name", studentName);
+                                MainActivity.this.startActivity(intent);
+                                break;
+                            }
+                        }
+
+                        if (!userFound) {
+                            // 查询教师子节点
+                            teachersReference.orderByChild("name").equalTo(inputUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    boolean userFound = false;
+
+
+                                    for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                                        for (DataSnapshot teacherSnapshot : userSnapshot.getChildren()) {
+                                            String storedName = teacherSnapshot.child("name").getValue(String.class);
+                                            String storedPassword = teacherSnapshot.child("passWord").getValue(String.class);
+
+                                            if (storedName != null && storedName.equals(inputUsername) && storedPassword != null && storedPassword.equals(inputPassword)) {
+                                                userFound = true;
+                                                // 登录成功，教师用户
+                                                String teacherName = teacherSnapshot.child("name").getValue(String.class);
+                                                Intent intent = new Intent(MainActivity.this, CourseMainpageActivity.class);
+                                                intent.putExtra("teacher_name", teacherName);
+                                                MainActivity.this.startActivity(intent);
+                                                break;
+                                            }
+                                        }
+
+                                        if (userFound) {
+                                            break;
+                                        }
+                                    }
+
+                                    if (!userFound) {
+                                        ToastUtil.showMsg(MainActivity.this, "Login failed: No user found with username " + inputUsername + " and password " + inputPassword);
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    Log.w(TAG, "loadTeacher:onCancelled", databaseError.toException());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        Log.w(TAG, "loadStudent:onCancelled", databaseError.toException());
+                    }
+                });
+            } else {
+                ToastUtil.showMsg(MainActivity.this, "Username and password cannot be empty");
             }
         });
     }
