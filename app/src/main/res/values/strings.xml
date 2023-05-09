@@ -18,4 +18,21 @@
     <string name="type_the_title_here">Type the title here.</string>
     <string name="type_the_content_here">Type the content here</string>
     <string name="your_current_course">Your current course</string>
+    <string name="hi_let_s_chat">Hi! Let\'s chat!</string>
+    <string name="type_message_here">Type message here</string>
+    <string name="send">Send</string>
+    <string name="search_the_course_here">Search the course here.</string>
+    <string name="search">Search</string>
+    <string name="undergraduate">Undergraduate</string>
+    <string name="postgraduate">Postgraduate</string>
+    <string name="on_campus">On campus</string>
+    <string name="online">Online</string>
+    <string name="search_the_name_here">Search the name here.</string>
+    <string name="change_code">(change)code</string>
+    <string name="the_forum_is_supposed_to_be_collaborative_and_supportive">The forum is supposed to be collaborative and supportive.</string>
+    <string name="post">Post</string>
+    <string name="block">Block</string>
+    <string name="change_this_is_the_title_for_the_forum">(change)This is the title for the forum</string>
+    <string name="change_this_is_what_the_poster_said">(change)This is what the poster said.</string>
+    <string name="share_your_idea">Share your idea.</string>
 </resources>
