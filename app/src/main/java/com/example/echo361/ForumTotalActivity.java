@@ -36,7 +36,7 @@ public class ForumTotalActivity extends AppCompatActivity {
         posts.add(forumPost2);
 
         Intent intent0 = getIntent();
-        boolean isTeacher = intent0.getBooleanExtra("isTeacher",true);
+        boolean isTeacher = intent0.getBooleanExtra("is_teacher",true);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,postTitles);
         listView.setAdapter(arrayAdapter);

@@ -33,7 +33,7 @@ public class MyCourseActivity extends AppCompatActivity {
         ArrayList<String> finalCourseName = courseName;
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             Intent intent = new Intent(MyCourseActivity.this, CourseMainpageActivity.class);
-            intent.putExtra("isTeacher",false);
+            intent.putExtra("is_teacher",false);
             intent.putExtra("courseName", finalCourseName.get(i));
             MyCourseActivity.this.startActivity(intent);
         });

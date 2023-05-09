@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity {
                                 // 获取课程列表
                                 GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
                                 List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
-
                                 Log.d(TAG, coursesList.get(0));
                                 Intent intent = new Intent(MainActivity.this, StudentMainpageActivity.class);
                                 intent.putExtra("student_name", studentName);
@@ -77,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
                         if (!userFound) {
                             // 查询教师子节点
-                            teachersReference.orderByChild("name").equalTo(inputUsername).addListenerForSingleValueEvent(new ValueEventListener() {
+                            teachersReference.orderByChild("userName").equalTo(inputUsername).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     boolean userFound = false;
@@ -88,9 +87,14 @@ public class MainActivity extends AppCompatActivity {
                                         if (storedPassword != null && storedPassword.equals(inputPassword)) {
                                             userFound = true;
                                             // 登录成功，教师用户
-                                            String teacherName = userSnapshot.child("name").getValue(String.class);
+                                            GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
+                                            List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
+                                            String course = coursesList.get(0);
+                                            String teacherName = userSnapshot.child("userName").getValue(String.class);
                                             Intent intent = new Intent(MainActivity.this, CourseMainpageActivity.class);
                                             intent.putExtra("teacher_name", teacherName);
+                                            intent.putExtra("course_name",course);
+                                            intent.putExtra("is_teacher",true);
                                             MainActivity.this.startActivity(intent);
                                             break;
                                         }

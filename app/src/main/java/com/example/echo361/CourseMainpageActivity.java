@@ -14,6 +14,9 @@ public class CourseMainpageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_course_mainpage);
 
         Button toChat = findViewById(R.id.btn_gotoChat);
+        Intent intent2 = getIntent();
+        String course_name =  intent2.getStringExtra("course_name");
+        boolean is_teacher = intent2.getBooleanExtra("is_teacher",false);
         toChat.setOnClickListener(view -> {
             Intent intent0 = new Intent(CourseMainpageActivity.this, ChatActivity.class);
             CourseMainpageActivity.this.startActivity(intent0);
@@ -22,23 +25,13 @@ public class CourseMainpageActivity extends AppCompatActivity {
         Button toForum = findViewById(R.id.btn_gotoForum);
 
         toForum.setOnClickListener(v -> {
-            String username = User.getname();
-            if (username.equals("Zihan")) {
-                Intent intent = new Intent(CourseMainpageActivity.this, ForumTotalActivity.class);
-                intent.putExtra("isTeacher",false);
-                Intent intent1 = getIntent();
-                String courseName = intent1.getStringExtra("courseName");
-                intent.putExtra("courseName",courseName);
-                startActivity(intent);
-            } else if (username.equals("Bernardo")) {
-                Intent intent = new Intent(CourseMainpageActivity.this, ForumTotalActivity.class);
-                intent.putExtra("isTeacher",true);
-                intent.putExtra("courseName","COMP6442");
-                startActivity(intent);
-            } else {
-                Intent intent = new Intent(CourseMainpageActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(CourseMainpageActivity.this, ForumTotalActivity.class);
+            intent.putExtra("courseName",course_name);
+            if (!is_teacher)
+                intent.putExtra("is_teacher",false);
+            else
+                intent.putExtra("is_teacher",true);
+            startActivity(intent);
         });
 
     }
