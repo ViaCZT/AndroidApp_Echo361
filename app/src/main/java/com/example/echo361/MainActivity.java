@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getBaseContext());
         FirebaseOperator firebaseOperator = new FirebaseOperator();
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
-        Student student = new Student("comp2100@anu.au","comp2100",null,null);
-        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",null,null);
+//        Student student = new Student("comp2100@anu.au","comp2100",null,null);
+//        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",null,null);
 //        firebaseOperator.storeData("Admin",admin);
-        firebaseOperator.storeData("Students","2000",student);
+//        firebaseOperator.storeData("Students","2000",student);
 
 //        try {
 //            firebaseOperator.storeStudentAndTeacherData(getApplicationContext());
