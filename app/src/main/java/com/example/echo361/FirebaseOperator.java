@@ -17,18 +17,21 @@ import java.util.Collections;
 
 public class FirebaseOperator extends AppCompatActivity {
     private static final String TAG = "FirebaseOperator";
-//    public <E> void storeData(String path,E input){
-//        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-//        DatabaseReference databaseReference = firebaseDatabase.getReference("Course");
-//        databaseReference.setValue("Course1");
-//
-//    }
+    public <E> void storeData(String refpath,String childpath,E input){
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference(refpath);
+        if (childpath == null||childpath.equals("")){
+            databaseReference.setValue(input);
+        }else {
+            databaseReference.child(childpath).setValue(input);
+        }
+    }
 
     public void storeStudentAndTeacherData(Context context) throws IOException {
 //        FirebaseApp.initializeApp()
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Students");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("students.csv"), StandardCharsets.UTF_8));
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Teachers");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("teachers.csv"), StandardCharsets.UTF_8));
         String line;
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Teacher> teachers = new ArrayList<>();
@@ -39,19 +42,19 @@ public class FirebaseOperator extends AppCompatActivity {
             }
             ArrayList<String> courses = new ArrayList<>();
 
-            String[] c = fields[2].split(" ");
-            Collections.addAll(courses,c);
-            Student student = new Student(fields[0],fields[1],courses,null);
-            students.add(student);
-//            ArrayList<String> cou = new ArrayList<>();
-//            cou.add(fields[2]);
-//            Teacher teacher = new Teacher(fields[0],fields[1],cou,null);
-//            teachers.add(teacher);
+//            String[] c = fields[2].split(" ");
+//            Collections.addAll(courses,c);
+//            Student student = new Student(fields[0],fields[1],courses,null);
+//            students.add(student);
+            ArrayList<String> cou = new ArrayList<>();
+            cou.add(fields[2]);
+            Teacher teacher = new Teacher(fields[0],fields[1],cou,null);
+            teachers.add(teacher);
 //            Log.d(TAG,"teacher: "+teacher.);
         }
 //        databaseReference.setValue("");
 
-        databaseReference.setValue(students);
+        databaseReference.setValue(teachers);
 //        databaseReference = firebaseDatabase.getReference("Students");
 //        databaseReference.child("1");
         reader.close();
@@ -247,7 +250,7 @@ public class FirebaseOperator extends AppCompatActivity {
 
 //    public Student getStudent(Context context){
 //        DatabaseReference studentsReference = FirebaseDatabase.getInstance().getReference("Students");
-//        studentsReference.orderByChild()
+////        studentsReference.orderByChild()
 //
 //    }
 

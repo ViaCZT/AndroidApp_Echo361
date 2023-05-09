@@ -19,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,12 +38,18 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
         FirebaseOperator firebaseOperator = new FirebaseOperator();
+//        Admin admin = new Admin("Ad Admin","u0000000",null);
+        Student student = new Student("comp2100@anu.au","comp2100",null,null);
+        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",null,null);
+//        firebaseOperator.storeData("Admin",admin);
+        firebaseOperator.storeData("Students","2000",student);
+
 //        try {
-//            firebaseOperator.storeData(getApplicationContext());
+//            firebaseOperator.storeStudentAndTeacherData(getApplicationContext());
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-        firebaseOperator.storeCoursesData(getApplicationContext());
+//        firebaseOperator.storeCoursesData(getApplicationContext());
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
         EditText editText2 = findViewById(R.id.ed_password);
