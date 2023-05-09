@@ -20,14 +20,7 @@ public class Student extends User{
     public Student(String userName, String passWord, ArrayList<String> courses, List<String> conversation)  {
         super(userName, passWord, courses);
         this.conversation = conversation;
-
     }
 
-
-    public void enrol(Course course){}
-
-    public void drop(Course course){}
-
-    public void chat(User user, String message){}
 
 }

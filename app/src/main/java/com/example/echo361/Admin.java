@@ -7,9 +7,4 @@ public class Admin extends User{
         super(userName, passWord, courses);
     }
 
-    public void createCourse(Course course){}
-
-    public void deleteCourse(Course course){}
-
-    public void block(ForumPost forumPost){}
 }

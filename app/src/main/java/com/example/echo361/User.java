@@ -43,16 +43,4 @@ public abstract class User {
     }
 
 
-    public void login(){}
-
-    public void logout(){}
-
-    public static List<?> search(String s){
-        return null;
-    }
-
-    public void post(){}
-
-
-
 }
