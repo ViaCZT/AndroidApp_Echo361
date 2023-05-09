@@ -48,13 +48,13 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
-        ArrayList<String> courseA = new ArrayList<>();
-        courseA.add("COMP0001");
-        Student student = new Student("comp2100@anu.au","comp2100",courseA,null);
-        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA,null);
+//        ArrayList<String> courseA = new ArrayList<>();
+//        courseA.add("COMP0001");
+//        Student student = new Student("comp2100@anu.au","comp2100",courseA,null);
+//        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA,null);
 //        firebaseOperator.storeData("Admin",admin);
-        firebaseDAOImpl.storeData("Students","2000",student);
-        firebaseDAOImpl.storeData("Teachers","500",teacher);
+//        firebaseDAOImpl.storeData("Students","2000",student);
+//        firebaseDAOImpl.storeData("Teachers","500",teacher);
 
 //        try {
 //            firebaseOperator.storeStudentAndTeacherData(getApplicationContext());

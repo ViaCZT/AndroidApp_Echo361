@@ -92,8 +92,9 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 //            students.add(student);
             ArrayList<String> cou = new ArrayList<>();
             cou.add(fields[2]);
-            Teacher teacher = new Teacher(fields[0],fields[1],cou,null);
-            teachers.add(teacher);
+            UserFactory userFactory = new UserFactory();
+            User teacher = userFactory.getUser("teacher",fields[0],fields[1],cou,null);
+            teachers.add((Teacher) teacher);
 //            Log.d(TAG,"teacher: "+teacher.);
         }
 //        databaseReference.setValue("");
