@@ -1,5 +1,6 @@
 package com.example.echo361;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -9,6 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -30,6 +37,7 @@ public class EnrollActivity extends AppCompatActivity {
         ArrayAdapter coursesListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, courses);
         coursesList.setAdapter(coursesListAdapter);
 
+        DatabaseReference courseReference = FirebaseDatabase.getInstance().getReference();
 
         Button button = (Button) findViewById(R.id.btn_searchCourse);
         View.OnClickListener myListener2 = v -> {
@@ -38,8 +46,8 @@ public class EnrollActivity extends AppCompatActivity {
             CTokenizer tok = new CourseTokenizer(searchInput);
             CExp parsedExp = CParser.parseExp(tok);
             String inputPersed = parsedExp.show();
-            Integer courseCode = null;
-            String collegeCode = "";
+            String courseCode;
+            String collegeCode;
             int i  = 0;
             while (i < 4 && isWord(inputPersed.charAt(i))){
                 i++;
@@ -52,9 +60,36 @@ public class EnrollActivity extends AppCompatActivity {
                 startPos = j;
                 j++;
             }
-            courseCode = Integer.valueOf(inputPersed.substring(startPos,j));
+            courseCode = inputPersed.substring(startPos,j);
 
-            //search
+//            courses.add((collegeCode + " " + courseCode).toString());
+//            courses.add(searchInput);
+            courses.add(editText.getText().toString());
+            editText.setText("");
+            coursesListAdapter.notifyDataSetChanged();
+
+
+
+//            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            DatabaseReference ref = database.getReference("server/saving-data/fireblog/posts");
+
+
+//            // search
+//            courseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) { /*
+//            TODO: get the value and transform or transfer the data into a User class.
+//            Hint: use snapshot.getValue(String.class) to get the value and transform it into a string.
+//            */
+//                    for (DataSnapshot rootSnapshot : snapshot.getChildren()) {
+//                        courses.add(rootSnapshot+"");
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    // Failed to retrieve the data
+//                    System.err.println("Failed to retrieve data, error: " + error.toException());
+//                } });
 
 
 
@@ -62,9 +97,6 @@ public class EnrollActivity extends AppCompatActivity {
 
 
 
-//            courses.add(editText.getText().toString());
-//            editText.setText("");
-//            coursesListAdapter.notifyDataSetChanged();
         };
         button.setOnClickListener(myListener2);
 
