@@ -1,5 +1,6 @@
 package com.example.echo361.LayoutActivity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,11 +11,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 
+import com.example.echo361.R;
 import com.example.echo361.Search.CExp;
 import com.example.echo361.Search.CParser;
 import com.example.echo361.Search.CTokenizer;
 import com.example.echo361.Search.CourseTokenizer;
-import com.example.echo361.R;
 
 import java.util.ArrayList;
 
@@ -44,8 +45,8 @@ public class EnrollActivity extends AppCompatActivity {
             CTokenizer tok = new CourseTokenizer(searchInput);
             CExp parsedExp = CParser.parseExp(tok);
             String inputPersed = parsedExp.show();
-            Integer courseCode = null;
-            String collegeCode = "";
+            String courseCode;
+            String collegeCode;
             int i  = 0;
             while (i < 4 && isWord(inputPersed.charAt(i))){
                 i++;
@@ -58,19 +59,44 @@ public class EnrollActivity extends AppCompatActivity {
                 startPos = j;
                 j++;
             }
-            courseCode = Integer.valueOf(inputPersed.substring(startPos,j));
+            courseCode = inputPersed.substring(startPos,j);
+
+//            courses.add((collegeCode + " " + courseCode).toString());
+//            courses.add(searchInput);
+            courses.add(editText.getText().toString());
+            editText.setText("");
+            coursesListAdapter.notifyDataSetChanged();
 
             //search
 
 
+//            final FirebaseDatabase database = FirebaseDatabase.getInstance();
+//            DatabaseReference ref = database.getReference("server/saving-data/fireblog/posts");
+
+
+//            // search
+//            courseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) { /*
+//            TODO: get the value and transform or transfer the data into a User class.
+//            Hint: use snapshot.getValue(String.class) to get the value and transform it into a string.
+//            */
+//                    for (DataSnapshot rootSnapshot : snapshot.getChildren()) {
+//                        courses.add(rootSnapshot+"");
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//                    // Failed to retrieve the data
+//                    System.err.println("Failed to retrieve data, error: " + error.toException());
+//                } });
 
 
 
 
 
-//            courses.add(editText.getText().toString());
-//            editText.setText("");
-//            coursesListAdapter.notifyDataSetChanged();
+
+
         };
         button.setOnClickListener(myListener2);
 
