@@ -7,4 +7,6 @@ public class Admin extends User{
         super(userName, passWord, courses);
     }
 
+    public Admin() {
+    }
 }

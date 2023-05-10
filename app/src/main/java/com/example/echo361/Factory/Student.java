@@ -13,6 +13,8 @@ public class Student extends User{
         this.conversation = conversation;
     }
 
+    public Student() {
+    }
 
     List<String> conversation;
 
@@ -22,5 +24,10 @@ public class Student extends User{
         this.conversation = conversation;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" + super.toString()+
+                "conversation=" + conversation +
+                '}';
+    }
 }

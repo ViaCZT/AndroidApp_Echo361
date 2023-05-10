@@ -32,7 +32,17 @@ public abstract class User {
         this.courses = courses;
     }
 
+    public User() {
+    }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                ", courses=" + courses +
+                '}';
+    }
 
     public User(String userName, String passWord, ArrayList<String> courses){
         this.userName = userName;

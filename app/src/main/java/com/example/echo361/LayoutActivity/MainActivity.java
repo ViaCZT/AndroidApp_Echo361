@@ -2,13 +2,20 @@ package com.example.echo361.LayoutActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.echo361.Database.FirebaseDAOImpl;
+import com.example.echo361.Database.FirebaseDataCallback;
+import com.example.echo361.Factory.Admin;
+import com.example.echo361.Factory.Student;
+import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
+import com.example.echo361.Search.CourseAVLtree;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,19 +45,73 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
 
-//        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-//        firebaseDAOImpl.getData("Students", "", new TypeToken<ArrayList<Student>>() {}.getType(), new FirebaseDataCallback<ArrayList<Student>>() {
-//            @Override
-//            public void onDataReceived(ArrayList<Student> students) {
-//                Log.d(TAG,"asdadasasdaddasd"+ students.get(0).toString());
-//                // 在这里处理学生列表
-//            }
-//
-//            @Override
-//            public void onError(DatabaseError error) {
-//                // 在这里处理错误
-//            }
-//        });
+        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
+
+        /*
+       firebaseDAOImpl.getData("Admin", null, new FirebaseDataCallback<Admin>() {
+            @Override
+            public void onDataReceived(Admin admin) {
+                // 在这里处理Admin
+            }
+
+            @Override
+            public void onError(DatabaseError error) {
+                // 在这里处理错误
+            }
+        });
+        */
+        //学生
+        /*
+       firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<Student>>() {
+            @Override
+            public void onDataReceived(ArrayList<Student> students) {
+                // 在这里处理学生
+            }
+
+            @Override
+            public void onError(DatabaseError error) {
+                // 在这里处理错误
+            }
+        });
+        */
+        //教师
+        /*
+        firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<Teacher>>() {
+            @Override
+            public void onDataReceived(ArrayList<Teacher> teachers) {
+                //在这里处理老师
+            }
+
+            @Override
+            public void onError(DatabaseError error) {
+                // 在这里处理错误
+            }
+        });
+        */
+        /*
+
+        //各个树
+        firebaseDAOImpl.getData("XXXXTree", null, new FirebaseDataCallback<String>() {
+
+            @Override
+            public void onDataReceived(String data) {
+                //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
+//                Gson gson = new Gson();
+//                CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+//                courseAVLtree.delete(1);
+//                FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
+//                firebaseDAO.storeData("XXXXTree",null,gson.toJson(courseAVLtree));
+
+            }
+
+            @Override
+            public void onError(DatabaseError error) {
+                // 在这里处理错误
+            }
+        });
+        */
+
+
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
 //        ArrayList<String> courseA = new ArrayList<>();
 //        courseA.add("COMP0001");
@@ -66,11 +128,17 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //        firebaseOperator.storeCoursesData(getApplicationContext());
 
+
+
+
+
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
         EditText editText2 = findViewById(R.id.ed_password);
 
         studentsReference = FirebaseDatabase.getInstance().getReference("Students");
+
+
         teachersReference = FirebaseDatabase.getInstance().getReference("Teachers");
         adminReference = FirebaseDatabase.getInstance().getReference("Admin");
 

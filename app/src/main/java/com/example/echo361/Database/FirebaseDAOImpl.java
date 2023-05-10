@@ -44,7 +44,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 
     private static final String TAG = "FirebaseOperator";
 
-    public <E> void getData(String refPath, String childPath, Type dataClass, FirebaseDataCallback<E> callback) {
+    public <T> void getData(String refPath, String childPath, FirebaseDataCallback<T> callback) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(refPath);
 
         if (childPath != null && !childPath.equals("")) {
@@ -54,9 +54,10 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                GenericTypeIndicator<E> type = new GenericTypeIndicator<E>() {};
-                E result = dataSnapshot.getValue(type);
-                callback.onDataReceived(result);
+                GenericTypeIndicator<T> type = new GenericTypeIndicator<T>() {};
+                T result = dataSnapshot.getValue(type);
+               callback.onDataReceived((T) result);
+
             }
 
             @Override
@@ -65,7 +66,10 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
                 callback.onError(error);
             }
         });
+
     }
+
+//    public
     @Override
     public <E> void storeData(String refpath,String childpath,E input){
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();

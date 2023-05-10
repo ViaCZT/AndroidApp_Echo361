@@ -13,6 +13,8 @@ public class Teacher extends User{
         this.conversation = conversation;
     }
 
+    public Teacher() {
+    }
 
     public Teacher(String userName, String passWord, ArrayList<String> courses, List<String> conversation) {
         super(userName, passWord, courses);
