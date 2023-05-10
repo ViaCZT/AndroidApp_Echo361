@@ -3,6 +3,7 @@ package com.example.echo361.LayoutActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.VideoView;
 
@@ -19,7 +20,11 @@ public class CourseMainpageActivity extends AppCompatActivity {
 
         Button toChat = findViewById(R.id.btn_gotoChat);
         Intent intent2 = getIntent();
-        String course_name =  intent2.getStringExtra("course_name");
+        String course_name =  intent2.getStringExtra("courseName");
+        if(course_name==""||course_name==null)
+            Log.d("123","no name");
+        else
+            Log.d("123",course_name);
         boolean is_teacher = intent2.getBooleanExtra("is_teacher",false);
         toChat.setOnClickListener(view -> {
             Intent intent0 = new Intent(CourseMainpageActivity.this, ChatActivity.class);

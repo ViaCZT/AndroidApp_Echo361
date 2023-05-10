@@ -21,21 +21,16 @@ public class MyCourseActivity extends AppCompatActivity {
 
         Intent intent0 = getIntent();
         ArrayList<String> courseName = intent0.getStringArrayListExtra("courses_list");
-        if (courseName == null) {
-            Log.e("MyCourseActivity", "Received null courseName");
-            courseName = new ArrayList<>();
-        }
-
 
 
         ListView listView = findViewById(R.id.list_currCourse);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseName);
         listView.setAdapter(arrayAdapter);
-        ArrayList<String> finalCourseName = courseName;
         listView.setOnItemClickListener((adapterView, view, i, l) -> {
             Intent intent = new Intent(MyCourseActivity.this, CourseMainpageActivity.class);
             intent.putExtra("is_teacher",false);
-            intent.putExtra("courseName", finalCourseName.get(i));
+            intent.putExtra("courseName",courseName.get(i));
+                Log.d("1",courseName.get(i));
             MyCourseActivity.this.startActivity(intent);
         });
     }
