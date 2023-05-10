@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     android:orientation="vertical"
-    tools:context=".ForumDetailActivity">
+    tools:context=".LayoutActivity.ForumDetailActivity">
 
     <TextView
         android:id="@+id/tx_forumTitle"
@@ -17,7 +17,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="(change)This is the title for the forum"
+        android:text="@string/change_this_is_the_title_for_the_forum"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold|italic"
@@ -35,7 +35,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="(change)This is what the poster said."
+        android:text="@string/change_this_is_what_the_poster_said"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -66,7 +66,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
-        android:hint="Share your idea."
+        android:hint="@string/share_your_idea"
         android:inputType="textPersonName"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -84,7 +84,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="Post"
+        android:text="@string/post"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textStyle="bold|italic"

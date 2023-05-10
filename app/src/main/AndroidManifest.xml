@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
 
     <application
         android:allowBackup="true"
@@ -11,43 +11,43 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Echo361"
-        tools:targetApi="31">
+        >
 
         <meta-data
             android:name="com.google.firebase.default_web_client_id"
             android:value="@string/default_web_client_id" />
         <activity
-            android:name=".ForumDetailActivity"
+            android:name=".LayoutActivity.ForumDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchChatTarget"
+            android:name=".LayoutActivity.SearchChatTarget"
             android:exported="false" />
         <activity
-            android:name=".AdminDeletionActivity"
+            android:name=".LayoutActivity.AdminDeletionActivity"
             android:exported="false" />
         <activity
-            android:name=".ForumTotalActivity"
+            android:name=".LayoutActivity.ForumTotalActivity"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".LayoutActivity.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".CourseMainpageActivity"
+            android:name=".LayoutActivity.CourseMainpageActivity"
             android:exported="false" />
         <activity
-            android:name=".MyCourseActivity"
+            android:name=".LayoutActivity.MyCourseActivity"
             android:exported="false" />
         <activity
-            android:name=".DropActivity"
+            android:name=".LayoutActivity.DropActivity"
             android:exported="false" />
         <activity
-            android:name=".EnrollActivity"
+            android:name=".LayoutActivity.EnrollActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentMainpageActivity"
+            android:name=".LayoutActivity.StudentMainpageActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LayoutActivity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

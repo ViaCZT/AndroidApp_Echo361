@@ -108,14 +108,14 @@ public class Course {
         this.videos = videos;
     }
 
-    enum TERM{
+    public enum TERM{
         Spring,Summer,Autumn,Winter,Semester1,Semester2
     }
-    enum CAREER{Postgraduate,Undergraduate}
-    enum DELIVERY{
+    public enum CAREER{Postgraduate,Undergraduate}
+    public enum DELIVERY{
         Online,OnCampus,Blended
     }
-    enum CODE{
+    public enum CODE{
         COMP,CBEA,BUSN,MGMT,LAWS,ENGN,MATH,BIOL,CHEM,PHYS,HIST
     }
 }

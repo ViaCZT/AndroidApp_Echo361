@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
-    tools:context=".DropActivity">
+    tools:context=".LayoutActivity.DropActivity">
 
 
     <TextView
@@ -17,7 +17,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:text="(change)code"
+        android:text="@string/change_code"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold|italic"
