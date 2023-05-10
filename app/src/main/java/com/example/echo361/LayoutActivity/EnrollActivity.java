@@ -11,6 +11,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 
+import com.example.echo361.R;
+import com.example.echo361.Search.CExp;
+import com.example.echo361.Search.CParser;
+import com.example.echo361.Search.CTokenizer;
+import com.example.echo361.Search.CourseTokenizer;
+
 import java.util.ArrayList;
 
 public class EnrollActivity extends AppCompatActivity {
