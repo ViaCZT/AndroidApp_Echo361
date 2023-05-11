@@ -171,40 +171,51 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
                 switch (fields[2]){
                     case "Autumn" : {
                         term = Course.TERM.Autumn;
+                        break;
                     }
                     case "Summer" : {
                         term = Course.TERM.Summer;
+                        break;
                     }
                     case "Semester 2" : {
                         term = Course.TERM.Semester2;
+                        break;
                     }
                     case "Semester 1" : {
                         term = Course.TERM.Semester1;
+                        break;
                     }
                     case "Spring" : {
                         term = Course.TERM.Spring;
+                        break;
                     }
                     case "Winter" : {
                         term = Course.TERM.Winter;
+                        break;
                     }
                 }
-                switch (fields[3]){
+                switch (fields[3]) {
                     case "Postgraduate" : {
                         career = Course.CAREER.Postgraduate;
+                        break;
                     }
                     case "Undergraduate" : {
                         career = Course.CAREER.Undergraduate;
+                        break;
                     }
                 }
-                switch (fields[4]){
+                switch (fields[4]) {
                     case "Online" : {
-                       delivery = Course.DELIVERY.Online;
+                        delivery = Course.DELIVERY.Online;
+                        break;
                     }
                     case "Blended" : {
                         delivery = Course.DELIVERY.Blended;
+                        break;
                     }
                     case "On Campus" : {
                         delivery = Course.DELIVERY.OnCampus;
+                        break;
                     }
                 }
                 Course course = new Course(fields[0],Integer.parseInt(fields[0].substring(4)),student,fields[6],null,career,delivery,term,null,null);
@@ -214,56 +225,67 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
                         code = Course.CODE.COMP;
                         course.setCode(code);
                         COMP = COMP.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "CBEA" : {
                         code = Course.CODE.CBEA;
                         course.setCode(code);
                         CBEA= CBEA.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "BUSN" : {
                         code = Course.CODE.BUSN;
                         course.setCode(code);
                         BUSN = BUSN.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "MGMT" : {
                         code = Course.CODE.MGMT;
                         course.setCode(code);
                         MGMT = MGMT.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "LAWS" : {
                         code = Course.CODE.LAWS;
                         course.setCode(code);
                         LAWS =LAWS.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "ENGN" : {
                         code = Course.CODE.ENGN;
                         course.setCode(code);
                         ENGN = ENGN.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "MATH" : {
                         code = Course.CODE.MATH;
                         course.setCode(code);
                         MATH = MATH.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "BIOL" : {
                         code = Course.CODE.BIOL;
                         course.setCode(code);
                         BIOL= BIOL.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "CHEM" : {
                         code = Course.CODE.CHEM;
                         course.setCode(code);
                         CHEM = CHEM.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "PHYS" : {
                         code = Course.CODE.PHYS;
                         course.setCode(code);
                         PHYS =PHYS.insert(course.getCourseID(),course);
+                        break;
                     }
                     case "HIST" : {
                         code = Course.CODE.HIST;
                         course.setCode(code);
                         HIST =HIST.insert(course.getCourseID(),course);
+                        break;
                     }
                 }
             }

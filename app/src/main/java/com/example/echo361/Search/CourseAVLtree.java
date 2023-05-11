@@ -1,5 +1,7 @@
 package com.example.echo361.Search;
 
+import android.util.Log;
+
 import com.example.echo361.Course;
 
 import java.text.DecimalFormat;
@@ -32,9 +34,9 @@ public class CourseAVLtree {
         this.course = course;
     }
 
-    public  Integer min(){return (leftNode instanceof EmptyCourseAVLtree) ? courseID : leftNode.min();}
+    public  Integer min(){return (leftNode instanceof EmptyCourseAVLtree|| leftNode.courseID==null) ? courseID : leftNode.min();}
     public  Integer max(){
-        return (rightNode instanceof EmptyCourseAVLtree) ? courseID : rightNode.max();
+        return (rightNode instanceof EmptyCourseAVLtree|| rightNode.courseID==null) ? courseID : rightNode.max();
     }
 
     public CourseAVLtree find(Integer courseID){
@@ -82,7 +84,7 @@ public class CourseAVLtree {
     }
 
     public CourseAVLtree findSuccessor(CourseAVLtree node){
-        if (!(node.rightNode instanceof  EmptyCourseAVLtree)){
+        if ((!(node.rightNode instanceof  EmptyCourseAVLtree ))|| node.rightNode.courseID != null){
             return node.rightNode.findMin();
         }
         else {
@@ -97,17 +99,19 @@ public class CourseAVLtree {
     }
 
     public CourseAVLtree delete(Integer courseID){
+
+//        Log.d("asdfasdfa","ssss" + String.valueOf(this.courseID));
         CourseAVLtree newtree = new CourseAVLtree(this.courseID,this.leftNode,this.rightNode,this.course);
         if (courseID.compareTo(this.courseID) > 0) {
             newtree =  new CourseAVLtree(this.courseID,leftNode,rightNode.delete(courseID), this.course);
         } else if (courseID.compareTo(this.courseID) < 0) {
             newtree = new CourseAVLtree(this.courseID,leftNode.delete(courseID),rightNode, this.course);
         }else if(courseID.compareTo(this.courseID) == 0){
-            if (this.leftNode instanceof EmptyCourseAVLtree&&this.rightNode instanceof EmptyCourseAVLtree){
+            if ((this.leftNode.courseID == null||this.leftNode instanceof EmptyCourseAVLtree)&&(this.rightNode instanceof EmptyCourseAVLtree||this.rightNode.courseID==null)){
                 return new EmptyCourseAVLtree();
-            } else if (this.leftNode instanceof EmptyCourseAVLtree) {
+            } else if ((this.leftNode.courseID == null||this.leftNode instanceof EmptyCourseAVLtree)) {
                 return this.rightNode;
-            } else if (this.rightNode instanceof  EmptyCourseAVLtree) {
+            } else if ((this.rightNode instanceof EmptyCourseAVLtree||this.rightNode.courseID==null)) {
                 return this.leftNode;
             }else {
                 CourseAVLtree successor = findSuccessor(this);
@@ -147,7 +151,7 @@ public class CourseAVLtree {
 
 
     public CourseAVLtree findMin(){
-        if (leftNode instanceof  EmptyCourseAVLtree){
+        if (leftNode instanceof  EmptyCourseAVLtree|| leftNode.courseID == null){
             return this;
         }else {
             return this.leftNode.findMin();
@@ -158,7 +162,7 @@ public class CourseAVLtree {
         inOrderBST(this);
     }
     public void inOrderBST(CourseAVLtree node){
-        if (!(node instanceof EmptyCourseAVLtree)){
+        if (!(node instanceof EmptyCourseAVLtree)|| node.courseID == null){
             inOrderBST(node.leftNode);
             node.leftNode.parent = node;
             node.rightNode.parent = node;
@@ -168,17 +172,18 @@ public class CourseAVLtree {
 
     public ArrayList<Course> inOrderBSTqualify(ArrayList<Course> courses,Course.CAREER career, Course.DELIVERY delivery,
                                                Course.TERM term, Course.CODE code,String searchCourseID){
-        if (!(this instanceof EmptyCourseAVLtree)){
-            courses = this.leftNode.inOrderBSTqualify(courses,career,delivery,term,code,searchCourseID);
+        if (!(this instanceof EmptyCourseAVLtree)&&this.courseID!=null){
             DecimalFormat g1 = new DecimalFormat("0000");
+            courses = this.leftNode.inOrderBSTqualify(courses,career,delivery,term,code,searchCourseID);
+
             if ( (career ==null ||  this.course.getCareer()==career )
                     && (delivery==null || this.course.getDelivery()==delivery )
-                    && (term!=null || this.course.getTerm()==term )
-                    && (code!=null || this.course.getCode()==code )
-                    && (searchCourseID ==null ||  g1.format(this.courseID).contains(searchCourseID))
-                        ){
+                    && (term==null || this.course.getTerm()==term )
+                    && (code==null || this.course.getCode()==code )
+                    && (searchCourseID ==null ||searchCourseID.equals("")||  g1.format(this.courseID).contains(searchCourseID))){
                 courses.add(this.course);
             }
+
             courses = this.rightNode.inOrderBSTqualify(courses,career,delivery,term,code,searchCourseID);
         }
         return courses;
@@ -189,8 +194,8 @@ public class CourseAVLtree {
     }
     public int getHeight() {
         // Check whether leftNode or rightNode are EmptyTree
-        int leftNodeHeight = leftNode instanceof EmptyCourseAVLtree ? 0 : 1 + leftNode.getHeight();
-        int rightNodeHeight = rightNode instanceof EmptyCourseAVLtree ? 0 : 1 + rightNode.getHeight();
+        int leftNodeHeight = (leftNode instanceof EmptyCourseAVLtree|| leftNode.courseID == null) ? 0 : 1 + leftNode.getHeight();
+        int rightNodeHeight = (rightNode instanceof EmptyCourseAVLtree || rightNode.courseID == null) ? 0 : 1 + rightNode.getHeight();
         return Math.max(leftNodeHeight, rightNodeHeight);
     }
 

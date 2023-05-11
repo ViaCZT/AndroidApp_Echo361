@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getBaseContext());
 
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
+        firebaseDAOImpl.initialCoursesData(getApplicationContext());
 
         /*
        firebaseDAOImpl.getData("Admin", null, new FirebaseDataCallback<Admin>() {

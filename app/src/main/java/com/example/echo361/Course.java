@@ -18,6 +18,22 @@ public class Course {
         return code;
     }
 
+    @Override
+    public String toString() {
+        return "Course{" +
+                "title='" + title + '\'' +
+                ", courseID=" + courseID +
+                ", students=" + students +
+                ", teacher='" + teacher + '\'' +
+                ", code=" + code +
+                ", career=" + career +
+                ", delivery=" + delivery +
+                ", term=" + term +
+                ", forum=" + forum +
+                ", videos='" + videos + '\'' +
+                '}';
+    }
+
     public void setCode(CODE code) {
         this.code = code;
     }
