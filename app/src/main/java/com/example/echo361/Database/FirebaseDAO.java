@@ -2,6 +2,7 @@ package com.example.echo361.Database;
 
 import android.content.Context;
 
+import com.example.echo361.Forum;
 import com.example.echo361.ForumPost;
 
 import java.io.IOException;
@@ -12,5 +13,5 @@ public interface FirebaseDAO {
     void initialStudentAndTeacherData(Context context) throws IOException;
     void initialCoursesData(Context context);
     void initialForum(Context context) throws IOException;
-    void updateForumPost(String course, String postNum, ForumPost post);
+
 }

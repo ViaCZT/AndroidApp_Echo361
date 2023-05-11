@@ -69,6 +69,8 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 
     }
 
+
+
 //    public
     @Override
     public <E> void storeData(String refpath,String childpath,E input){
@@ -332,14 +334,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
         br.close();
     }
 
-    @Override
-    public void updateForumPost(String course, String postNum, ForumPost post){
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Forums");
-        if (course != null && postNum != null && post != null){
-            databaseReference.child(course).child(postNum).setValue(post);
-        }
-    }
+
 
 
 }

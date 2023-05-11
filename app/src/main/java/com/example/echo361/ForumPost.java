@@ -52,6 +52,10 @@ public class ForumPost {
         return this.visible;
     }
 
+    public void setVisible(Boolean visible) {
+        this.visible = visible;
+    }
+
     public String getAuthor() {
         return author;
     }
