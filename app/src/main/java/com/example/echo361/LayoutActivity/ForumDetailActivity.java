@@ -63,11 +63,12 @@ public class ForumDetailActivity extends AppCompatActivity {
                     String content0 = editText.getText().toString();
                     editText.setText("");
 //                    Log.d("ForumDetailActivity","Before adding reply, floors size: " + floors.size());
-                    floors.add(content0);
+//                    floors.add(content0);
 //                    Log.d("ForumDetailActivity","After adding reply, floors size: " + floors.size());
                     arrayAdapter.notifyDataSetChanged();
 //                    Log.d("ForumDetailActivity","Floors in arrayAdapter after notifyDataSetChanged: " + arrayAdapter.getCount());
                     // 更新课程论坛并将其存储在Firebase中
+                    forumPost.getFloors().add(content0);
                     course.setForum(forum);
                     CourseAVLtree newCourseNode = courseAVLtree.find(Integer.valueOf(course_name.substring(4, 8)));
                     newCourseNode.course = course;

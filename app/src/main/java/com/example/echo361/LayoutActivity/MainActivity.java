@@ -188,10 +188,11 @@ public class MainActivity extends AppCompatActivity {
                                             GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
                                             List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
                                             String course = (coursesList != null) ? coursesList.get(0) : null;
+                                            Log.d(TAG,"get course"+course);
                                             String teacherName = userSnapshot.child("userName").getValue(String.class);
                                             Intent intent = new Intent(MainActivity.this, CourseMainpageActivity.class);
                                             intent.putExtra("teacher_name", teacherName);
-                                            intent.putExtra("course_name",course);
+                                            intent.putExtra("courseName",course);
                                             intent.putExtra("is_teacher",true);
                                             MainActivity.this.startActivity(intent);
                                             break;

@@ -84,9 +84,9 @@ public class ForumTotalActivity extends AppCompatActivity {
                     if (!title0.isEmpty()&&!content0.isEmpty()) {
                         ForumPost forumPost = new ForumPost(title0, content0, name0, new ArrayList<>(), true);
                         postTitles.add(forumPost.getTitle());
-                        posts.add(forumPost);
+//                        posts.add(forumPost);
                         arrayAdapter.notifyDataSetChanged();
-
+                        forum[0].getPosts().add(forumPost);
 
                         // 将包含新帖子的论坛存储在Firebase中
                         course.setForum(forum[0]);
