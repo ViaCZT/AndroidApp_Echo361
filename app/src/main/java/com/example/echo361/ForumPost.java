@@ -11,7 +11,7 @@ public class ForumPost {
     private ArrayList<String> floors;
     private Date createdTime;
     private Date updatedTime;
-    private Boolean visible;
+    private Boolean visible = true;
 
     public ForumPost(String title, String content, String author, ArrayList<String> floors,boolean visible) {
         this.title = title;
@@ -21,6 +21,7 @@ public class ForumPost {
         this.updatedTime = new Date();
         this.floors = floors;
     }
+    public ForumPost(){}
 
     public String getTitle() {
         return title;

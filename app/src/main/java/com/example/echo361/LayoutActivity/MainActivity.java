@@ -10,12 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
-import com.example.echo361.Database.FirebaseDataCallback;
-import com.example.echo361.Factory.Admin;
-import com.example.echo361.Factory.Student;
-import com.example.echo361.Factory.Teacher;
+import com.example.echo361.ForumPost;
 import com.example.echo361.R;
-import com.example.echo361.Search.CourseAVLtree;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -24,8 +20,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -117,18 +113,23 @@ public class MainActivity extends AppCompatActivity {
 //        courseA.add("COMP0001");
 //        Student student = new Student("comp2100@anu.au","comp2100",courseA,null);
 //        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA,null);
-//        firebaseOperator.storeData("Admin",admin);
+//        firebaseDAOImpl.storeData("Admin",admin);
 //        firebaseDAOImpl.storeData("Students","2000",student);
 //        firebaseDAOImpl.storeData("Teachers","500",teacher);
-
+//
 //        try {
-//            firebaseOperator.storeStudentAndTeacherData(getApplicationContext());
+//            firebaseDAOImpl.initialStudentAndTeacherData(getApplicationContext());
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
-//        firebaseOperator.storeCoursesData(getApplicationContext());
-
-
+//        firebaseDAOImpl.initialCoursesData(getApplicationContext());
+//        try {
+//            firebaseDAOImpl.initialForum(getApplicationContext());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        ForumPost post = new ForumPost("","","",null,true);
+//        firebaseDAOImpl.updateForumPost("BIOL0024","0",post);
 
 
 

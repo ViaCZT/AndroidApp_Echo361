@@ -25,7 +25,6 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,7 +41,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
         return instance;
     }
 
-    private static final String TAG = "FirebaseOperator";
+    private static final String TAG = "FirebaseDAOImpl";
 
     @Override
     public <T> void getData(String refPath, String childPath, FirebaseDataCallback<T> callback) {
@@ -83,7 +82,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
     }
 
     @Override
-    public void storeStudentAndTeacherData(Context context) throws IOException {
+    public void initialStudentAndTeacherData(Context context) throws IOException {
 //        FirebaseApp.initializeApp()
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Teachers");
@@ -133,7 +132,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 //    code_prefixes = ["COMP", "CBEA", "BUSN", "MGMT", "LAWS", "ENGN", "MATH", "BIOL", "CHEM", "PHYS", "HIST"]
 
     @Override
-    public void storeCoursesData(Context context){
+    public void initialCoursesData(Context context){
 
         try {
 
@@ -312,6 +311,35 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 ////        studentsReference.orderByChild()
 //
 //    }
+
+    @Override
+    public void initialForum(Context context) throws IOException {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Forums");
+        databaseReference.removeValue();
+        BufferedReader br = new BufferedReader(new InputStreamReader(context.getAssets().open("courses.csv")));
+        br.readLine(); //跳过第一行
+        String line;
+        ForumPost post = new ForumPost("","","",new ArrayList<>(),true);
+        ForumPost post1 = new ForumPost();
+        System.out.println("post: " + post);
+//        Gson gson = new Gson();
+//        String postJson = gson.toJson(post);
+        while ((line = br.readLine()) != null){
+            String[] tokens = line.split(",");
+            databaseReference.child(tokens[0]).setValue("0");
+        }
+        br.close();
+    }
+
+    @Override
+    public void updateForumPost(String course, String postNum, ForumPost post){
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Forums");
+        if (course != null && postNum != null && post != null){
+            databaseReference.child(course).child(postNum).setValue(post);
+        }
+    }
 
 
 }
