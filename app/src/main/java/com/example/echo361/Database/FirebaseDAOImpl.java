@@ -44,6 +44,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 
     private static final String TAG = "FirebaseOperator";
 
+    @Override
     public <T> void getData(String refPath, String childPath, FirebaseDataCallback<T> callback) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(refPath);
 
@@ -130,6 +131,8 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 //        reader.close();
     }
 //    code_prefixes = ["COMP", "CBEA", "BUSN", "MGMT", "LAWS", "ENGN", "MATH", "BIOL", "CHEM", "PHYS", "HIST"]
+
+    @Override
     public void storeCoursesData(Context context){
 
         try {
