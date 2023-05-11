@@ -1,33 +1,64 @@
 package com.example.echo361.LayoutActivity;
 
+import static com.example.echo361.LayoutActivity.Search.getCollege;
+import static com.example.echo361.LayoutActivity.Search.getCollegeCode;
+import static com.example.echo361.LayoutActivity.Search.getCourseCode;
+import static com.example.echo361.LayoutActivity.Search.isInCollege;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
+import com.example.echo361.Course;
+import com.example.echo361.Database.FirebaseDAOImpl;
+import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.R;
 import com.example.echo361.Search.CExp;
 import com.example.echo361.Search.CParser;
 import com.example.echo361.Search.CTokenizer;
+import com.example.echo361.Search.CourseAVLtree;
 import com.example.echo361.Search.CourseTokenizer;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.example.echo361.Database.FirebaseDAOImpl;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 
 public class EnrollActivity extends AppCompatActivity {
+
+    private DatabaseReference courseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enroll);
 
+        FirebaseApp.initializeApp(getBaseContext());
 
-        // search
+        CheckBox underG_cb = (CheckBox) findViewById(R.id.check_underGra);
+        CheckBox postG_cb = (CheckBox) findViewById(R.id.check_postGra);
+        CheckBox onC_cb = (CheckBox) findViewById(R.id.check_onCampus);
+        CheckBox online_cb = (CheckBox) findViewById(R.id.check_online);
+
+
 
         ArrayList<String> courses = new ArrayList<String>();
 
@@ -40,56 +71,71 @@ public class EnrollActivity extends AppCompatActivity {
 
         Button button = (Button) findViewById(R.id.btn_searchCourse);
         View.OnClickListener myListener2 = v -> {
-            // get course code and college code
-            String searchInput = editText.getText().toString();
-            CTokenizer tok = new CourseTokenizer(searchInput);
-            CExp parsedExp = CParser.parseExp(tok);
-            String inputPersed = parsedExp.show();
-            String courseCode;
-            String collegeCode;
-            int i  = 0;
-            while (i < 4 && isWord(inputPersed.charAt(i))){
-                i++;
-            }
-            collegeCode = inputPersed.substring(0,i);
+            if (!(editText.getText().toString().isEmpty())) {
+                courses.clear();
 
-            int j = 0;
-            int startPos = 0;
-            while (j < 4 && Character.isDigit(inputPersed.charAt(j))){
-                startPos = j;
-                j++;
-            }
-            courseCode = inputPersed.substring(startPos,j);
+                // get course code and college code
+                String searchInput = editText.getText().toString();
+                CTokenizer tok = new CourseTokenizer(searchInput);
+                CExp parsedExp = CParser.parseExp(tok);
+                String inputPersed = parsedExp.show();
 
-//            courses.add((collegeCode + " " + courseCode).toString());
-//            courses.add(searchInput);
-            courses.add(editText.getText().toString());
-            editText.setText("");
-            coursesListAdapter.notifyDataSetChanged();
+                String courseCode = getCourseCode(inputPersed);
+                String collegeCode = getCollegeCode(inputPersed);
 
-            //search
+                ArrayList<String> allCourses = new ArrayList<>();
 
+                courses.add(inputPersed);
+                courses.add("out search" + courseCode + " " + collegeCode);
 
-//            final FirebaseDatabase database = FirebaseDatabase.getInstance();
-//            DatabaseReference ref = database.getReference("server/saving-data/fireblog/posts");
+                //search
 
+//                FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 
-//            // search
-//            courseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) { /*
-//            TODO: get the value and transform or transfer the data into a User class.
-//            Hint: use snapshot.getValue(String.class) to get the value and transform it into a string.
-//            */
-//                    for (DataSnapshot rootSnapshot : snapshot.getChildren()) {
-//                        courses.add(rootSnapshot+"");
+//                FirebaseDatabase firebaseDatabase1 = FirebaseDatabase.getInstance();
+////
+//                DatabaseReference courseReference1 = firebaseDatabase1.getReference("COMPTree");
+////
+////
+//                courseReference1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+////                               courses.add("get tree" + snapshot.getValue());
+//                        String courseData = (String) snapshot.getValue();
+////                                Gson gson = new Gson();
+////                                Gson gson = new GsonBuilder().setDateFormat("MM dd, yyyy hh:mm:ssa").create();
+//                        Gson gson = new GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
+////                                Log.d(courseData, "onDataChange: ");
+//
+//                        CourseAVLtree courseAVLtree = gson.fromJson(courseData,CourseAVLtree.class);
+//                        courses.add("getanother" + courseAVLtree.course.getTitle());
+////                                courses.add("get tree" + snapshot.child("i + \"Tree/""));
 //                    }
-//                }
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    // Failed to retrieve the data
-//                    System.err.println("Failed to retrieve data, error: " + error.toException());
-//                } });
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//                                // Failed to retrieve the data
+//                        System.err.println("Failed to retrieve data, error: " + error.toException());
+//                    }
+//                });
+
+
+//
+//            courses.add((collegeCode + " " + courseCode).toString());
+                editText.setText("");
+                coursesListAdapter.notifyDataSetChanged();
+
+
+
+
+
+            }else{
+                Context context = getApplicationContext();
+                CharSequence text = "Input can not be empty.";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
 
 
 
