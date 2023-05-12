@@ -47,23 +47,23 @@ public class AdminDeletionActivity extends AppCompatActivity {
                             String courseCode = String.valueOf(textView.getText());
 
                             int courseID = Integer.parseInt(courseCode.substring(4));
-//                            firebaseDAOImpl.getData(courseCode.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
-//
-//                                @Override
-//                                public void onDataReceived(String data) {
-//                                    //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
-//                            Gson gson = new Gson();
-//                            CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-//                            courseAVLtree = courseAVLtree.delete(courseID);
-//                            FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
-//                            firebaseDAO.storeData(courseCode.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
-//                                }
-//
-//                                @Override
-//                                public void onError(DatabaseError error) {
-//                                    // 在这里处理错误
-//                                }
-//                            });
+                            firebaseDAOImpl.getData(courseCode.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
+
+                                @Override
+                                public void onDataReceived(String data) {
+                                    //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
+                            Gson gson = new Gson();
+                            CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+                            courseAVLtree = courseAVLtree.delete(courseID);
+                            FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
+                            firebaseDAO.storeData(courseCode.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
+                                }
+
+                                @Override
+                                public void onError(DatabaseError error) {
+                                    // 在这里处理错误
+                                }
+                            });
                             firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                 @Override
                                 public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
