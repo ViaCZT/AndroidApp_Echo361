@@ -223,6 +223,15 @@ public class CourseAVLtree {
                 '}' + "\r\n";
     }
 
+    public boolean isInEnum(Enum choice, Enum[] enumLisit){
+        for (int i = 0; i < enumLisit.length; i++){
+            if(choice == enumLisit[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 
 
