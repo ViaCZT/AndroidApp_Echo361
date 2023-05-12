@@ -21,6 +21,7 @@ public class MyCourseActivity extends AppCompatActivity {
 
         Intent intent0 = getIntent();
         ArrayList<String> courseName = intent0.getStringArrayListExtra("courses_list");
+        Log.d("my course", String.valueOf(courseName));
 
 
         ListView listView = findViewById(R.id.list_currCourse);
