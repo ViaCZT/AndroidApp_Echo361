@@ -74,6 +74,7 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 //    public
     @Override
     public <E> void storeData(String refpath,String childpath,E input){
+
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference(refpath);
         if (childpath == null||childpath.equals("")){
@@ -87,8 +88,8 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
     public void initialStudentAndTeacherData(Context context) throws IOException {
 //        FirebaseApp.initializeApp()
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference("Teachers");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("teachers.csv"), StandardCharsets.UTF_8));
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Students");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("students.csv"), StandardCharsets.UTF_8));
         String line;
         ArrayList<Student> students = new ArrayList<>();
         ArrayList<Teacher> teachers = new ArrayList<>();
@@ -99,20 +100,23 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
             }
             ArrayList<String> courses = new ArrayList<>();
 
-//            String[] c = fields[2].split(" ");
-//            Collections.addAll(courses,c);
-//            Student student = new Student(fields[0],fields[1],courses,null);
-//            students.add(student);
-            ArrayList<String> cou = new ArrayList<>();
-            cou.add(fields[2]);
+            String[] c = fields[2].split(" ");
+            Collections.addAll(courses,c);
             UserFactory userFactory = new UserFactory();
-            User teacher = userFactory.getUser("teacher",fields[0],fields[1],cou,null);
-            teachers.add((Teacher) teacher);
+            User student = userFactory.getUser("student",fields[0],fields[1],courses,null);
+
+//            ArrayList<String> cou = new ArrayList<>();
+//            cou.add(fields[2]);
+//            UserFactory userFactory = new UserFactory();
+//            User student1 = userFactory.getUser("student",fields[0],fields[1],cou,null);
+            students.add((Student) student)  ;
+//            User teacher = userFactory.getUser("teacher",fields[0],fields[1],cou,null);
+//            teachers.add((Teacher) teacher);
 //            Log.d(TAG,"teacher: "+teacher.);
         }
 //        databaseReference.setValue("");
 
-        databaseReference.setValue(teachers);
+        databaseReference.setValue(students);
 //        databaseReference = firebaseDatabase.getReference("Students");
 //        databaseReference.child("1");
         reader.close();

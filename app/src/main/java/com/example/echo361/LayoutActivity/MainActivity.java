@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
+import com.example.echo361.Database.FirebaseDataCallback;
+import com.example.echo361.Factory.Student;
 import com.example.echo361.ForumPost;
 import com.example.echo361.R;
 import com.example.echo361.util.ToastUtil;
@@ -43,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
         firebaseDAOImpl.initialCoursesData(getApplicationContext());
+        try {
+            firebaseDAOImpl.initialStudentAndTeacherData(getApplicationContext());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         /*
        firebaseDAOImpl.getData("Admin", null, new FirebaseDataCallback<Admin>() {
@@ -58,19 +65,20 @@ public class MainActivity extends AppCompatActivity {
         });
         */
         //学生
-        /*
-       firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<Student>>() {
-            @Override
-            public void onDataReceived(ArrayList<Student> students) {
-                // 在这里处理学生
-            }
-
-            @Override
-            public void onError(DatabaseError error) {
-                // 在这里处理错误
-            }
-        });
-        */
+//        /*
+//       firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<Student>>() {
+//            @Override
+//            public void onDataReceived(ArrayList<Student> students) {
+//                Log.d("asdfasd",students);
+//                // 在这里处理学生
+//            }
+//
+//            @Override
+//            public void onError(DatabaseError error) {
+//                // 在这里处理错误
+//            }
+//        });
+//        */
         //教师
         /*
         firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<Teacher>>() {
