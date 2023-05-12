@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">echo361</string>
     <string name="welcome_to_echo361">Welcome to echo361!</string>
+    <string name="COURSECODE">COURSECODE</string>
     <string name="username">username</string>
     <string name="password">password</string>
     <string name="login">login</string>
