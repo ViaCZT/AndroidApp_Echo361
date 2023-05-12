@@ -189,10 +189,12 @@ public class EnrollActivity extends AppCompatActivity {
                         Course newCourse = courselist.get(0);
                         ArrayList newStudentId = newCourse.getStudents();
                         newStudentId.add(logedStudent_id);
-                        Log.d("student ID","ID: "+ courseID );
-                        Log.d("student ID","ID: "+ newCourse );
+                        Log.d("student ID","course ID: "+ courseID );
+                        Log.d("student ID","course: "+ newCourse );
+                        Log.d("student ID","course_id: "+ newCourse.getCourseID() );
+                        Log.d("student ID","course lisit: "+ newCourse );
                         newCourse.setStudents(newStudentId);
-                        courseAVLtree = courseAVLtree.insert(courseID, newCourse);
+                        courseAVLtree = courseAVLtree.insert(newCourse.getCourseID(), newCourse);
                         FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                         firebaseDAO.storeData(courseCode.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
                     }
