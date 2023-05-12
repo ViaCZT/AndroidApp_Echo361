@@ -170,12 +170,14 @@ public class MainActivity extends AppCompatActivity {
                                 userFound = true;
                                 // login successfully, go to student page
                                 String studentName = userSnapshot.child("userName").getValue(String.class);
+                                String studentID = userSnapshot.child("passWord").getValue(String.class);
                                 // 获取课程列表
                                 GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
                                 List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
 //                                Log.d(TAG, coursesList.get(0));
                                 Intent intent = new Intent(MainActivity.this, StudentMainpageActivity.class);
                                 intent.putExtra("student_name", studentName);
+                                intent.putExtra("student_id", studentID);
                                 intent.putStringArrayListExtra("courses_list", new ArrayList<>(Objects.requireNonNull(coursesList)));
                                 MainActivity.this.startActivity(intent);
                                 break;
