@@ -68,7 +68,7 @@ public class EnrollActivity extends AppCompatActivity {
         ArrayList<String> courses = new ArrayList<String>();
 
         ListView listView = (ListView) findViewById(R.id.list_courseList);
-        TextView textView = (TextView) findViewById(R.id.tx_deletedCourse2);
+        TextView textView = (TextView) findViewById(R.id.tx_enrolledCourse);
 
 
 
