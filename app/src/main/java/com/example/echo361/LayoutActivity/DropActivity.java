@@ -28,6 +28,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class DropActivity extends AppCompatActivity {
 
@@ -157,8 +158,8 @@ public class DropActivity extends AppCompatActivity {
                                     student.getCourses().remove(selectCourse);
                                     Log.d("bbbcccc"," getCourses" + student.getCourses().toString());
 
-//                                    Intent intent = new Intent(DropActivity.this, CourseMainpageActivity.class);
-//                                    intent.putExtra("courses_list", student.getCourses());
+                                    Intent intent = new Intent(DropActivity.this, CourseMainpageActivity.class);
+                                    intent.putStringArrayListExtra("courses_list_drop", student.getCourses());
                                 }
                                 storeStudents.add(student);
                             }
@@ -166,8 +167,6 @@ public class DropActivity extends AppCompatActivity {
 //                            Log.d("bbbcccc"," getCourses" + students.get(0).toString());
                             FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                             firebaseDAO.storeData("Students",null,storeStudents);
-
-
 
                             // 在这里处理学生
                         }

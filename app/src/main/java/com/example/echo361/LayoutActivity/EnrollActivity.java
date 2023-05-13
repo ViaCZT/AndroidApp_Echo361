@@ -171,6 +171,7 @@ public class EnrollActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent0 = getIntent();
                 String  logedStudent_id = intent0.getStringExtra("student_id");
+                Log.d("logedStudent_id", logedStudent_id);
 
 
                 String courseCode = String.valueOf(textView.getText());
