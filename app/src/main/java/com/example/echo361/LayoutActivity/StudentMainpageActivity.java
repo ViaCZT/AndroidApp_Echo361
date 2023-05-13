@@ -25,6 +25,7 @@ public class StudentMainpageActivity extends AppCompatActivity {
         Button toEnroll = findViewById(R.id.btn_toEnroll);
         toEnroll.setOnClickListener(view -> {
             Intent intent0 = new Intent(StudentMainpageActivity.this, EnrollActivity.class);
+            intent0.putExtra("student_id", studentID);
             StudentMainpageActivity.this.startActivity(intent0);
         });
 
