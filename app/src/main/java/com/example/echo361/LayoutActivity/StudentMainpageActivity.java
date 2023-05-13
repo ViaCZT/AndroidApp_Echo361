@@ -19,6 +19,7 @@ public class StudentMainpageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList<String> courses_list= intent.getStringArrayListExtra("courses_list");
+        ArrayList<String> courses_list_drop= intent.getStringArrayListExtra("courses_list_drop");
         String studentID= intent.getStringExtra("student_id");
 
         Button toEnroll = findViewById(R.id.btn_toEnroll);
@@ -36,10 +37,18 @@ public class StudentMainpageActivity extends AppCompatActivity {
 
         Button ToMyCourse = findViewById(R.id.btn_toMyCourse);
         ToMyCourse.setOnClickListener(view -> {
-            Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
-            intent0.putStringArrayListExtra("courses_list",courses_list);
-            intent0.putExtra("student_id", studentID);
-            StudentMainpageActivity.this.startActivity(intent0);
+
+            if (courses_list_drop == null || courses_list_drop.isEmpty()){
+                Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
+                intent0.putStringArrayListExtra("courses_list",courses_list);
+                intent0.putExtra("student_id", studentID);
+                StudentMainpageActivity.this.startActivity(intent0);
+            }else{
+                Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
+                intent0.putStringArrayListExtra("courses_list",courses_list_drop);
+                intent0.putExtra("student_id", studentID);
+                StudentMainpageActivity.this.startActivity(intent0);
+            }
         });
     }
 }
