@@ -38,6 +38,7 @@ public class StudentMainpageActivity extends AppCompatActivity {
         ToMyCourse.setOnClickListener(view -> {
             Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
             intent0.putStringArrayListExtra("courses_list",courses_list);
+            intent0.putExtra("student_id", studentID);
             StudentMainpageActivity.this.startActivity(intent0);
         });
     }
