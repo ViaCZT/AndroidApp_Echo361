@@ -13,6 +13,14 @@ import com.example.echo361.R;
 
 import java.util.List;
 
+/**
+ * @author Yijun Huang, u7564899
+ *
+ * The class MsgAdapter is for implementing the chat UI which shows like the chat page in reality.
+ * The received messages are aligned to the left, and the send messages are aligned to the right.
+ *
+ * reference <a href="https://blog.csdn.net/JMW1407/article/details/120252484">...</a>
+ */
 public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.ViewHolder>{
 
     private List<Msg> list;

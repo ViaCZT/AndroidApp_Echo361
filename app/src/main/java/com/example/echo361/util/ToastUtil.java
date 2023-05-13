@@ -5,7 +5,10 @@ import android.widget.Toast;
 
 /**
  * Author: Yijun Huang
- * Resource: <a href="https://www.bilibili.com/video/BV1MK411p7dp?p=6&vd_source=71738b01ee54255dd94f95dabdee0e2d">...</a>
+ *
+ * The ToastUtil class is for easily using toast without redundant codes each time.
+ *
+ * reference: <a href="https://www.bilibili.com/video/BV1MK411p7dp?p=6&vd_source=71738b01ee54255dd94f95dabdee0e2d">...</a>
  */
 public class ToastUtil {
     public static Toast mToast;

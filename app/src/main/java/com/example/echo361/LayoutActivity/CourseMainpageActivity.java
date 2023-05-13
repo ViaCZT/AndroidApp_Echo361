@@ -39,10 +39,5 @@ public class CourseMainpageActivity extends AppCompatActivity {
             intent.putExtra("is_teacher", is_teacher);
             startActivity(intent);
         });
-
-        VideoView videoView = findViewById(R.id.videoView);
-        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/raw/video1"));
-        videoView.start();
-
     }
 }

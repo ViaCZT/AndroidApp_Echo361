@@ -1,5 +1,12 @@
 package com.example.echo361.LayoutActivity;
-
+/**
+ * @author Zihan Ai, u7528678
+ * @author Yijun Huang, u7564899
+ *
+ * The class Msg is for implementing the P2P chat feature.
+ *
+ * reference <a href="https://blog.csdn.net/JMW1407/article/details/120252484">...</a>
+ */
 public class Msg {
     public static final int TYPE_RECEIVED = 0;
     public static final int TYPE_SEND = 1;
@@ -12,6 +19,12 @@ public class Msg {
         // Default constructor required for calls to DataSnapshot.getValue(Msg.class)
     }
 
+    /**
+     * @param content the content of message
+     * @param type the tpye of message
+     * @param senderId the id of message sender
+     * @param receiverId the id of message receiver
+     */
     public Msg(String content, int type, String senderId, String receiverId) {
         this.content = content;
         this.type = type;

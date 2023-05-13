@@ -18,28 +18,23 @@ declaration: >-
   I declare that everything I have submitted in this assignment is entirely our
   own work, with the following exceptions:
 
-
-# add as many "name+comment" entries as necessary
-# (or remove it altogether if you haven't collaborated with anyone outside your group)
-collaboration:
-  - name:
-    comment: >-
-
-
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external code)
 code:
-  - comment:
-    url:
-    licence:
+  - comment: "ToastUtil by Superior-Leo"
+    url: https://www.bilibili.com/video/BV1MK411p7dp?p=6&vd_source=71738b01ee54255dd94f95dabdee0e2d
+    licence: fair use
+
+  - comment: "Android: Make a beautiful chat interface by JMW1407"
+    url: https://blog.csdn.net/JMW1407/article/details/120252484
+    licence: fair use
 
 
 # add as many "url+licence+comment" entries as necessary
 # (or remove it altogether if you haven't used any external assets)
 assets:
-  # NOTE: "Bliss" is just here as an example, you SHOULD REMOVE IT
-  - comment: "_Bliss_ by Charles O'Rear"
-    url: https://en.wikipedia.org/wiki/Bliss_(image)
+  - comment: "blue dialog box original image by Panda, and I make it to .9.png format."
+    url: https://www.tukuppt.com/muban/qokvvwdq.html
     licence: fair use
 
 
@@ -61,13 +56,13 @@ assets:
 
 # for each member, sign by inputting your name and uid here (remove any empty "name+uid" entries)
 members:
-  - name:
-    uid:
-  - name:
-    uid:
-  - name:
-    uid:
-  - name:
-    uid:
-  - name:
-    uid:
+  - name: Zihan Ai
+    uid: u7528678
+  - name: Zetian Chen
+    uid: u7564812
+  - name: Yijun Huuang
+    uid: u7564899
+  - name: Yuan Li
+    uid: u7550484
+  - name: Yitao Zhang
+    uid: u7504766
