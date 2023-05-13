@@ -1,21 +1,44 @@
 package com.example.echo361.LayoutActivity;
 
+import static com.example.echo361.Search.Search.getName;
+import static com.example.echo361.Search.Search.partialNameSearch;
+import static com.example.echo361.Search.Search.readCourseDate;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.echo361.Course;
+import com.example.echo361.Database.FirebaseDAOImpl;
+import com.example.echo361.Database.FirebaseDataCallback;
+import com.example.echo361.Factory.Student;
 import com.example.echo361.Search.CExp;
 import com.example.echo361.Search.CParser;
 import com.example.echo361.Search.CTokenizer;
+import com.example.echo361.Search.CourseAVLtree;
 import com.example.echo361.Search.CourseTokenizer;
 import com.example.echo361.R;
+import com.example.echo361.Search.NExp;
+import com.example.echo361.Search.NParser;
+import com.example.echo361.Search.NTokenizer;
+import com.example.echo361.Search.NameTokenizer;
+import com.example.echo361.Search.Search;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseError;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class SearchChatTarget extends AppCompatActivity {
 
@@ -24,40 +47,112 @@ public class SearchChatTarget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_chat_target);
 
-        EditText name = findViewById(R.id.ed_searchName);
+        FirebaseApp.initializeApp(getBaseContext());
+        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
+
+        Intent intent0 = getIntent();
+        String courseName = intent0.getStringExtra("courseName");
+        String student_id = intent0.getStringExtra("student_id");
 
         // search
 
-        ArrayList<String> students = new ArrayList<String>();
-
-        ListView studentsList = (ListView) findViewById(R.id.list_name);
         EditText editText_name = findViewById(R.id.ed_searchName);
+        ListView studentsList = (ListView) findViewById(R.id.list_name);
 
-        ArrayAdapter studentsListAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, students);
-        studentsList.setAdapter(studentsListAdapter);
 
 
         Button button = (Button) findViewById(R.id.btn_searchChat);
         View.OnClickListener myListener2 = v -> {
-            // get course code and college code
-            String searchNameInput = editText_name.getText().toString();
-            CTokenizer tok = new CourseTokenizer(searchNameInput);
-            CExp parsedExp = CParser.parseExp(tok);
-            String inputPersed = parsedExp.show();
 
-            String firstName = "";
-            String lastName = "";
-            ArrayList space = indexOfSpace(inputPersed);
-            System.out.println(space);
-            if (space.size() == 0){
-                firstName = inputPersed;
-            }else if (space.size() == 1){
-                firstName = inputPersed.substring(0, (Integer) space.get(0));
-                lastName = inputPersed.substring((Integer) space.get(0));
+            if(!(editText_name.getText().toString().isEmpty())) {
+                String searchNameInput = editText_name.getText().toString();
+                NTokenizer tok = new NameTokenizer(searchNameInput);
+                NExp parsedExp = NParser.parseExp(tok);
+                String inputPersed = parsedExp.show();
+
+                firebaseDAOImpl.getData(courseName.substring(0, 4) + "Tree", null, new FirebaseDataCallback<String>() {
+
+                    @Override
+                    public void onDataReceived(String data) {
+
+                        Gson gson = new Gson();
+                        CourseAVLtree courseAVLtree = gson.fromJson(data, CourseAVLtree.class);
+                        ArrayList<Course> courselist = new ArrayList<>();
+                        courselist = courseAVLtree.inOrderBSTqualify(courselist, null, null, null, null, courseName.substring(4));
+
+                        Course course = courselist.get(0);
+
+                        System.out.println("N" + course);
+                        Log.d("Search chat courses2", "courses from function" + course);
+
+                        ArrayList<String> studentsId = new ArrayList<String>();
+                        studentsId = course.getStudents();
+
+                        Log.d("Search chat courses2", "studentsId from chat" + studentsId);
+
+                        ArrayList<String> storeStudents = new ArrayList<>();
+
+                        for (String i : studentsId) {
+                            firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
+                                @Override
+                                public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
+
+
+                                    for (HashMap<String, Object> hashMap1 : students) {
+
+                                        Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"), null);
+                                        if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
+                                            if (getName(student.getUserName())[0].toLowerCase().contains(getName(inputPersed)[0].toLowerCase()) &&
+                                                    getName(student.getUserName())[1].toLowerCase().contains(getName(inputPersed)[1].toLowerCase())) {
+                                                storeStudents.add(student.getUserName());
+                                            }
+                                        }
+                                    }
+
+
+                                    ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
+                                    studentsList.setAdapter(arrayAdapter);
+
+
+                                    // 在这里处理学生
+                                }
+
+                                @Override
+                                public void onError(DatabaseError error) {
+                                    // 在这里处理错误
+                                }
+                            });
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onError(DatabaseError error) {
+                        // 在这里处理错误
+                    }
+                });
             }else{
-                firstName = inputPersed.substring(0,7);
-                lastName = inputPersed.substring((Integer) space.get(space.size()-1) +1);
+                Context context = getApplicationContext();
+                CharSequence text = "Input can not be empty.";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
+
+
+
+//            ArrayAdapter courseListAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, courses);
+//
+//            readCourseDate(firebaseDAOImpl, courses, courseListAdapter, courseName);
+//
+//            Log.d("Search chat courses", "courses from function" + courses);
+
+
+
+
+
+
 
             // search there are firstName, lastName
         };
@@ -71,14 +166,5 @@ public class SearchChatTarget extends AppCompatActivity {
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
-    public static ArrayList<Integer> indexOfSpace(String inputPersed){
-        ArrayList<Integer> indexOfSpce= new ArrayList<Integer>();
-        for (int i = 0; i < inputPersed.length(); i++){
-            if (!isWord(inputPersed.charAt(i))){
-                indexOfSpce.add(i);
-            }
-        }
-        return indexOfSpce;
-    }
 
 }
