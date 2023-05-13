@@ -135,6 +135,12 @@ public class DropActivity extends AppCompatActivity {
 
                             firebaseDAO.storeData(selectCourse.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
 
+                            Context context = getApplicationContext();
+                            CharSequence text = "You droped this course.";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+
                         }
 
                         @Override
