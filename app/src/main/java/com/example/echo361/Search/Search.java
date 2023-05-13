@@ -1,10 +1,21 @@
 package com.example.echo361.Search;
 
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+
 import com.example.echo361.Course;
+import com.example.echo361.Database.FirebaseDAOImpl;
+import com.example.echo361.Database.FirebaseDataCallback;
+import com.example.echo361.Factory.Student;
 import com.example.echo361.Forum;
+import com.google.firebase.database.DatabaseError;
+import com.google.gson.Gson;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Search {
 
@@ -95,10 +106,6 @@ public class Search {
             courselist5 = courseAVLtree.inOrderBSTqualify(courselist1, null, null,null,null,courseCode);
         }
 
-//        courselist.add(new Course("1", 12, new ArrayList<>(), "teacher", Course.CODE.ENGN, Course.CAREER.Undergraduate,
-//                Course.DELIVERY.OnCampus, Course.TERM.Semester1, new Forum("sdf", new ArrayList<>()), "sdf"));
-//        System.out.println("COURESE1: " + courselist1);
-        System.out.println("course1       " + courselist1);
         courselist.addAll(courselist1);
         courselist.addAll(courselist2);
         courselist.addAll(courselist3);
@@ -107,8 +114,86 @@ public class Search {
 
         return courselist;
 
+    }
+
+    public static ArrayList<Integer> indexOfSpace(String inputPersed){
+        ArrayList<Integer> indexOfSpce= new ArrayList<Integer>();
+        for (int i = 0; i < inputPersed.length(); i++){
+            if (!isWord(inputPersed.charAt(i))){
+                indexOfSpce.add(i);
+            }
+        }
+        return indexOfSpce;
+    }
+
+    public static String[] getName(String inputPersed){
+
+        String firstName = "";
+        String lastName = "";
+
+        ArrayList space = indexOfSpace(inputPersed);
+        if (space.size() == 0){
+            firstName = inputPersed;
+        }else if (space.size() == 1){
+            firstName = inputPersed.substring(0, (Integer) space.get(0));
+            lastName = inputPersed.substring((Integer) space.get(0));
+        }else{
+            firstName = inputPersed.substring(0,7);
+            lastName = inputPersed.substring((Integer) space.get(space.size()-1) +1);
+        }
+
+        String[] result = new String[]{firstName, lastName};
+
+        return result;
+
+    }
+
+    public static ArrayList<String> partialNameSearch(ArrayList<String> students, String[] firstAndLastName){
+
+        ArrayList<String> results = new ArrayList<>();
+        Map<String , String[]>  studentsFLname = new HashMap<>();
+//        ArrayList<String[]> studentsFLname = new ArrayList<>();
+
+        for (String i : students){
+            studentsFLname.put(i,getName(i));
+        }
+
+        for (String i : studentsFLname.keySet()){
+            if (studentsFLname.get(i)[0].contains(firstAndLastName[0]) && studentsFLname.get(i)[1].contains(firstAndLastName[1])){
+                results.add(i);
+            }
+        }
+
+        return results;
+    }
 
 
+
+    public static void readCourseDate(FirebaseDAOImpl firebaseDAOImpl, ArrayList list, ArrayAdapter arrayAdapter, String courseName){
+        firebaseDAOImpl.getData(courseName.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
+
+            @Override
+            public void onDataReceived(String data) {
+
+                Gson gson = new Gson();
+                CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+                ArrayList<Course> courselist = new ArrayList<>();
+                courselist = courseAVLtree.inOrderBSTqualify(courselist, null,null,null,null, courseName.substring(4));
+
+                for (Course i : courselist){
+                    list.add(i);
+                }
+
+                System.out.println("N" + list);
+
+                arrayAdapter.notifyDataSetChanged();
+
+            }
+            @Override
+            public void onError(DatabaseError error) {
+                // 在这里处理错误
+            }
+        });
     }
 
 
