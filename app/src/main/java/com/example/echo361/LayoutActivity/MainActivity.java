@@ -10,9 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
-import com.example.echo361.Database.FirebaseDataCallback;
-import com.example.echo361.Factory.Student;
-import com.example.echo361.ForumPost;
 import com.example.echo361.R;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
@@ -23,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -44,12 +40,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseApp.initializeApp(getBaseContext());
 
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-        firebaseDAOImpl.initialCoursesData(getApplicationContext());
-        try {
-            firebaseDAOImpl.initialStudentAndTeacherData(getApplicationContext());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
 
         /*
        firebaseDAOImpl.getData("Admin", null, new FirebaseDataCallback<Admin>() {
@@ -127,13 +117,14 @@ public class MainActivity extends AppCompatActivity {
 //        firebaseDAOImpl.storeData("Teachers","500",teacher);
 //
 //        try {
-//            firebaseDAOImpl.initialStudentAndTeacherData(getApplicationContext());
+//            firebaseDAOImpl.initialStudentData(getApplicationContext());
+//            firebaseDAOImpl.initialTeacherData(getApplicationContext());
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }
 //        firebaseDAOImpl.initialCoursesData(getApplicationContext());
 //        try {
-//            firebaseDAOImpl.initialForum(getApplicationContext());
+//            firebaseDAOImpl.initialForumData(getApplicationContext());
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }

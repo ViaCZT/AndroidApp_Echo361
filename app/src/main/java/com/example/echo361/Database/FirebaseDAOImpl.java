@@ -41,8 +41,6 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
         return instance;
     }
 
-    private static final String TAG = "FirebaseDAOImpl";
-
     @Override
     public <T> void getData(String refPath, String childPath, FirebaseDataCallback<T> callback) {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(refPath);
@@ -69,9 +67,6 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
 
     }
 
-
-
-//    public
     @Override
     public <E> void storeData(String refpath,String childpath,E input){
 
@@ -85,58 +80,48 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
     }
 
     @Override
-    public void initialStudentAndTeacherData(Context context) throws IOException {
-//        FirebaseApp.initializeApp()
+    public void initialStudentData(Context context) throws IOException {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Students");
         BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("students.csv"), StandardCharsets.UTF_8));
         String line;
         ArrayList<Student> students = new ArrayList<>();
-        ArrayList<Teacher> teachers = new ArrayList<>();
+        reader.readLine(); //跳过第一行
         while ((line = reader.readLine()) != null) {
             String[] fields = line.split(",");
-            if (fields[0].equals("NAME")||fields[0].equals("Ad Admin")) {
-                continue;
-            }
             ArrayList<String> courses = new ArrayList<>();
-
             String[] c = fields[2].split(" ");
             Collections.addAll(courses,c);
             UserFactory userFactory = new UserFactory();
             User student = userFactory.getUser("student",fields[0],fields[1],courses,null);
-
-//            ArrayList<String> cou = new ArrayList<>();
-//            cou.add(fields[2]);
-//            UserFactory userFactory = new UserFactory();
-//            User student1 = userFactory.getUser("student",fields[0],fields[1],cou,null);
             students.add((Student) student)  ;
-//            User teacher = userFactory.getUser("teacher",fields[0],fields[1],cou,null);
-//            teachers.add((Teacher) teacher);
-//            Log.d(TAG,"teacher: "+teacher.);
         }
-//        databaseReference.setValue("");
-
         databaseReference.setValue(students);
-//        databaseReference = firebaseDatabase.getReference("Students");
-//        databaseReference.child("1");
         reader.close();
-//        reader = new BufferedReader(new InputStreamReader(context.getAssets().open("students.csv"), StandardCharsets.UTF_8));
-//        while ((line = reader.readLine()) != null) {
-//            String[] fields = line.split(",");
-//            if (fields[0].equals("NAME")) {
-//                continue;
-//            }
-//            ArrayList<String> courses = new ArrayList<>();
-//            String[] c = fields[2].split(" ");
-//            Collections.addAll(courses,c);
-//            Student student = new Student(fields[0],fields[1],null,null);
-//            students.add(student);
-//            databaseReference = firebaseDatabase.getReference("Students").child();
-//        }
-//        reader.close();
     }
-//    code_prefixes = ["COMP", "CBEA", "BUSN", "MGMT", "LAWS", "ENGN", "MATH", "BIOL", "CHEM", "PHYS", "HIST"]
 
+    @Override
+    public void initialTeacherData(Context context) throws IOException {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference("Teachers");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(context.getAssets().open("teachers.csv"), StandardCharsets.UTF_8));
+        String line;
+        ArrayList<Teacher> teachers = new ArrayList<>();
+        reader.readLine(); //跳过第一行
+        while ((line = reader.readLine()) != null) {
+            String[] fields = line.split(",");
+            ArrayList<String> courses = new ArrayList<>();
+            String[] c = fields[2].split(" ");
+            Collections.addAll(courses,c);
+            UserFactory userFactory = new UserFactory();
+            User teacher = userFactory.getUser("teacher",fields[0],fields[1],courses,null);
+            teachers.add((Teacher) teacher)  ;
+        }
+        databaseReference.setValue(teachers);
+        reader.close();
+    }
+
+//    code_prefixes = ["COMP", "CBEA", "BUSN", "MGMT", "LAWS", "ENGN", "MATH", "BIOL", "CHEM", "PHYS", "HIST"]
     @Override
     public void initialCoursesData(Context context){
 
@@ -334,23 +319,14 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
         }
     }
 
-//    public Student getStudent(Context context){
-//        DatabaseReference studentsReference = FirebaseDatabase.getInstance().getReference("Students");
-////        studentsReference.orderByChild()
-//
-//    }
-
     @Override
-    public void initialForum(Context context) throws IOException {
+    public void initialForumData(Context context) throws IOException {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference("Forums");
         databaseReference.removeValue();
         BufferedReader br = new BufferedReader(new InputStreamReader(context.getAssets().open("courses.csv")));
         br.readLine(); //跳过第一行
         String line;
-        ForumPost post = new ForumPost("","","",new ArrayList<>(),true);
-        ForumPost post1 = new ForumPost();
-        System.out.println("post: " + post);
 //        Gson gson = new Gson();
 //        String postJson = gson.toJson(post);
         while ((line = br.readLine()) != null){
@@ -359,8 +335,6 @@ public class FirebaseDAOImpl extends AppCompatActivity implements FirebaseDAO {
         }
         br.close();
     }
-
-
 
 
 }
