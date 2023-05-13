@@ -19,6 +19,7 @@ public class StudentMainpageActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         ArrayList<String> courses_list= intent.getStringArrayListExtra("courses_list");
+        String studentID= intent.getStringExtra("student_id");
 
         Button toEnroll = findViewById(R.id.btn_toEnroll);
         toEnroll.setOnClickListener(view -> {
@@ -29,6 +30,7 @@ public class StudentMainpageActivity extends AppCompatActivity {
         Button toDrop = findViewById(R.id.btn_toDrop);
         toDrop.setOnClickListener(view -> {
             Intent intent0 = new Intent(StudentMainpageActivity.this, DropActivity.class);
+            intent0.putExtra("student_id", studentID);
             StudentMainpageActivity.this.startActivity(intent0);
         });
 
