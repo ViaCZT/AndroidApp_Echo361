@@ -127,6 +127,7 @@ public class ForumTotalActivity extends AppCompatActivity {
                         ForumPost forumPost = new ForumPost(title0, content0, name0, new ArrayList<>(), true);
                         postTitles.add(forumPost.getTitle());
                         visiblePostsTitles.add(forumPost.getTitle());
+                        postTitlesForAdapter.add(forumPost.getTitle());
                         arrayAdapter.notifyDataSetChanged();
                         forum[0].getPosts().add(forumPost);
                         // 将论坛存储在独立的分支中
