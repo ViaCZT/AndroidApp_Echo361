@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -113,8 +114,13 @@ public class SearchChatTarget extends AppCompatActivity {
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
                                     studentsList.setAdapter(arrayAdapter);
 
+                                    //转跳code需要在这里写
+                                    studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
+//                                        Intent intent = new Intent(SearchChatTarget.this, .class);
+//                                        SearchChatTarget.this.startActivity(intent);
+                                    });
 
-                                    // 在这里处理学生
+
                                 }
 
                                 @Override
