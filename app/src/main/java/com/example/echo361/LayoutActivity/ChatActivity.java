@@ -32,8 +32,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private DatabaseReference chatReference;
 
-    private String currentUserId = "123"; // 将这里替换为登录用户的实际 ID
-    private String receiverUserId = "2345"; // 将这里替换为接收者用户的实际 ID
+    private String currentUserId = "2345"; // 将这里替换为登录用户的实际 ID
+    private String receiverUserId = "123"; // 将这里替换为接收者用户的实际 ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
