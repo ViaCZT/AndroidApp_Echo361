@@ -65,6 +65,7 @@ public class MyCourseActivity extends AppCompatActivity {
                     Intent intent = new Intent(MyCourseActivity.this, CourseMainpageActivity.class);
                     intent.putExtra("is_teacher",false);
                     intent.putExtra("courseName", finalCurrentCourse.get(i));
+                    intent.putExtra("student_id", logedStudent_id);
                     Log.d("1", finalCurrentCourse.get(i));
                     MyCourseActivity.this.startActivity(intent);
                 });
