@@ -103,7 +103,7 @@ public class DropActivity extends AppCompatActivity {
                 Log.d("select", selectCourse);
 
 
-                if (!(selectCourse.isEmpty())){
+                if (!(selectCourse.isEmpty()) || selectCourse.equals("COURSECODE")){
 
                     int courseID = Integer.parseInt(selectCourse.substring(4));
                     firebaseDAOImpl.getData(selectCourse.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
