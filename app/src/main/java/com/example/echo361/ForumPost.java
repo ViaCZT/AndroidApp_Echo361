@@ -9,16 +9,13 @@ public class ForumPost {
     private String author;
 
     private ArrayList<String> floors;
-    private Date createdTime;
-    private Date updatedTime;
+
     private Boolean visible = true;
 
     public ForumPost(String title, String content, String author, ArrayList<String> floors,boolean visible) {
         this.title = title;
         this.content = content;
         this.author = author;
-        this.createdTime = new Date();
-        this.updatedTime = new Date();
         this.floors = floors;
     }
     public ForumPost(){}
@@ -64,20 +61,6 @@ public class ForumPost {
         this.author = author;
     }
 
-    public Date getCreatedTime() {
-        return createdTime;
-    }
 
-    public void setCreatedTime(Date createdTime) {
-        this.createdTime = createdTime;
-    }
-
-    public Date getUpdatedTime() {
-        return updatedTime;
-    }
-
-    public void setUpdatedTime(Date updatedTime) {
-        this.updatedTime = updatedTime;
-    }
 
 }
