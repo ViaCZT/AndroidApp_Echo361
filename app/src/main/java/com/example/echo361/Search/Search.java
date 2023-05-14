@@ -89,28 +89,70 @@ public class Search {
         ArrayList<Course> courselist3 = new ArrayList<>();
         ArrayList<Course> courselist4 = new ArrayList<>();
         ArrayList<Course> courselist5 = new ArrayList<>();
+        ArrayList<Course> courselist6 = new ArrayList<>();
+        ArrayList<Course> courselist7 = new ArrayList<>();
+        ArrayList<Course> courselist8 = new ArrayList<>();
+        ArrayList<Course> courselist9 = new ArrayList<>();
 
-        if (underG){
+        if (underG && !postG && !onCampus && !Online){
             courselist1 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Undergraduate,null,null,null,courseCode);
         }
-        if (postG){
+        if (!underG && postG && !onCampus && !Online){
             courselist2 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Postgraduate,null,null,null,courseCode);
         }
-        if (onCampus){
+        if (!underG && !postG && onCampus && !Online){
             courselist3 = courseAVLtree.inOrderBSTqualify(courselist1, null, Course.DELIVERY.OnCampus,null,null,courseCode);
         }
-        if (Online){
+        if (!underG && !postG && !onCampus && Online){
             courselist4 = courseAVLtree.inOrderBSTqualify(courselist1, null, Course.DELIVERY.Online,null,null,courseCode);
         }
-        if (!(underG || postG || onCampus || Online)){
+        if (!(underG || postG || onCampus || Online) || (underG && postG && onCampus && Online)){
             courselist5 = courseAVLtree.inOrderBSTqualify(courselist1, null, null,null,null,courseCode);
         }
+
+        if (underG && postG && !onCampus && !Online){
+            courselist6 = courseAVLtree.inOrderBSTqualify(courselist1, null,null,null,null,courseCode);
+        } else if(underG && !postG && onCampus && !Online){
+            courselist6 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Undergraduate, Course.DELIVERY.OnCampus,null,null,courseCode);
+        } else if(underG && !postG && !onCampus && Online){
+            courselist6 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Undergraduate, Course.DELIVERY.Online,null,null,courseCode);
+        }
+
+        if (!underG && postG && onCampus && !Online){
+            courselist7 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Postgraduate, Course.DELIVERY.OnCampus,null,null,courseCode);
+        } else if (!underG && postG && !onCampus && Online){
+            courselist7 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Postgraduate, Course.DELIVERY.Online,null,null,courseCode);
+        }
+
+        if (!underG && !postG && onCampus && Online){
+            courselist8 = courseAVLtree.inOrderBSTqualify(courselist1, null, Course.DELIVERY.Blended,null,null,courseCode);
+        }
+
+
+
+        if ( underG && postG && onCampus && !Online){
+            courselist9 = courseAVLtree.inOrderBSTqualify(courselist1, null, Course.DELIVERY.OnCampus,null,null,courseCode);
+        }else if ( underG && postG && !onCampus && Online){
+            courselist9 = courseAVLtree.inOrderBSTqualify(courselist1, null, Course.DELIVERY.Online,null,null,courseCode);
+        }else if ( underG && !postG && onCampus && Online){
+            courselist9 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Undergraduate, Course.DELIVERY.Online,null,null,courseCode);
+        }else if ( !underG && postG && onCampus && Online){
+            courselist9 = courseAVLtree.inOrderBSTqualify(courselist1, Course.CAREER.Postgraduate, Course.DELIVERY.Online,null,null,courseCode);
+        }
+
+
+
+
 
         courselist.addAll(courselist1);
         courselist.addAll(courselist2);
         courselist.addAll(courselist3);
         courselist.addAll(courselist4);
         courselist.addAll(courselist5);
+        courselist.addAll(courselist6);
+        courselist.addAll(courselist7);
+        courselist.addAll(courselist8);
+        courselist.addAll(courselist9);
 
         return courselist;
 

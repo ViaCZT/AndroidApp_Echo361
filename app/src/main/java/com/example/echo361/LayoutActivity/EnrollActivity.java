@@ -126,7 +126,7 @@ public class EnrollActivity extends AppCompatActivity {
 
 //                                courselist = courseAVLtree.inOrderBSTqualify(courselist, Course.CAREER.Undergraduate,null,null,null,courseCode);
                                 for (Course c :courselist) {
-                                    list.add(c.getTitle());
+                                    list.add(c.getTitle() +"-"+ c.getDelivery()+ "-"+c.getCareer());
                                 }
 
                                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,list);
