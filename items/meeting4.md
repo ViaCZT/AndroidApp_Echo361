@@ -39,6 +39,7 @@ Fifth Procedure: Discuss the rubric of presentation.
 | Can search students who enrolled in same class and use tokenizer and perse in this part | Yitao Zhang | 15, May |
 | Link chat to each student                                                               |    Zihan Ai | 15, May |
 | create two examples of forum                                                            |    Zihan Ai | 15, May |
+| Conflict Resolution Protocol                                                            | Zetian Chen | 17, May |
 | UML in report, grammar                                                                  | Zetian Chen | 17, May |
 | UML in report, Tokenizer and Parsers                                                    | Zetian Chen | 17, May |
 | Summary of Known Errors and Bugs in report                                              | Yijun Huang | 17, May |
