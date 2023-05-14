@@ -1,6 +1,6 @@
 # G3
 
-## Team Meeting 4 - Week 10 - 2023-05-14 (21:00-23:30)
+## Team Meeting 4 - Week 10 - 2023-05-13 (21:00-23:30)
 **Absent:** Nobody
 <br>
 **Lead/scribe:** Yitao Zhang
@@ -34,28 +34,32 @@ Fifth Procedure: Discuss the rubric of presentation.
 ## TODO Items
 | Task                                                                                    |    Assignee | DDL     |
 |:----------------------------------------------------------------------------------------|------------:|---------|
-| Admin delete course and teacher together                                                |     Yuan Li | 15, May |
+| Admin deletes course and teacher together                                               |     Yuan Li | 15, May |
 | Show courses career and delivery in enroll page                                         | Yitao Zhang | 15, May |
-| Can search students who enrolled in same class and use tokenizer and perse in this part | Yitao Zhang | 15, May |
+| Can search students who enrolled in same class and use tokenizer and parse in this part | Yitao Zhang | 15, May |
 | Link chat to each student                                                               |    Zihan Ai | 15, May |
-| create two examples of forum                                                            |    Zihan Ai | 15, May |
+| create examples of forum and chat for given accounts                                    |    Zihan Ai | 15, May |
+| Team members and roles in report                                                        | Yijun Huang | 17, May |
+| Application Description                                                                 | Yijun Huang | 17, May |
 | Conflict Resolution Protocol                                                            | Zetian Chen | 17, May |
+| Design patterns                                                                         | Zetian Chen | 17, May |
 | UML in report, grammar                                                                  | Zetian Chen | 17, May |
-| UML in report, Tokenizer and Parsers                                                    | Zetian Chen | 17, May |
+| UML in report, Tokenizer and Parsers                                                    | Yitao Zhang | 17, May |
 | Summary of Known Errors and Bugs in report                                              | Yijun Huang | 17, May |
 | Implemented Features in report                                                          | Yijun Huang | 17, May |
+| Meeting in report                                                                       | Yijun Huang | 17, May |
+| Video                                                                                   | Yijun Huang | 18, May |
 
 
 | Task for every one                                                                    | DDL     |
 |:--------------------------------------------------------------------------------------|---------|
 | Try to change the code in onCreate into methods one by one, and call them in onCreate | 17, May |
-| Write tests of your own code                                                          | 17, May |
+| Write tests and corresponding part in report of your own code                         | 17, May |
 | Improve the readability of the code, add comments                                     | 17, May |
 | The Individual Contributions part in the report (with link)                           | 17, May |
-| Application Description part in the report (with link)                                | 17, May |
 | The data structure in the report                                                      | 17, May |
-
-                                                                         
+| Slides                                                                                | 18, May |
+| Individual reflection                                                                 | 19, May |
 
 ## Schedule
 | Deadlines         |                          What we should achieve |
