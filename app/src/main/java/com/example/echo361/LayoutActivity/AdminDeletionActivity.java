@@ -1,7 +1,13 @@
 package com.example.echo361.LayoutActivity;
 
+import static com.example.echo361.Search.Search.courseListFilted;
+import static com.example.echo361.Search.Search.getCollege;
+import static com.example.echo361.Search.Search.getCollegeCode;
+import static com.example.echo361.Search.Search.getCourseCode;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
@@ -18,7 +25,11 @@ import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
 import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
+import com.example.echo361.Search.CExp;
+import com.example.echo361.Search.CParser;
+import com.example.echo361.Search.CTokenizer;
 import com.example.echo361.Search.CourseAVLtree;
+import com.example.echo361.Search.CourseTokenizer;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
 
@@ -140,40 +151,119 @@ public class AdminDeletionActivity extends AppCompatActivity {
         buttonSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String courseCode = String.valueOf(editText.getText());
-                firebaseDAOImpl.getData(courseCode.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
+                String input = String.valueOf(editText.getText());
+//                String courseCode = String.valueOf(editText.getText());
 
-                    @Override
-                    public void onDataReceived(String data) {
-                        //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
-                        Gson gson = new Gson();
-                        CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-                        ArrayList<Course> courselist = new ArrayList<>();
-                        courselist = courseAVLtree.inOrderBSTqualify(courselist,null,null,null,null,courseCode.substring(4));
-                        ArrayList<String> list = new ArrayList<>();
-                        for (Course c :courselist) {
-                            list.add(c.getTitle());
-                        }
-                        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,list);
-                        listView.setAdapter(arrayAdapter);
 
-                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                if (!(input.isEmpty())) {
+
+                    // get course code and college code
+                    String searchInput = editText.getText().toString();
+                    CTokenizer tok = new CourseTokenizer(searchInput);
+                    CExp parsedExp = CParser.parseExp(tok);
+                    String inputPersed = parsedExp.show();
+
+                    String courseCode = getCourseCode(inputPersed);
+                    String collegeCode = getCollegeCode(inputPersed);
+
+                    ArrayList<String> allCollegeCode = getCollege(collegeCode);
+                    ArrayList<String> list = new ArrayList<>();
+
+
+                    for (String i : allCollegeCode){
+                        firebaseDAOImpl.getData(i+"Tree", null, new FirebaseDataCallback<String>() {
+
                             @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                textView.setText(list.get(position));
+                            public void onDataReceived(String data) {
+                                //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
+//                                if ((underG_cb.isChecked() && postG_cb.isChecked()) || (onC_cb.isChecked() && online_cb.isChecked())){
+//                                    Context context = getApplicationContext();
+//                                    CharSequence text = "They can't choose at same time";
+//                                    int duration = Toast.LENGTH_SHORT;
+//                                    Toast toast = Toast.makeText(context, text, duration);
+//                                    toast.show();
+//                                }
+                                Gson gson = new Gson();
+                                CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+                                ArrayList<Course> courselist = new ArrayList<>();
+                                courselist = courseListFilted(courseAVLtree, false, false, false, false, courseCode);
+
+//                                courselist = courseAVLtree.inOrderBSTqualify(courselist, Course.CAREER.Undergraduate,null,null,null,courseCode);
+                                for (Course c :courselist) {
+                                    list.add(c.getTitle() +"-"+ c.getDelivery()+ "-"+c.getCareer());
+                                }
+
+                                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,list);
+                                listView.setAdapter(arrayAdapter);
+
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                        textView.setText(list.get(position));
+                                    }
+                                });
+
+
+
+
+                            }
+                            @Override
+                            public void onError(DatabaseError error) {
+                                // 在这里处理错误
                             }
                         });
 
+                    }
+
+                }else{
+                    Context context = getApplicationContext();
+                    CharSequence text = "Input can not be empty.";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
 
 
-                    }
-                    @Override
-                    public void onError(DatabaseError error) {
-                        // 在这里处理错误
-                    }
-                });
             }
         });
+
+//        buttonSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String courseCode = String.valueOf(editText.getText());
+//                firebaseDAOImpl.getData(courseCode.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
+//
+//                    @Override
+//                    public void onDataReceived(String data) {
+//                        //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
+//                        Gson gson = new Gson();
+//                        CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+//                        ArrayList<Course> courselist = new ArrayList<>();
+//                        courselist = courseAVLtree.inOrderBSTqualify(courselist,null,null,null,null,courseCode.substring(4));
+//                        ArrayList<String> list = new ArrayList<>();
+//                        for (Course c :courselist) {
+//                            list.add(c.getTitle());
+//                        }
+//                        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,list);
+//                        listView.setAdapter(arrayAdapter);
+//
+//                        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                            @Override
+//                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                                textView.setText(list.get(position));
+//                            }
+//                        });
+//
+//
+//
+//                    }
+//                    @Override
+//                    public void onError(DatabaseError error) {
+//                        // 在这里处理错误
+//                    }
+//                });
+//            }
+//        });
 
 
 
