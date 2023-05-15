@@ -4,6 +4,7 @@ import static com.example.echo361.Search.Search.courseListFilted;
 import static com.example.echo361.Search.Search.getCollege;
 import static com.example.echo361.Search.Search.getCollegeCode;
 import static com.example.echo361.Search.Search.getCourseCode;
+import static com.example.echo361.Search.Search.inputToCourse;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -158,13 +159,9 @@ public class AdminDeletionActivity extends AppCompatActivity {
                 if (!(input.isEmpty())) {
 
                     // get course code and college code
-                    String searchInput = editText.getText().toString();
-                    CTokenizer tok = new CourseTokenizer(searchInput);
-                    CExp parsedExp = CParser.parseExp(tok);
-                    String inputPersed = parsedExp.show();
-
-                    String courseCode = getCourseCode(inputPersed);
-                    String collegeCode = getCollegeCode(inputPersed);
+                    String[] courseinfo = inputToCourse(input);
+                    String collegeCode = courseinfo[0];
+                    String courseCode = courseinfo[1];
 
                     ArrayList<String> allCollegeCode = getCollege(collegeCode);
                     ArrayList<String> list = new ArrayList<>();

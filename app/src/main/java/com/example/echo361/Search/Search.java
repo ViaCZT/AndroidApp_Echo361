@@ -26,6 +26,27 @@ public class Search {
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
+    public static String[] inputToCourse(String searchInput){
+        StringBuilder courseCode = new StringBuilder();
+        StringBuilder collegeCode = new StringBuilder();
+        int numOfCourseCode = 0;
+        int numOfCollegeCode = 0;
+
+        for (int i = 0; i < searchInput.length(); i++){
+            if (numOfCourseCode < 4 && Character.isDigit(searchInput.charAt(i))){
+                numOfCourseCode++;
+                courseCode.append(searchInput.charAt(i));
+            }
+            if (numOfCollegeCode < 4 && isWord(searchInput.charAt(i))){
+                numOfCollegeCode++;
+                collegeCode.append(searchInput.charAt(i));
+            }
+        }
+        String[] result = new String[]{String.valueOf(collegeCode), String.valueOf(courseCode)};
+        return result;
+
+    }
+
     public static String getCourseCode(String inputPersed){
         String courseCode = "";
         int courseCodeLen = 0;
