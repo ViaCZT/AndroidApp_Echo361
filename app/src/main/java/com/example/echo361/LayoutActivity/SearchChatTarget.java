@@ -1,45 +1,36 @@
 package com.example.echo361.LayoutActivity;
 
 import static com.example.echo361.Search.Search.getName;
-import static com.example.echo361.Search.Search.partialNameSearch;
-import static com.example.echo361.Search.Search.readCourseDate;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
 import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
-import com.example.echo361.Search.CExp;
-import com.example.echo361.Search.CParser;
-import com.example.echo361.Search.CTokenizer;
-import com.example.echo361.Search.CourseAVLtree;
-import com.example.echo361.Search.CourseTokenizer;
 import com.example.echo361.R;
+import com.example.echo361.Search.CourseAVLtree;
 import com.example.echo361.Search.NExp;
 import com.example.echo361.Search.NParser;
 import com.example.echo361.Search.NTokenizer;
 import com.example.echo361.Search.NameTokenizer;
-import com.example.echo361.Search.Search;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class SearchChatTarget extends AppCompatActivity {
 
@@ -103,7 +94,7 @@ public class SearchChatTarget extends AppCompatActivity {
 
                                     for (HashMap<String, Object> hashMap1 : students) {
 
-                                        Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"), null);
+                                        Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
                                         if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
                                             if (getName(student.getUserName())[0].toLowerCase().contains(getName(inputPersed)[0].toLowerCase()) &&
                                                     getName(student.getUserName())[1].toLowerCase().contains(getName(inputPersed)[1].toLowerCase())) {

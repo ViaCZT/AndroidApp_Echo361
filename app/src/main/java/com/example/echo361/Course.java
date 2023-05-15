@@ -11,8 +11,7 @@ public class Course {
     private CAREER career;
     private DELIVERY delivery;
     private TERM term;
-    private Forum forum;
-    private String videos;
+
 
     public CODE getCode() {
         return code;
@@ -29,8 +28,6 @@ public class Course {
                 ", career=" + career +
                 ", delivery=" + delivery +
                 ", term=" + term +
-                ", forum=" + forum +
-                ", videos='" + videos + '\'' +
                 '}';
     }
 
@@ -63,7 +60,7 @@ public class Course {
     }
 
     public Course(String title, Integer courseID,
-                  ArrayList<String> students, String teacher, CODE code, CAREER career, DELIVERY delivery, TERM term, Forum forum, String videos) {
+                  ArrayList<String> students, String teacher, CODE code, CAREER career, DELIVERY delivery, TERM term) {
         this.title = title;
         this.courseID = courseID;
         this.students = students;
@@ -72,8 +69,6 @@ public class Course {
         this.career = career;
         this.delivery = delivery;
         this.term = term;
-        this.forum = forum;
-        this.videos = videos;
     }
 
     public String getTitle() {
@@ -108,21 +103,6 @@ public class Course {
         this.teacher = teacher;
     }
 
-    public Forum getForum() {
-        return forum;
-    }
-
-    public void setForum(Forum forum) {
-        this.forum = forum;
-    }
-
-    public String getVideos() {
-        return videos;
-    }
-
-    public void setVideos(String videos) {
-        this.videos = videos;
-    }
 
     public enum TERM{
         Spring,Summer,Autumn,Winter,Semester1,Semester2

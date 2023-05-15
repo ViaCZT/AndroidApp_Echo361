@@ -1,12 +1,9 @@
 package com.example.echo361.LayoutActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ContentInfo;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +11,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
@@ -27,8 +26,6 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
 
 public class DropActivity extends AppCompatActivity {
 
@@ -62,7 +59,7 @@ public class DropActivity extends AppCompatActivity {
                 for (HashMap<String, Object> hashMap1 : students
                 ) {
 
-                    Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"),null);
+                    Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                     for (String course: student.getCourses()) {
                         if (student.getPassWord().equals(logedStudent_id)) {
                             currentCourse = student.getCourses();
@@ -118,7 +115,7 @@ public class DropActivity extends AppCompatActivity {
                             Course newCourse = courselist.get(0);
                             Log.d("course","courses"+ courselist );
 
-                            ArrayList newStudentId = newCourse.getStudents();
+                            ArrayList<String> newStudentId = newCourse.getStudents();
                             Log.d("student ID","logedStudent_id: "+ logedStudent_id );
                             Log.d("student ID","StudentsId: "+ newStudentId.size() );
                             newStudentId.remove(logedStudent_id);
@@ -157,7 +154,7 @@ public class DropActivity extends AppCompatActivity {
 
                             for (HashMap<String, Object> hashMap1 : students) {
 
-                                Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"),null);
+                                Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
 //                                Log.d("bbbcccc","student: " + student.toString());
                                 if (student.getPassWord().equals(logedStudent_id)){
                                     Log.d("bbbcccc","getCourses" + student.getCourses().toString());

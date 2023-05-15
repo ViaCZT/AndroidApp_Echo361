@@ -2,6 +2,18 @@
 
 The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
 
+*Here are some tips to write a good report:*
+
+* *Try to summarise and list the `bullet points` of your project as many as possible rather than give long, tedious paragraphs that mix up everything together.*
+
+* *Try to create `diagrams` instead of text descriptions, which are more straightforward and explanatory.*
+
+* *Try to make your report `well structured`, which is easier for the reviewers to capture the necessary information.*
+
+*We give instructions enclosed in square brackets [...] and examples for each sections to demonstrate what are expected for your project report.*
+
+*Please remove the instructions or examples in `italic` in your final report.*
+
 ## Table of Contents
 
 1. [Team Members and Roles](#team-members-and-roles)
@@ -17,78 +29,42 @@ The following is a report template to help your team successfully provide all th
 
 ## Team Members and Roles
 
-| UID      |    Name     |                     Role |
-|:---------|:-----------:|-------------------------:|
-| u7564812 | Zetian Chen | Design Pattern, Database |
-| u7528678 |  Zihan Ai   |              Forum, Chat |
-| u7564899 | Yijun Huang |                UI, video |
-| u7550484 |   Yuan Li   |      Tree Data Structure |
-| u7504766 | Yitao Zhang |                   Search |
+| UID | Name | Role |
+| :--- | :----: | ---: |
+| [uid] | [name] | [role] |
+| [uid] | [name] | [role] |
+| [uid] | [name] | [role] |
+| [uid] | [name] | [role] |
 
 ## Summary of Individual Contributions
 
-**Code Implementation**
+*[Summarise the contributions made by each member to the project, e.g. code implementation, code design, UI design, report writing, etc.]*
 
-1. u7564812, Zetian Chen, I contribute 20% of the code. Here are my contributions:
-   * All classes in the [Database folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/java/com/example/echo361/Database)
-   * All classes in the [Factory folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/java/com/example/echo361/Factory)
-2. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
-3. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
-4. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
-5. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
+*[Code Implementation. Which features did you implement? Which classes or methods was each member involved in? Provide an approximate proportion in pecentage of the contribution of each member to the whole code implementation, e.g. 30%.]*
 
-**Code Design**
+*Here is an example:*
 
-1. Design patterns (Factory, DAO, Singleton): u7564812, Zetian Chen
-2. Data structures (AVL tree): u7550484, Yuan Li
+*UID1, Name1, I contribute 30% of the code. Here are my contributions:*
+* A.class
+* B.class: function1(), function2(), ...
+* ....
 
-**UI Design**
+*you should ALSO provide links to the specified classes and/or functions*
+
+*[Code Design. What design patterns, data structures, did the involved member propose?]*
+
 *[UI Design. Specify what design did the involved member propose? What tools were used for the design?]*
 
-u7564899, Yijun Huang
+*[Report Writing. Which part of the report did the involved member write?]*
 
-**Report Writing**
+*[Slide preparation. Were you responsible for the slides?]*
 
-| Report Part                         |                    Assignee                    |
-|:------------------------------------|:----------------------------------------------:|
-| Summary of Individual Contributions |                      All                       |
-| Conflict Resolution Protocol        |             Zetian Chen (u7564812)             |
-| Application Description             |             Yijun Huang (u7564899)             |
-| Application UML                     | Zetian Chen (u7564812), Yitao Zhang (u7504766) |
-| Application Design and Decisions    |                                                |
-| 1. Data Structures                  |                      All                       |
-| 2. Design Patterns                  |             Zetian Chen (u7564812)             |
-| 3. Grammars & Tokenizer and Parsers |             Yitao Zhang (u7504766)             |
-| Summary of Known Errors and Bugs    |             Yijun Huang (u7564899)             |
-| Testing Summary                     |                      All                       |
-| Implemented Features                |             Yijun Huang (u7564899)             |
-
-**Slide preparation** u7564812, Zetian Chen
-
-**Video preparation** u7564899, Yijun Huang
-
+*[Miscellaneous contributions. You are welcome to provide anything that you consider as a contribution to the project or team.]*
 
 ## Conflict Resolution Protocol
 
-Our team used the following protocol to effectively handle conflicts:
-
-1. Acknowledge the conflict: The team should acknowledge the conflict and its impact on the project. This should be done in a respectful and non-judgmental manner.
-2. Identify the issue: The team should identify the underlying issue causing the conflict. This should be done in an objective manner, without any blame or personal attacks.
-3. Listen to all viewpoints: All team members should have the opportunity to express their viewpoint. The team should actively listen to each other without interrupting or judging.
-4. Collaborate to find a solution: The team should work together to find a solution that is acceptable to everyone. The solution should be based on the interests and needs of the team as a whole, not just individuals.
-5. Implement the solution: Once a solution has been agreed upon, the team should implement it in a timely manner. The team should ensure that everyone understands their roles and responsibilities in implementing the solution.
-6. Follow up: The team should follow up on the implemented solution to ensure that it is working effectively and that everyone is satisfied with it.
-7. Document the conflict and solution: The team should document the conflict and the solution in writing. This documentation should include the issue, the solution, and the steps taken to implement the solution.
-
-By following this protocol, our team has handled conflicts in a respectful and collaborative manner, leading to a better outcome for the project and team members.
+*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
+(If you choose to make this an external document, link to it here)]*
 
 
 ## Application Description

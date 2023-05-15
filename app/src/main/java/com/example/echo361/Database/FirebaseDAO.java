@@ -1,3 +1,6 @@
+/**
+ * @author Zetian Chen, u7564812
+ */
 package com.example.echo361.Database;
 
 import android.content.Context;
@@ -9,7 +12,7 @@ public interface FirebaseDAO {
     <E> void storeData(String refpath,String childpath,E input);
     void initialStudentData(Context context) throws IOException;
     void initialTeacherData(Context context) throws IOException;
-    void initialCoursesData(Context context);
+    void initialCoursesData(Context context) throws IOException;
     void initialForumData(Context context) throws IOException;
 
 }

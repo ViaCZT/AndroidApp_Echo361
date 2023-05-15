@@ -2,11 +2,7 @@ package com.example.echo361.LayoutActivity;
 
 import static com.example.echo361.Search.Search.courseListFilted;
 import static com.example.echo361.Search.Search.getCollege;
-import static com.example.echo361.Search.Search.getCollegeCode;
-import static com.example.echo361.Search.Search.getCourseCode;
 import static com.example.echo361.Search.Search.inputToCourse;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,17 +16,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
 import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
 import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
-import com.example.echo361.Search.CExp;
-import com.example.echo361.Search.CParser;
-import com.example.echo361.Search.CTokenizer;
 import com.example.echo361.Search.CourseAVLtree;
-import com.example.echo361.Search.CourseTokenizer;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
 
@@ -86,7 +80,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     for (HashMap<String, Object> hashMap1 : students
                                             ) {
 
-                                        Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"),null);
+                                        Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                                         boolean has = false;
                                         Log.d("bbbcccc","courses: " + student.toString());
                                         for (String course: student.getCourses()) {
@@ -119,7 +113,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     for (HashMap<String, Object> hashMap1 : teachers
                                     ) {
 
-                                        Teacher teacher = new Teacher((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"),null);
+                                        Teacher teacher = new Teacher((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                                         boolean has = false;
                                         Log.d("bbbcccc","courses: " + teacher.toString());
                                         for (String course: teacher.getCourses()) {

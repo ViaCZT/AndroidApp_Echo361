@@ -2,18 +2,11 @@ package com.example.echo361.LayoutActivity;
 
 import static com.example.echo361.Search.Search.courseListFilted;
 import static com.example.echo361.Search.Search.getCollege;
-import static com.example.echo361.Search.Search.getCollegeCode;
-import static com.example.echo361.Search.Search.getCourseCode;
-import static com.example.echo361.Search.Search.getName;
 import static com.example.echo361.Search.Search.inputToCourse;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,25 +17,19 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
 import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
 import com.example.echo361.R;
-import com.example.echo361.Search.CExp;
-import com.example.echo361.Search.CParser;
-import com.example.echo361.Search.CTokenizer;
 import com.example.echo361.Search.CourseAVLtree;
-import com.example.echo361.Search.CourseTokenizer;
-import com.example.echo361.Search.Search;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -68,7 +55,7 @@ public class EnrollActivity extends AppCompatActivity {
 
 
 
-        ArrayList<String> courses = new ArrayList<String>();
+        ArrayList<String> courses = new ArrayList<>();
 
         ListView listView = (ListView) findViewById(R.id.list_courseList);
         TextView textView = (TextView) findViewById(R.id.tx_enrolledCourse);
@@ -215,7 +202,7 @@ public class EnrollActivity extends AppCompatActivity {
 
                             for (HashMap<String, Object> hashMap1 : students) {
 
-                                Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"),null);
+                                Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                                 if (student.getPassWord().equals(logedStudent_id)){
                                     student.getCourses().add(selectCourse);
 

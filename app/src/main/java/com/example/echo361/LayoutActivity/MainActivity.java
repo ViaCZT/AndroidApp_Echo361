@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
+import com.example.echo361.Factory.Student;
+import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
@@ -20,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -41,77 +44,11 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 
-        /*
-       firebaseDAOImpl.getData("Admin", null, new FirebaseDataCallback<Admin>() {
-            @Override
-            public void onDataReceived(Admin admin) {
-                // 在这里处理Admin
-            }
-
-            @Override
-            public void onError(DatabaseError error) {
-                // 在这里处理错误
-            }
-        });
-        */
-        //学生
-//        /*
-//       firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<Student>>() {
-//            @Override
-//            public void onDataReceived(ArrayList<Student> students) {
-//                Log.d("asdfasd",students);
-//                // 在这里处理学生
-//            }
-//
-//            @Override
-//            public void onError(DatabaseError error) {
-//                // 在这里处理错误
-//            }
-//        });
-//        */
-        //教师
-        /*
-        firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<Teacher>>() {
-            @Override
-            public void onDataReceived(ArrayList<Teacher> teachers) {
-                //在这里处理老师
-            }
-
-            @Override
-            public void onError(DatabaseError error) {
-                // 在这里处理错误
-            }
-        });
-        */
-        /*
-
-        //各个树
-        firebaseDAOImpl.getData("XXXXTree", null, new FirebaseDataCallback<String>() {
-
-            @Override
-            public void onDataReceived(String data) {
-                //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
-//                Gson gson = new Gson();
-//                CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-//                courseAVLtree.delete(1);
-//                FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
-//                firebaseDAO.storeData("XXXXTree",null,gson.toJson(courseAVLtree));
-
-            }
-
-            @Override
-            public void onError(DatabaseError error) {
-                // 在这里处理错误
-            }
-        });
-        */
-
-
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
 //        ArrayList<String> courseA = new ArrayList<>();
 //        courseA.add("COMP0001");
-//        Student student = new Student("comp2100@anu.au","comp2100",courseA,null);
-//        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA,null);
+//        Student student = new Student("comp2100@anu.au","comp2100",courseA);
+//        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA);
 //        firebaseDAOImpl.storeData("Admin",admin);
 //        firebaseDAOImpl.storeData("Students","2000",student);
 //        firebaseDAOImpl.storeData("Teachers","500",teacher);
@@ -119,12 +56,8 @@ public class MainActivity extends AppCompatActivity {
 //        try {
 //            firebaseDAOImpl.initialStudentData(getApplicationContext());
 //            firebaseDAOImpl.initialTeacherData(getApplicationContext());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        firebaseDAOImpl.initialCoursesData(getApplicationContext());
-//        try {
-//            firebaseDAOImpl.initialForumData(getApplicationContext());
+//            firebaseDAOImpl.initialCoursesData(getApplicationContext());
+////            firebaseDAOImpl.initialForumData(getApplicationContext());
 //        } catch (IOException e) {
 //            throw new RuntimeException(e);
 //        }

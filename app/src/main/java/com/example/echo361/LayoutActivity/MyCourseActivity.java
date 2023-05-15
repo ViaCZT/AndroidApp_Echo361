@@ -1,14 +1,12 @@
 package com.example.echo361.LayoutActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
 import com.example.echo361.Database.FirebaseDataCallback;
@@ -48,7 +46,7 @@ public class MyCourseActivity extends AppCompatActivity {
                 for (HashMap<String, Object> hashMap1 : students
                 ) {
 
-                    Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"),null);
+                    Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                     for (String course: student.getCourses()) {
                         if (student.getPassWord().equals(logedStudent_id)) {
                             currentCourse = student.getCourses();
