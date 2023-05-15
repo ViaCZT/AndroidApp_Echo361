@@ -23,8 +23,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ForumTotalActivity extends AppCompatActivity {
 
+public class ForumTotalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

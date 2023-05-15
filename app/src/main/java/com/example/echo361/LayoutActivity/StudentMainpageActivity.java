@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.example.echo361.R;
@@ -21,6 +22,7 @@ public class StudentMainpageActivity extends AppCompatActivity {
         ArrayList<String> courses_list= intent.getStringArrayListExtra("courses_list");
         ArrayList<String> courses_list_drop= intent.getStringArrayListExtra("courses_list_drop");
         String studentID= intent.getStringExtra("student_id");
+        String uid = intent.getStringExtra("uid");
 
         Button toEnroll = findViewById(R.id.btn_toEnroll);
         toEnroll.setOnClickListener(view -> {
@@ -43,11 +45,15 @@ public class StudentMainpageActivity extends AppCompatActivity {
                 Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
                 intent0.putStringArrayListExtra("courses_list",courses_list);
                 intent0.putExtra("student_id", studentID);
+                intent0.putExtra("uid",uid);
+                Log.d("cuurrentid",uid);
                 StudentMainpageActivity.this.startActivity(intent0);
             }else{
                 Intent intent0 = new Intent(StudentMainpageActivity.this, MyCourseActivity.class);
                 intent0.putStringArrayListExtra("courses_list",courses_list_drop);
                 intent0.putExtra("student_id", studentID);
+                intent0.putExtra("uid",uid);
+                Log.d("cuurrentid",uid);
                 StudentMainpageActivity.this.startActivity(intent0);
             }
         });

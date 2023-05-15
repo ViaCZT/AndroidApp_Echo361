@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -32,13 +33,20 @@ public class ChatActivity extends AppCompatActivity {
 
     private DatabaseReference chatReference;
 
-    private String currentUserId = "2345"; // 将这里替换为登录用户的实际 ID
-    private String receiverUserId = "123"; // 将这里替换为接收者用户的实际 ID
+    private String currentUserId; // 将这里替换为登录用户的实际 ID
+    private String receiverUserId; // 将这里替换为接收者用户的实际 ID
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        Intent intent = getIntent();
+        currentUserId = intent.getStringExtra("currentUserId");
+        receiverUserId = intent.getStringExtra("receiverUserId");
+        Log.d("Conversation",currentUserId + "_" + receiverUserId);
+
+
         msgRecyclerView = findViewById(R.id.msg_recycler_view);
         inputText = findViewById(R.id.input_text);
         send = findViewById(R.id.send);

@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
                                 Intent intent = new Intent(MainActivity.this, StudentMainpageActivity.class);
                                 intent.putExtra("student_name", studentName);
                                 intent.putExtra("student_id", studentID);
+                                intent.putExtra("uid",inputPassword);
                                 intent.putStringArrayListExtra("courses_list", new ArrayList<>(Objects.requireNonNull(coursesList)));
                                 MainActivity.this.startActivity(intent);
                                 break;
@@ -196,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
                                             Intent intent = new Intent(MainActivity.this, CourseMainpageActivity.class);
                                             intent.putExtra("teacher_name", teacherName);
                                             intent.putExtra("courseName",course);
+                                            intent.putExtra("uid",inputPassword);
                                             intent.putExtra("is_teacher",true);
                                             MainActivity.this.startActivity(intent);
                                             break;

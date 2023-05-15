@@ -54,6 +54,7 @@ public class SearchChatTarget extends AppCompatActivity {
         Intent intent0 = getIntent();
         String courseName = intent0.getStringExtra("courseName");
         String student_id = intent0.getStringExtra("student_id");
+        String uid = intent0.getStringExtra("uid");
 
         // search
 
@@ -94,6 +95,7 @@ public class SearchChatTarget extends AppCompatActivity {
                         ArrayList<String> storeStudents = new ArrayList<>();
 
                         for (String i : studentsId) {
+                            ArrayList<String> finalStudentsId = studentsId;
                             firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                 @Override
                                 public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
@@ -117,7 +119,14 @@ public class SearchChatTarget extends AppCompatActivity {
                                     //转跳code需要在这里写
                                     studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
 //                                        Intent intent = new Intent(SearchChatTarget.this, .class);
-//                                        SearchChatTarget.this.startActivity(intent);
+//
+                                        Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
+                                        intent.putExtra("currentUserId",uid);
+                                        Log.d("receiveid",storeStudents.get(i));
+                                        Log.d("2", finalStudentsId.get(i));
+                                        intent.putExtra("receiverUserId",finalStudentsId.get(i));
+                                        SearchChatTarget.this.startActivity(intent);
+
                                     });
 
 

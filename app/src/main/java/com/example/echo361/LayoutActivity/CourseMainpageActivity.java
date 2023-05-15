@@ -29,6 +29,7 @@ public class CourseMainpageActivity extends AppCompatActivity {
         Intent intent1 = getIntent();
         String courseName = intent1.getStringExtra("courseName");
         String student_id = intent1.getStringExtra("student_id");
+        String uid = intent1.getStringExtra("uid");
 
 //        FirebaseApp.initializeApp(getBaseContext());
 //        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
@@ -58,6 +59,9 @@ public class CourseMainpageActivity extends AppCompatActivity {
             Intent intent0 = new Intent(CourseMainpageActivity.this, SearchChatTarget.class);
             intent0.putExtra("courseName", courseName);
             intent0.putExtra("student_id", student_id);
+            intent0.putExtra("uid",uid);
+            Log.d("currentID",uid);
+
             CourseMainpageActivity.this.startActivity(intent0);
         });
 

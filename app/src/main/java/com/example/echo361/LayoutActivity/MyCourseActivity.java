@@ -30,6 +30,7 @@ public class MyCourseActivity extends AppCompatActivity {
         Intent intent0 = getIntent();
         ArrayList<String> courseName = intent0.getStringArrayListExtra("courses_list");
         String logedStudent_id = intent0.getStringExtra("student_id");
+        String uid = intent0.getStringExtra("uid");
         Log.d("my course", String.valueOf(courseName));
 
         FirebaseApp.initializeApp(getBaseContext());
@@ -66,6 +67,8 @@ public class MyCourseActivity extends AppCompatActivity {
                     intent.putExtra("is_teacher",false);
                     intent.putExtra("courseName", finalCurrentCourse.get(i));
                     intent.putExtra("student_id", logedStudent_id);
+                    intent.putExtra("uid",uid);
+                    Log.d("currentID",uid);
                     Log.d("1", finalCurrentCourse.get(i));
                     MyCourseActivity.this.startActivity(intent);
                 });
