@@ -1,7 +1,5 @@
 package com.example.echo361.LayoutActivity;
 
-import static com.example.echo361.Search.Search.readCourseDate;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
