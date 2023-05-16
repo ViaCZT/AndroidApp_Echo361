@@ -1,3 +1,6 @@
+/**
+ * @author Zetian Chen, u7564812
+ */
 package com.example.echo361.FactoryTest;
 
 import com.example.echo361.Factory.Student;
@@ -33,6 +36,9 @@ public class UserTest {
         courses.add("comp6000");
         user.setCourses(courses);
         Assert.assertEquals(courses, user.getCourses());
+        User user1 = new Student();
+        user1.setUserName("John Black");
+        Assert.assertEquals("John Black", user1.getUserName());
     }
 
     @Test
