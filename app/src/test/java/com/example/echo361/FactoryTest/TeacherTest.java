@@ -1,3 +1,6 @@
+/**
+ * @author Zetian Chen, u7564812
+ */
 package com.example.echo361.FactoryTest;
 
 import com.example.echo361.Factory.Teacher;
