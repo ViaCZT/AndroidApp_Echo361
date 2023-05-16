@@ -1,15 +1,12 @@
 package com.example.echo361;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ForumPost {
     private String title;
     private String content;
     private String author;
-
     private ArrayList<String> floors;
-
     private Boolean visible = true;
 
     public ForumPost(String title, String content, String author, ArrayList<String> floors,boolean visible) {
@@ -32,18 +29,16 @@ public class ForumPost {
         return content;
     }
 
-    public ArrayList<String> getFloors(){return this.floors;}
-
     public void setContent(String content) {
         this.content = content;
     }
 
-    public void block(){
-        boolean b = false;
-        this.visible = b;
+    public ArrayList<String> getFloors(){return this.floors;}
+
+    public void setFloors(ArrayList<String> floors) {
+        this.floors = floors;
     }
 
-    public void addFloor(String floorContent){this.floors.add(floorContent);}
 
     public boolean getVisible(){
         return this.visible;
@@ -61,6 +56,11 @@ public class ForumPost {
         this.author = author;
     }
 
+    public void block(){
+        this.visible = false;
+    }
+
+    public void addFloor(String floorContent){this.floors.add(floorContent);}
 
 
 }

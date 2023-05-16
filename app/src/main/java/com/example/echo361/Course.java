@@ -1,10 +1,12 @@
 package com.example.echo361;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Course {
     private String title;
-    private Integer courseID;
+    private Integer courseID; //4 digit number from code without college identity
     private ArrayList<String> students;
     private String teacher;
     private CODE code;
@@ -12,11 +14,19 @@ public class Course {
     private DELIVERY delivery;
     private TERM term;
 
-
-    public CODE getCode() {
-        return code;
+    public Course(String title, Integer courseID,
+                  ArrayList<String> students, String teacher, CODE code, CAREER career, DELIVERY delivery, TERM term) {
+        this.title = title;
+        this.courseID = courseID;
+        this.students = students;
+        this.teacher = teacher;
+        this.code = code;
+        this.career = career;
+        this.delivery = delivery;
+        this.term = term;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Course{" +
@@ -29,6 +39,10 @@ public class Course {
                 ", delivery=" + delivery +
                 ", term=" + term +
                 '}';
+    }
+
+    public CODE getCode() {
+        return code;
     }
 
     public void setCode(CODE code) {
@@ -56,18 +70,6 @@ public class Course {
     }
 
     public void setTerm(TERM term) {
-        this.term = term;
-    }
-
-    public Course(String title, Integer courseID,
-                  ArrayList<String> students, String teacher, CODE code, CAREER career, DELIVERY delivery, TERM term) {
-        this.title = title;
-        this.courseID = courseID;
-        this.students = students;
-        this.teacher = teacher;
-        this.code = code;
-        this.career = career;
-        this.delivery = delivery;
         this.term = term;
     }
 

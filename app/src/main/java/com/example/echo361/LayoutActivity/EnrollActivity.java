@@ -107,7 +107,7 @@ public class EnrollActivity extends AppCompatActivity {
 //                                }
                                 Gson gson = new Gson();
                                 CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-                                ArrayList<Course> courselist = new ArrayList<>();
+                                ArrayList<Course> courselist;
                                 courselist = courseListFilted(courseAVLtree, underG_cb.isChecked(), postG_cb.isChecked(),
                                         onC_cb.isChecked(), online_cb.isChecked(), courseCode);
 
@@ -241,6 +241,43 @@ public class EnrollActivity extends AppCompatActivity {
 
     public boolean isWord(char c){
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+    }
+
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Toast.makeText(getApplicationContext(), "onStart!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(getApplicationContext(), "onRestart!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getApplicationContext(), "onResume!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(), "onPause!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(getApplicationContext(), "onStop!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getApplicationContext(), "onDestroy!", Toast.LENGTH_LONG).show();
     }
 
 }

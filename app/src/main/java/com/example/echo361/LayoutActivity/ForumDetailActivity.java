@@ -1,7 +1,5 @@
 package com.example.echo361.LayoutActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
 import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Forum;
-import com.example.echo361.ForumPost;
 import com.example.echo361.R;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
@@ -73,4 +73,41 @@ public class ForumDetailActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Toast.makeText(getApplicationContext(), "onStart!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(getApplicationContext(), "onRestart!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(getApplicationContext(), "onResume!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(getApplicationContext(), "onPause!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(getApplicationContext(), "onStop!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(getApplicationContext(), "onDestroy!", Toast.LENGTH_LONG).show();
+    }
+
 }

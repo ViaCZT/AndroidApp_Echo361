@@ -15,6 +15,14 @@ public class Forum {
 
     public void setCourseName(String courseName){this.courseName = courseName;}
 
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setPosts(ArrayList<ForumPost> posts) {
+        this.posts = posts;
+    }
+
     public ArrayList<ForumPost> getPosts(){
         return posts;
     }
