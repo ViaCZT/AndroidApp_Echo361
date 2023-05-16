@@ -1,5 +1,7 @@
 package com.example.echo361.Factory;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public class Student extends User{
@@ -11,6 +13,7 @@ public class Student extends User{
         super(userName, passWord, courses);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Student{" + super.toString()+ '}';

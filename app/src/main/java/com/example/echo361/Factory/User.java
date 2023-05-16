@@ -1,13 +1,24 @@
 package com.example.echo361.Factory;
 
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 
 public abstract class User {
-
     private  String userName;
     private String passWord;
     private ArrayList<String> courses;
+
+    public User() {
+    }
+
+    public User(String userName, String passWord, ArrayList<String> courses){
+        this.userName = userName;
+        this.passWord = passWord;
+        this.courses = courses;
+    }
+
     public  String getUserName() {
         return userName;
     }
@@ -32,23 +43,12 @@ public abstract class User {
         this.courses = courses;
     }
 
-    public User() {
-    }
-
+    @NonNull
     @Override
     public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
+        return "userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
-                ", courses=" + courses +
-                '}';
+                ", courses=" + courses;
     }
-
-    public User(String userName, String passWord, ArrayList<String> courses){
-        this.userName = userName;
-        this.passWord = passWord;
-        this.courses = courses;
-    }
-
 
 }
