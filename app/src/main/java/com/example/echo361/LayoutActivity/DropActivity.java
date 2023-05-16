@@ -1,9 +1,12 @@
 package com.example.echo361.LayoutActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContentInfo;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,8 +14,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
@@ -26,6 +27,8 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 public class DropActivity extends AppCompatActivity {
 
@@ -39,20 +42,17 @@ public class DropActivity extends AppCompatActivity {
 
 
         Intent intent1 = getIntent();
-//        ArrayList<String> courseName = intent1.getStringArrayListExtra("courses_list");
         String logedStudent_id = intent1.getStringExtra("student_id");
-//        ArrayList<String> courseNameCurr = ;
 
         ListView listView_dp = findViewById(R.id.list_currCourse_drop);
         TextView textView = findViewById(R.id.tx_dropedCourse);
-//        ArrayAdapter<String> arrayAdapter_dp = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, courseName);
-//        Log.d("listview", "" + this);
-//        listView_dp.setAdapter(arrayAdapter_dp);
+
+
+
 
         firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
             @Override
             public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
-//                                    Log.d("asdfasdfaaaaa",students.get(0).getClass().toString());
 
                 ArrayList<String> currentCourse = new ArrayList<>();
 
@@ -60,12 +60,8 @@ public class DropActivity extends AppCompatActivity {
                 ) {
 
                     Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
-                    for (String course: student.getCourses()) {
-                        if (student.getPassWord().equals(logedStudent_id)) {
-                            currentCourse = student.getCourses();
-                            break;
-                        }
-
+                    if (student.getPassWord().equals(logedStudent_id)) {
+                        currentCourse = student.getCourses();
                     }
                 }
 
@@ -113,20 +109,9 @@ public class DropActivity extends AppCompatActivity {
                             ArrayList<Course> courselist = new ArrayList<>();
                             courselist = courseAVLtree.inOrderBSTqualify(courselist,null,null,null,null, String.valueOf(courseID));
                             Course newCourse = courselist.get(0);
-                            Log.d("course","courses"+ courselist );
 
-                            ArrayList<String> newStudentId = newCourse.getStudents();
-                            Log.d("student ID","logedStudent_id: "+ logedStudent_id );
-                            Log.d("student ID","StudentsId: "+ newStudentId.size() );
+                            ArrayList newStudentId = newCourse.getStudents();
                             newStudentId.remove(logedStudent_id);
-                            Log.d("student ID","newStudentsId: "+ newStudentId.size() );
-                            Log.d("student ID","course ID: "+ courseID );
-                            Log.d("student ID","course: "+ newCourse.getStudents().size() );
-//                            newCourse.setStudents(newStudentId);
-                            Log.d("student ID","newcourse ID: "+ courseAVLtree.inOrderBSTqualify(courselist,null,null,null,null, String.valueOf(courseID)).get(0) );
-                            Log.d("student ID","newcourse ID: "+ newCourse.equals(courseAVLtree.inOrderBSTqualify(courselist,null,null,null,null, String.valueOf(courseID)).get(0)) );
-                            Log.d("StoreDate", "storedata to : " + selectCourse.substring(0,4)+"Tree");
-                            Log.d("StoreDate", "storedata: " + gson.toJson(courseAVLtree));
 
                             FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
 

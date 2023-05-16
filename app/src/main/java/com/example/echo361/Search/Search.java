@@ -17,21 +17,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A class stores some methods for searching courses and students.
+ */
 public class Search {
 
     private static final String[] allColleges = {"BIOL", "BUSN", "CBEA", "CHEM", "COMP", "ENGN",
             "HIST", "LAWS", "MATH", "MGMT", "PHYS"};
 
+    /**
+     * Check that whether the parameter is a letter, regardless of case.
+     * @param c A char waiting to be distinguished whether it is a letter
+     * @return true is the char is a letter
+     */
     public static boolean isWord(char c){
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
+    /**
+     *Get the first four letters and first four digits of the parameter, return as college code and course code respectively,
+     * if the letters or digits are less than four, only the corresponding number of letters and digits will be return.
+     * @param searchInput a String from the EditView
+     * @return a String array,  college code and course code respectively, both not more than 4 letters or digits
+     */
     public static String[] inputToCourse(String searchInput){
         StringBuilder courseCode = new StringBuilder();
         StringBuilder collegeCode = new StringBuilder();
         int numOfCourseCode = 0;
         int numOfCollegeCode = 0;
-
         for (int i = 0; i < searchInput.length(); i++){
             if (numOfCourseCode < 4 && Character.isDigit(searchInput.charAt(i))){
                 numOfCourseCode++;
@@ -44,48 +57,35 @@ public class Search {
         }
         String[] result = new String[]{String.valueOf(collegeCode), String.valueOf(courseCode)};
         return result;
-
     }
 
-    public static String getCourseCode(String inputPersed){
-        String courseCode = "";
-        int courseCodeLen = 0;
-        for (int i = 0; i < inputPersed.length(); i++) {
-            if (Character.isDigit(inputPersed.charAt(i)) && courseCodeLen < 4) {
-                courseCode = courseCode + inputPersed.charAt(i);
-                courseCodeLen++;
-            }
-        }
 
-        return courseCode;
-    }
 
-    public static String getCollegeCode(String inputPersed){
-        String collegeCode = "";
-        int collegeCodeLen = 0;
-        for (int i = 0; i < inputPersed.length(); i++) {
-            if (isWord(inputPersed.charAt(i)) && collegeCodeLen < 4) {
-                collegeCode = collegeCode + inputPersed.charAt(i);
-                collegeCodeLen++;
-            }
-        }
-
-        return collegeCode;
-    }
-
+    /**
+     * After using inputToCourse, determine if the collegeCode in it belongs to any known college.
+     * The patameter can be part of a known college code and does not need to be identical, and regardless of case.
+     * @param collegeCode a string from inputToCourse[0]
+     * @return a boolean, return true if the parameter is a part of any of the known college codes
+     */
     public static boolean isInCollege(String collegeCode){
         if (!collegeCode.isEmpty()){
             boolean a;
             for (String i : allColleges){
                 a = i.toLowerCase().contains(collegeCode.toLowerCase());
                 if (a){
-                    return a;
+                    return true;
                 }
             }
         }
         return false;
     }
 
+
+    /**
+     * If isInCollege return true, you can use getCollege to get all known college codes that contain this parameter, regardless of case.
+     * @param collegeCode a String made isInCollege return true
+     * @return an String ArrayList stored each college codes that contains this parameter, return null is the parameter is empty
+     */
     public static ArrayList<String> getCollege(String collegeCode){
         if (!(collegeCode.isEmpty())){
             ArrayList<String> collegeName = new ArrayList<>();
@@ -96,12 +96,23 @@ public class Search {
                     }
                 }
             }
-
             return collegeName;
         }
         return null;
     }
 
+
+    /**
+     * Use courseAVLtree.inOrderBSTqualify to get courses that meet all the restrictions from the parameter courseAVLtree
+     * If onCampus and Online are both true, add all Blended courses to the Arraylist returned from this method
+     * @param courseAVLtree a CourseAVLtree, get courses information from this parameter
+     * @param underG boolean, if ture, add all undergraduate courses to the Arraylist returned from this method
+     * @param postG boolean, if ture, add all graduate courses to the Arraylist returned from this method
+     * @param onCampus boolean, if ture, add all on campus courses to the Arraylist returned from this method
+     * @param Online boolean, if ture, add all online courses to the Arraylist returned from this method
+     * @param courseCode String, indicate the course want to filter, from getCollege
+     * @return
+     */
     public static ArrayList<Course> courseListFilted(CourseAVLtree courseAVLtree, Boolean underG, Boolean postG,
                                                      Boolean onCampus, Boolean Online, String courseCode){
         ArrayList<Course> courselist = new ArrayList<>();
@@ -179,6 +190,11 @@ public class Search {
 
     }
 
+    /**
+     * Get the index of a non-letter char in a string, stored in an ArrayList<Integer>.
+     * @param inputPersed a string, will detect what is the index of a non-letter characters of it
+     * @return an ArrayList<Integer>, return the index of a non-letter char in the parameter
+     */
     public static ArrayList<Integer> indexOfSpace(String inputPersed){
         ArrayList<Integer> indexOfSpce= new ArrayList<Integer>();
         for (int i = 0; i < inputPersed.length(); i++){
@@ -189,6 +205,13 @@ public class Search {
         return indexOfSpce;
     }
 
+    /**
+     * Separates the parameter with non-chars, if there is no interval, returns the parameter as firstName and lastName as empty;
+     * if there is an interval/intervals, the first part part is firstName and the last part is lastName.
+     * If the parameter is empty, return both firstName and lastName are empty.
+     * @param inputPersed a String, will detect what is firstName and lastName
+     * @return a String array only contain two elements, the first element is firstName, the second element is lastName.
+     */
     public static String[] getName(String inputPersed){
 
         String firstName = "";
@@ -199,9 +222,9 @@ public class Search {
             firstName = inputPersed;
         }else if (space.size() == 1){
             firstName = inputPersed.substring(0, (Integer) space.get(0));
-            lastName = inputPersed.substring((Integer) space.get(0));
-        }else{
-            firstName = inputPersed.substring(0,7);
+            lastName = inputPersed.substring((Integer) space.get(0)+1);
+        } else{
+            firstName = inputPersed.substring(0, (Integer) space.get(0));
             lastName = inputPersed.substring((Integer) space.get(space.size()-1) +1);
         }
 
@@ -210,64 +233,4 @@ public class Search {
         return result;
 
     }
-
-    public static ArrayList<String> partialNameSearch(ArrayList<String> students, String[] firstAndLastName){
-
-        ArrayList<String> results = new ArrayList<>();
-        Map<String , String[]>  studentsFLname = new HashMap<>();
-//        ArrayList<String[]> studentsFLname = new ArrayList<>();
-
-        for (String i : students){
-            studentsFLname.put(i,getName(i));
-        }
-
-        for (String i : studentsFLname.keySet()){
-            if (studentsFLname.get(i)[0].contains(firstAndLastName[0]) && studentsFLname.get(i)[1].contains(firstAndLastName[1])){
-                results.add(i);
-            }
-        }
-
-        return results;
-    }
-
-
-
-    public static void readCourseDate(FirebaseDAOImpl firebaseDAOImpl, ArrayList list, ArrayAdapter arrayAdapter, String courseName){
-        firebaseDAOImpl.getData(courseName.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
-
-            @Override
-            public void onDataReceived(String data) {
-
-                Gson gson = new Gson();
-                CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-                ArrayList<Course> courselist = new ArrayList<>();
-                courselist = courseAVLtree.inOrderBSTqualify(courselist, null,null,null,null, courseName.substring(4));
-
-                for (Course i : courselist){
-                    list.add(i);
-                }
-
-                System.out.println("N" + list);
-
-                arrayAdapter.notifyDataSetChanged();
-
-            }
-            @Override
-            public void onError(DatabaseError error) {
-                // 在这里处理错误
-            }
-        });
-    }
-
-
-
-    //    public String getCourseCode(Course course){
-    //
-    //
-    //
-    //        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-    //        return "None";
-    //    }
-
-
 }
