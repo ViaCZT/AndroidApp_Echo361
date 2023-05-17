@@ -49,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
 
         //set chat title to TextView
         TextView chatTitleTextView = findViewById(R.id.tx_chat_title);
-        chatTitleTextView.setText("Hi, "+currentUserId+" ! \n You are chatting to "+receiverUserId);
+        chatTitleTextView.setText("Hi, "+currentUserId+" ! \n You are chatting with "+receiverUserId);
 
 
         msgRecyclerView = findViewById(R.id.msg_recycler_view);

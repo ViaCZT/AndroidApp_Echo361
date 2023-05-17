@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.echo361.Database.FirebaseDAOImpl;
@@ -36,6 +37,11 @@ public class ForumTotalActivity extends AppCompatActivity {
         String course_name = intent1.getStringExtra("courseName");
         Boolean isTeacher = intent1.getBooleanExtra("is_teacher", false);
         Log.d("111", course_name.substring(0,4));
+
+        // set course name to slogan TextView
+        TextView courseNameTextView = findViewById(R.id.tx_forumSlogan);
+        String forumSloganMessage = getString(R.string.the_forum_is_supposed_to_be_collaborative_and_supportive);
+        courseNameTextView.setText(course_name+"\n"+ forumSloganMessage);
 
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 

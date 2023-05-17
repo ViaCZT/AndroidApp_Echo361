@@ -33,7 +33,7 @@ public class ForumDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String course_name = intent.getStringExtra("courseName");
         int postIndex = intent.getIntExtra("postIndex", 0);
-        title.setText(intent.getStringExtra("postTitle"));
+        title.setText(course_name + "\n" + intent.getStringExtra("postTitle"));
         content.setText(intent.getStringExtra("postContent"));
 
         EditText editText = findViewById(R.id.ed_postIdea);
