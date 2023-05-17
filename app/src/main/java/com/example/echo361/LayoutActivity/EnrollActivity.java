@@ -88,23 +88,24 @@ public class EnrollActivity extends AppCompatActivity {
                     String collegeCode = courseinfo[0];
                     String courseCode = courseinfo[1];
 
-                    ArrayList<String> allCollegeCode = getCollege(String.valueOf(collegeCode));
-                    ArrayList<String> list = new ArrayList<>();
+                    ArrayList<String> allCollegeCode = new ArrayList<>();
 
+                    System.out.println(collegeCode);
+                    if (!(collegeCode.equals(""))){
+                        allCollegeCode = getCollege(String.valueOf(collegeCode));
+                    }else{
+                        for (Course.CODE i : Course.CODE.values()) {
+                            allCollegeCode.add(String.valueOf(i));
+                        }
+                    }
+
+                    ArrayList<String> list = new ArrayList<>();
 
                     for (String i : allCollegeCode){
                         firebaseDAOImpl.getData(i+"Tree", null, new FirebaseDataCallback<String>() {
 
                             @Override
                             public void onDataReceived(String data) {
-                                //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
-//                                if ((underG_cb.isChecked() && postG_cb.isChecked()) || (onC_cb.isChecked() && online_cb.isChecked())){
-//                                    Context context = getApplicationContext();
-//                                    CharSequence text = "They can't choose at same time";
-//                                    int duration = Toast.LENGTH_SHORT;
-//                                    Toast toast = Toast.makeText(context, text, duration);
-//                                    toast.show();
-//                                }
                                 Gson gson = new Gson();
                                 CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
                                 ArrayList<Course> courselist;
