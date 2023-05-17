@@ -153,7 +153,7 @@ public class SearchChatTarget extends AppCompatActivity {
                                             }
                                         }
 
-                                        if (finalInputPersed.equals("comp2100@anu.au")){
+                                        if (finalInputPersed.toLowerCase().contains("comp2100@anu.au")){
                                             ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
                                             studentsList.setAdapter(arrayAdapter);
                                         }else{
