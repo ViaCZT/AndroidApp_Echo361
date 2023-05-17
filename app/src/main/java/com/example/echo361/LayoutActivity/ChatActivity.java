@@ -23,6 +23,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @Author Zihan Ai, u7528678
+ * The ChatActivity class represents the chat page where users can send and receive messages.
+ * This activity handles sending messages, updating the chat view, and listening for new messages.
+ */
 public class ChatActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -35,8 +40,8 @@ public class ChatActivity extends AppCompatActivity {
 
     private DatabaseReference chatReference;
 
-    private String currentUserId; // 将这里替换为登录用户的实际 ID
-    private String receiverUserId; // 将这里替换为接收者用户的实际 ID
+    private String currentUserId; // Replace with the actual ID of the logged-in user
+    private String receiverUserId; // Replace with the actual ID of the receiver user
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -44,6 +49,7 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        // Retrieve intent data
         Intent intent = getIntent();
         currentUserId = intent.getStringExtra("currentUserId");
         receiverUserId = intent.getStringExtra("receiverUserId");
@@ -53,7 +59,7 @@ public class ChatActivity extends AppCompatActivity {
         TextView chatTitleTextView = findViewById(R.id.tx_chat_title);
         chatTitleTextView.setText("Hi, "+currentUserId+" ! \n You are chatting with "+receiverUserId);
 
-
+        // Initialize RecyclerView, EditText, Button, and other UI components
         msgRecyclerView = findViewById(R.id.msg_recycler_view);
         inputText = findViewById(R.id.input_text);
         send = findViewById(R.id.send);
@@ -62,8 +68,10 @@ public class ChatActivity extends AppCompatActivity {
         msgRecyclerView.setLayoutManager(layoutManager);
         msgRecyclerView.setAdapter(adapter);
 
+        // Set up the Firebase database reference
         chatReference = FirebaseDatabase.getInstance().getReference("chats");
 
+        // Add a ChildEventListener to listen for new messages
         ChildEventListener childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
@@ -100,6 +108,7 @@ public class ChatActivity extends AppCompatActivity {
 
         chatReference.addChildEventListener(childEventListener);
 
+        // Set the OnClickListener for the send button
         send.setOnClickListener(v -> {
             String content = inputText.getText().toString();
             if (!content.equals("")) {
@@ -108,9 +117,9 @@ public class ChatActivity extends AppCompatActivity {
                 DatabaseReference chatRef1 = chatReference.child(chatId1).push();
                 DatabaseReference chatRef2 = chatReference.child(chatId2).push();
 
-                // 一条标记为发送
+                // sent
                 chatRef1.setValue(new Msg(content, Msg.TYPE_SEND, currentUserId, receiverUserId));
-                //标记为接收到
+                //received
                 chatRef2.setValue(new Msg(content, Msg.TYPE_RECEIVED, receiverUserId, currentUserId));
 
                 if(msgList.size()!=0){

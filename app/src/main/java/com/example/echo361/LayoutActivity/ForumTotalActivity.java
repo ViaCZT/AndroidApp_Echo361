@@ -26,7 +26,11 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-
+/**
+ * @Author  Zihan Ai, u7528678
+ * The ForumTotalActivity class represents an overview page of a course forum.
+ * On this page, users can view, post, and (if a teacher) manage posts.
+ */
 public class ForumTotalActivity extends AppCompatActivity {
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,6 +38,7 @@ public class ForumTotalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum_total);
 
+        // Retrieve intent data
         Intent intent1 = getIntent();
         String name0 = intent1.getStringExtra("name");
         String course_name = intent1.getStringExtra("courseName");
@@ -50,6 +55,7 @@ public class ForumTotalActivity extends AppCompatActivity {
         final Forum[] forum = new Forum[1];
         final ArrayList<ForumPost> visiblePosts = new ArrayList<>();
 
+        // Get forum data from Firebase
         firebaseDAOImpl.getData("Forums",course_name, new FirebaseDataCallback<String>() {
 
             @Override
@@ -61,6 +67,8 @@ public class ForumTotalActivity extends AppCompatActivity {
                 else {
                     forum[0] = new Forum(course_name,new ArrayList<>());
                 }
+
+                // Process forum data and populate lists with post titles
                 ArrayList<ForumPost> posts = forum[0].getPosts();
                 ArrayList<String> postTitles = new ArrayList<>();
                 for (ForumPost post : posts) {
@@ -79,6 +87,7 @@ public class ForumTotalActivity extends AppCompatActivity {
                 Button newPost = findViewById(R.id.btn_postForum);
                 Button block = findViewById(R.id.btn_blockForum);
 
+                // Set up list view, adapter, and event listeners
                 ListView listView = findViewById(R.id.list_forumTotal);
                 ArrayAdapter<String> arrayAdapter;
                 if (!isTeacher) {
@@ -93,7 +102,7 @@ public class ForumTotalActivity extends AppCompatActivity {
                 for (ForumPost post : forum[0].getPosts()) {
                     if (isTeacher || post.getVisible()) {
                         postTitlesForAdapter.add(post.getTitle());
-                        visiblePosts.add(post); // 添加可见帖子
+                        visiblePosts.add(post); // Add visible posts
                     }
                 }
                 arrayAdapter = new ArrayAdapter<>(ForumTotalActivity.this, android.R.layout.simple_list_item_1, postTitlesForAdapter);
@@ -101,15 +110,19 @@ public class ForumTotalActivity extends AppCompatActivity {
 
                 AtomicBoolean isBlockingMode = new AtomicBoolean(false);
                 listView.setOnItemClickListener((adapterView, view, i, l) -> {
-                    ForumPost selectedPost = visiblePosts.get(i); // 使用可见帖子列表
+                    ForumPost selectedPost = visiblePosts.get(i); // Use the list of visible posts
                     if (isBlockingMode.get()) {
-                        // 更改论坛帖子的可见性并更新列表
+                        // Change visibility and update the list
                         ForumPost selectedPostBlock = forum[0].getPosts().get(i);
                         selectedPost.setVisible(!selectedPostBlock.getVisible());
                         arrayAdapter.notifyDataSetChanged();
-                        ToastUtil.showMsg(ForumTotalActivity.this, "Visibility toggled for post " + selectedPostBlock.getTitle());
+                        if(selectedPost.getVisible()==true) {
+                            ToastUtil.showMsg(ForumTotalActivity.this, "Visibility for post " + selectedPostBlock.getTitle()+" true");
+                        }
+                        else
+                            ToastUtil.showMsg(ForumTotalActivity.this, "Visibility for post " + selectedPostBlock.getTitle()+" false");
 
-                        // 更新 Firebase 数据库中的论坛帖子
+                        // update posts in Firebase
                         String forumId = course_name;
                         Gson gson1 = new Gson();
                         String forumJson = gson1.toJson(forum[0]);
@@ -121,12 +134,13 @@ public class ForumTotalActivity extends AppCompatActivity {
                         intent.putExtra("postContent", selectedPost.getContent());
                         intent.putExtra("floors", selectedPost.getFloors());
                         intent.putExtra("courseName", course_name);
-                        intent.putExtra("postIndex", forum[0].getPosts().indexOf(selectedPost)); // 使用原始帖子列表中的索引
+                        intent.putExtra("postIndex", forum[0].getPosts().indexOf(selectedPost));
                         ForumTotalActivity.this.startActivity(intent);
                     }
 
                 });
 
+                // Handle new post button click
                 newPost.setOnClickListener(view -> {
                     String title0 = title.getText().toString();
                     String content0 = content.getText().toString();
@@ -139,8 +153,9 @@ public class ForumTotalActivity extends AppCompatActivity {
                         postTitlesForAdapter.add(forumPost.getTitle());
                         arrayAdapter.notifyDataSetChanged();
                         forum[0].getPosts().add(forumPost);
-                        // 将论坛存储在独立的分支中
-                        String forumId = course_name; // 为每个论坛分配一个唯一ID，例如课程名称
+
+                        // Save forum
+                        String forumId = course_name; // Distribute a unique name, like course name
                         String forumJson = gson.toJson(forum[0]);
                         firebaseDAOImpl.storeData("Forums", forumId, forumJson);
                     }
@@ -148,8 +163,9 @@ public class ForumTotalActivity extends AppCompatActivity {
                         ToastUtil.showMsg(ForumTotalActivity.this, "Title or content can't be empty!");
                 });
 
+                // Handle block button click (for teachers)
                 block.setOnClickListener(view -> {
-                    // 切换屏蔽模式
+                    // Switch block mode
                     if (!isBlockingMode.get()) {
                         isBlockingMode.set(true);
                         ToastUtil.showMsg(ForumTotalActivity.this, "Blocking mode enabled");
@@ -165,7 +181,7 @@ public class ForumTotalActivity extends AppCompatActivity {
 
             @Override
             public void onError(DatabaseError error) {
-                // 在这里处理错误
+                // deal with mistake
             }
         });
     }

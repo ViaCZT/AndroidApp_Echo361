@@ -165,7 +165,6 @@ public class SearchChatTarget extends AppCompatActivity {
                                         }
 
 
-
                                         //转跳code需要在这里写
                                         studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
 //                                        Intent intent = new Intent(SearchChatTarget.this, .class);
