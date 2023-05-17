@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -40,7 +41,24 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
 
+
+
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
+//        try {
+//            firebaseDAOImpl.initialCoursesData(getApplicationContext());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        try {
+//            firebaseDAOImpl.initialTeacherData(getApplicationContext());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//        try {
+//            firebaseDAOImpl.initialStudentData(getApplicationContext());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
 //        ArrayList<String> courseA = new ArrayList<>();

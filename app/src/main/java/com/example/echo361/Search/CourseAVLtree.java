@@ -83,6 +83,7 @@ public class CourseAVLtree {
         return newTree;
     }
 
+
     public CourseAVLtree findSuccessor(CourseAVLtree node){
         if ((!(node.rightNode instanceof  EmptyCourseAVLtree ))|| node.rightNode.courseID != null){
             return node.rightNode.findMin();
@@ -194,8 +195,8 @@ public class CourseAVLtree {
     }
     public int getHeight() {
         // Check whether leftNode or rightNode are EmptyTree
-        int leftNodeHeight = (leftNode instanceof EmptyCourseAVLtree|| leftNode.courseID == null) ? 0 : 1 + leftNode.getHeight();
-        int rightNodeHeight = (rightNode instanceof EmptyCourseAVLtree || rightNode.courseID == null) ? 0 : 1 + rightNode.getHeight();
+        int leftNodeHeight = (leftNode == null||leftNode.courseID == null|| leftNode instanceof EmptyCourseAVLtree) ? 0 : 1 + leftNode.getHeight();
+        int rightNodeHeight = ( rightNode == null||rightNode.courseID == null||rightNode instanceof EmptyCourseAVLtree ) ? 0 : 1 + rightNode.getHeight();
         return Math.max(leftNodeHeight, rightNodeHeight);
     }
 

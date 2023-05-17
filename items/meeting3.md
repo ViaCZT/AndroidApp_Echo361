@@ -29,7 +29,7 @@ Fifth Procedure: Enhance chat and forum functionality.
 
 ## Meeting Minutes
 - Optimization goals: <br> UI-Layout, Data-Storing, Strategy of Search, Strategy of chat and forum functionality
- 
+
 
 
 ## TODO Items

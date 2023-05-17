@@ -52,7 +52,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
             public void onClick(View v) {
                             String courseCode = String.valueOf(textView.getText());
 
-                            int courseID = Integer.parseInt(courseCode.substring(4));
+                            int courseID = Integer.parseInt(courseCode.substring(4,8));
                             firebaseDAOImpl.getData(courseCode.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
 
                                 @Override
@@ -60,6 +60,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     //在这里处理树 比如可以对树进行修改 再储存到firebase 例子：
                             Gson gson = new Gson();
                             CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+//                            Log.d("dada", courseAVLtree.toString());
                             courseAVLtree = courseAVLtree.delete(courseID);
                             FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                             firebaseDAO.storeData(courseCode.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
@@ -84,15 +85,15 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                         boolean has = false;
                                         Log.d("bbbcccc","courses: " + student.toString());
                                         for (String course: student.getCourses()) {
-                                            if (course.equals(courseCode)){
-                                                Log.d("bbbcccc","equal");
+                                            if (course.equals(courseCode.substring(0,8))){
+//                                                Log.d("bbbcccc","equal");
                                                 has = true;
                                             }
                                         }
                                         if (has){
-                                            student.getCourses().remove(courseCode);
+                                            student.getCourses().remove(courseCode.substring(0,8));
                                         }
-                                        Log.d("bbbcccc",student.getCourses().toString());
+//                                        Log.d("bbbcccc",student.getCourses().toString());
                                         storeStudents.add(student);
                                     }
                                     FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
@@ -115,21 +116,22 @@ public class AdminDeletionActivity extends AppCompatActivity {
 
                                         Teacher teacher = new Teacher((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                                         boolean has = false;
-                                        Log.d("bbbcccc","courses: " + teacher.toString());
+                                        Teacher deleteTeacher = new Teacher();
+//                                        Log.d("bbbcccc","courses: " + teacher.toString());
                                         for (String course: teacher.getCourses()) {
-                                            if (course.equals(courseCode)){
-                                                Log.d("bbbcccc","equal");
+                                            if (course.equals(courseCode.substring(0,8))){
+//                                                Log.d("bbbcccc","equal");
                                                 has = true;
                                             }
                                         }
-                                        if (has){
-                                            teacher.getCourses().remove(courseCode);
+                                        if (!has){
+                                            storeTeachers.add(teacher);
                                         }
-                                        Log.d("bbbcccc",teacher.getCourses().toString());
-                                        storeTeachers.add(teacher);
+//                                        Log.d("bbbcccc",teacher.getCourses().toString());
+
                                     }
                                     FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
-                                    firebaseDAO.storeData("Students",null,storeTeachers);
+                                    firebaseDAO.storeData("Teachers",null,storeTeachers);
 
                                     //在这里处理老师
                                 }
