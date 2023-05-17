@@ -1,5 +1,6 @@
 package com.example.echo361.LayoutActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,6 +38,7 @@ public class ChatActivity extends AppCompatActivity {
     private String currentUserId; // 将这里替换为登录用户的实际 ID
     private String receiverUserId; // 将这里替换为接收者用户的实际 ID
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -2,6 +2,7 @@ package com.example.echo361.LayoutActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 
 public class ForumTotalActivity extends AppCompatActivity {
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
