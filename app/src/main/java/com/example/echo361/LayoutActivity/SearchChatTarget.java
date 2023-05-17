@@ -19,6 +19,7 @@ import com.example.echo361.Course;
 import com.example.echo361.Database.FirebaseDAOImpl;
 import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
+import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
 import com.example.echo361.Search.CourseAVLtree;
 import com.example.echo361.Search.NExp;
@@ -84,6 +85,30 @@ public class SearchChatTarget extends AppCompatActivity {
                         Log.d("Search chat courses2", "studentsId from chat" + studentsId);
 
                         ArrayList<String> storeStudents = new ArrayList<>();
+                        ArrayList<String> storeTeacher = new ArrayList<>();
+
+                        firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
+
+                            @Override
+                            public void onDataReceived(ArrayList<HashMap<String, Object>> teachers) {
+
+                                for (HashMap<String, Object> hashMap1 : teachers) {
+
+                                    Teacher teacher = new Teacher((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
+                                    if (teacher.getCourses().get(0).equals(courseName)) {
+                                        storeTeacher.add(teacher.getUserName());
+                                    }
+
+                                }
+                                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTeacher);
+                                studentsList.setAdapter(arrayAdapter);
+                            }
+
+                            @Override
+                            public void onError(DatabaseError error) {
+                                // 在这里处理错误
+                            }
+                        });
 
                         for (String i : studentsId) {
                             ArrayList<String> finalStudentsId = studentsId;
