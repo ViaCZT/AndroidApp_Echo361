@@ -158,7 +158,9 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 *[What data structures did your team utilise? Where and why?]*
 
-We used three desgin patterns in our project:
+**Design Patterns**
+
+We used 3 desgin patterns in our project:
 
 **1. Factory**
 
