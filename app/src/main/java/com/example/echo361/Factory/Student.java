@@ -1,6 +1,6 @@
 /**
  * A student can take an unlimited number of classes.
- * @author Zetian Chen
+ * @author Zetian Chen, u7564812
  */
 package com.example.echo361.Factory;
 

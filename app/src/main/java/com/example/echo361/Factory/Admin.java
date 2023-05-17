@@ -1,6 +1,6 @@
 /**
  * Admin only delete courses, they do not teach nor enroll any course.
- * @author Zetian Chen
+ * @author Zetian Chen, u7564812
  */
 package com.example.echo361.Factory;
 
