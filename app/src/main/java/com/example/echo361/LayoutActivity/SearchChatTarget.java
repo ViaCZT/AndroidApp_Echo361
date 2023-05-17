@@ -59,11 +59,17 @@ public class SearchChatTarget extends AppCompatActivity {
         View.OnClickListener myListener2 = v -> {
 
             if(!(editText_name.getText().toString().isEmpty())) {
-                String searchNameInput = editText_name.getText().toString();
-                NTokenizer tok = new NameTokenizer(searchNameInput);
-                NExp parsedExp = NParser.parseExp(tok);
-                String inputPersed = parsedExp.show();
+                String inputPersed = "";
+                if(editText_name.getText().toString().equals("comp2100@anu.au")){
+                    inputPersed  = "comp2100@anu.au";
+                }else{
+                    String searchNameInput = editText_name.getText().toString();
+                    NTokenizer tok = new NameTokenizer(searchNameInput);
+                    NExp parsedExp = NParser.parseExp(tok);
+                    inputPersed = parsedExp.show();
+                }
 
+                String finalInputPersed = inputPersed;
                 firebaseDAOImpl.getData(courseName.substring(0, 4) + "Tree", null, new FirebaseDataCallback<String>() {
 
                     @Override
@@ -85,67 +91,28 @@ public class SearchChatTarget extends AppCompatActivity {
                         Log.d("Search chat courses2", "studentsId from chat" + studentsId);
 
                         ArrayList<String> storeStudents = new ArrayList<>();
-                        ArrayList<String> storeTeacher = new ArrayList<>();
 
-                        firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
+                        if (finalInputPersed.equals("teacher")){
+                            ArrayList<String> storeTeacher = new ArrayList<>();
 
-                            @Override
-                            public void onDataReceived(ArrayList<HashMap<String, Object>> teachers) {
+                            firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
 
-                                for (HashMap<String, Object> hashMap1 : teachers) {
-
-                                    Teacher teacher = new Teacher((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
-                                    if (teacher.getCourses().get(0).equals(courseName)) {
-                                        storeTeacher.add(teacher.getUserName());
-                                    }
-
-                                }
-                                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTeacher);
-                                studentsList.setAdapter(arrayAdapter);
-                            }
-
-                            @Override
-                            public void onError(DatabaseError error) {
-                                // 在这里处理错误
-                            }
-                        });
-
-                        for (String i : studentsId) {
-                            ArrayList<String> finalStudentsId = studentsId;
-                            firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                 @Override
-                                public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
+                                public void onDataReceived(ArrayList<HashMap<String, Object>> teachers) {
 
+                                    for (HashMap<String, Object> hashMap1 : teachers) {
 
-                                    for (HashMap<String, Object> hashMap1 : students) {
-
-                                        Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
-                                        if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
-                                            if (getName(student.getUserName())[0].toLowerCase().contains(getName(inputPersed)[0].toLowerCase()) &&
-                                                    getName(student.getUserName())[1].toLowerCase().contains(getName(inputPersed)[1].toLowerCase())) {
-                                                storeStudents.add(student.getUserName());
-                                            }
+                                        Teacher teacher = new Teacher((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
+                                        if (teacher.getCourses().get(0).equals(courseName)) {
+                                            storeTeacher.add(teacher.getUserName());
                                         }
+
                                     }
+                                    Log.d("teacher", storeTeacher.toString());
 
 
-                                    ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
+                                    ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTeacher);
                                     studentsList.setAdapter(arrayAdapter);
-
-                                    //转跳code需要在这里写
-                                    studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
-//                                        Intent intent = new Intent(SearchChatTarget.this, .class);
-//
-                                        Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
-                                        intent.putExtra("currentUserId",uid);
-                                        Log.d("receiveid",storeStudents.get(i));
-                                        Log.d("2", finalStudentsId.get(i));
-                                        intent.putExtra("receiverUserId",finalStudentsId.get(i));
-                                        SearchChatTarget.this.startActivity(intent);
-
-                                    });
-
-
                                 }
 
                                 @Override
@@ -153,7 +120,68 @@ public class SearchChatTarget extends AppCompatActivity {
                                     // 在这里处理错误
                                 }
                             });
+                        }else{
+                            for (String i : studentsId) {
+                                ArrayList<String> finalStudentsId = studentsId;
+                                firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
+                                    @Override
+                                    public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
+
+
+                                        for (HashMap<String, Object> hashMap1 : students) {
+
+                                            Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
+                                            if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
+//                                            Log.d("final input persed", finalInputPersed);
+                                                if (finalInputPersed.equals("comp2100@anu.au")){
+                                                    storeStudents.add("comp2100@anu.au");
+                                                }else{
+                                                    if (getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
+                                                            getName(student.getUserName())[1].toLowerCase().contains(getName(finalInputPersed)[1].toLowerCase())) {
+                                                        storeStudents.add(student.getUserName());
+                                                    }
+                                                }
+
+                                            }
+                                        }
+
+                                        ArrayList<String> testStudent = new ArrayList<>();
+                                        testStudent.add("comp2100@anu.au");
+
+                                        if (finalInputPersed.equals("comp2100@anu.au")){
+                                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, testStudent);
+                                            studentsList.setAdapter(arrayAdapter);
+                                        }else{
+                                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
+                                            studentsList.setAdapter(arrayAdapter);
+                                        }
+
+
+
+                                        //转跳code需要在这里写
+                                        studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
+//                                        Intent intent = new Intent(SearchChatTarget.this, .class);
+//
+                                            Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
+                                            intent.putExtra("currentUserId",uid);
+                                            Log.d("receiveid",storeStudents.get(i));
+                                            Log.d("2", finalStudentsId.get(i));
+                                            intent.putExtra("receiverUserId",finalStudentsId.get(i));
+                                            SearchChatTarget.this.startActivity(intent);
+
+                                        });
+
+
+                                    }
+
+                                    @Override
+                                    public void onError(DatabaseError error) {
+                                        // 在这里处理错误
+                                    }
+                                });
+                            }
                         }
+
 
 
                     }
