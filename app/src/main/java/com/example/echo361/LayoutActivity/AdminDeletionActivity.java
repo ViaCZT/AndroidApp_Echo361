@@ -118,15 +118,18 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                         boolean has = false;
                                         Teacher deleteTeacher = new Teacher();
 //                                        Log.d("bbbcccc","courses: " + teacher.toString());
-                                        for (String course: teacher.getCourses()) {
-                                            if (course.equals(courseCode.substring(0,8))){
+                                        if (teacher.getCourses()!=null){
+                                            for (String course: teacher.getCourses()) {
+                                                if (course.equals(courseCode.substring(0,8))){
 //                                                Log.d("bbbcccc","equal");
-                                                has = true;
+                                                    has = true;
+                                                }
+                                            }
+                                            if (!has){
+                                                storeTeachers.add(teacher);
                                             }
                                         }
-                                        if (!has){
-                                            storeTeachers.add(teacher);
-                                        }
+
 //                                        Log.d("bbbcccc",teacher.getCourses().toString());
 
                                     }
@@ -180,7 +183,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                 CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
                                 ArrayList<Course> courselist = new ArrayList<>();
                                 courselist = courseListFilted(courseAVLtree, false, false, false, false, courseCode);
-
+                                Log.d("aass",courselist.toString());
 //                                courselist = courseAVLtree.inOrderBSTqualify(courselist, Course.CAREER.Undergraduate,null,null,null,courseCode);
                                 for (Course c :courselist) {
                                     list.add(c.getTitle() +"-"+ c.getDelivery()+ "-"+c.getCareer());
