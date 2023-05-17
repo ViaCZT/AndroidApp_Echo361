@@ -17,7 +17,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:hint="@string/COURSECODE"
+        android:hint="CourseCode"
         android:textColor="@color/white"
         android:textColorHint="#FFFFFFFF"
         android:textSize="18sp"
@@ -35,14 +35,13 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/drop_course"
+        android:text="Drop"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/list_currCourse_drop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tx_dropedCourse"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView

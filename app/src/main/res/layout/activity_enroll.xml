@@ -111,17 +111,14 @@
         android:id="@+id/btn_enrollCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/enroll_course"
+        android:layout_marginEnd="20dp"
+        android:text="Enroll"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="11sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/list_courseList"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
-        app:layout_constraintStart_toEndOf="@id/tx_enrolledCourse"
         app:layout_constraintTop_toBottomOf="@+id/check_online" />
 
     <ListView
@@ -144,7 +141,7 @@
         android:hint="CourseCode"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="18sp"
+        android:textSize="15sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@id/list_courseList"
         app:layout_constraintEnd_toStartOf="@id/btn_enrollCourse"
