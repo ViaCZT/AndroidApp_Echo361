@@ -123,6 +123,7 @@ public class CourseAVLtree {
     }
 
     /**
+     * @Author Yuan Li u7550484
      * Deletes a course from the AVL tree given a course ID.
      * @param courseID the ID of the course to delete
      * @return the updated AVL tree after deletion
@@ -185,6 +186,7 @@ public class CourseAVLtree {
 
 
     /**
+     * Author Yuan Li u7550484
      * Finds the course that has minimum courseID in the AVL tree.
      * @return the node with the minimum course ID
      */
@@ -197,6 +199,7 @@ public class CourseAVLtree {
     }
 
     /**
+     * Author Yuan Li u7550484
      * Performs an in-order traversal of the AVL tree and adds qualifying courses to the given list.
      * @param courses the list of qualifying courses
      * @param career the desired career (or null for any career)
@@ -225,6 +228,7 @@ public class CourseAVLtree {
     }
 
     /**
+     * Author Yuan Li u7550484
      * Calculates the balance factor of the current node.
      * @return the balance factor of the node
      */
@@ -233,6 +237,7 @@ public class CourseAVLtree {
     }
 
     /**
+     * Author Yuan Li u7550484
      * Calculates the height of the current node.
      * @return the height of the node
      */
@@ -243,6 +248,7 @@ public class CourseAVLtree {
     }
 
     /**
+     * Author Yuan Li u7550484
      * Performs a left rotation on the current node.
      * @return the new parent node after rotation
      */
@@ -255,6 +261,7 @@ public class CourseAVLtree {
     }
 
     /**
+     * Author Yuan Li u7550484
      * Performs a left rotation on the current node.
      * @return the new parent node after rotation
      */
