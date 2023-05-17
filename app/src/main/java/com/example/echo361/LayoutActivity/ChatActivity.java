@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,10 @@ public class ChatActivity extends AppCompatActivity {
         currentUserId = intent.getStringExtra("currentUserId");
         receiverUserId = intent.getStringExtra("receiverUserId");
         Log.d("Conversation",currentUserId + "_" + receiverUserId);
+
+        //set chat title to TextView
+        TextView chatTitleTextView = findViewById(R.id.tx_chat_title);
+        chatTitleTextView.setText("Hi, "+currentUserId+" ! \n You are chatting to "+receiverUserId);
 
 
         msgRecyclerView = findViewById(R.id.msg_recycler_view);

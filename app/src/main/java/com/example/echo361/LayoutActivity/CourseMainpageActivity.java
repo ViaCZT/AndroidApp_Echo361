@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,10 @@ public class CourseMainpageActivity extends AppCompatActivity {
         String student_id = intent1.getStringExtra("student_id");
         String uid = intent1.getStringExtra("uid");
 
+        // set course name to TextView
+        TextView courseNameTextView = findViewById(R.id.tx_currCourseCode);
+        courseNameTextView.setText(courseName);
+
 //        FirebaseApp.initializeApp(getBaseContext());
 //        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 //
@@ -35,7 +40,6 @@ public class CourseMainpageActivity extends AppCompatActivity {
 //
 //        Log.d("Search chat courses2", "courses from function" + courses);
 
-        //
 
         Button toChat = findViewById(R.id.btn_gotoChat);
         Intent intent2 = getIntent();
