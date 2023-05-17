@@ -80,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
 //        ForumPost post = new ForumPost("","","",null,true);
 //        firebaseDAOImpl.updateForumPost("BIOL0024","0",post);
 
+//        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//        DatabaseReference databaseReference = firebaseDatabase.getReference("chats").child("comp2100_comp6442");
+//        databaseReference.child("-NVdIfJ1fMNj1jwRba0b").child("content").setValue("Can I ask a question?");
+
 
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
