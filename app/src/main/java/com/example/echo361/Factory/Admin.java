@@ -1,3 +1,7 @@
+/**
+ * Admin only delete courses, they do not teach nor enroll any course.
+ * @author Zetian Chen
+ */
 package com.example.echo361.Factory;
 
 import java.util.ArrayList;

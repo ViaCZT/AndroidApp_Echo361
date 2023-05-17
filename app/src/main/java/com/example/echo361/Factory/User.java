@@ -1,13 +1,15 @@
+/**
+ * @author Zetian Chen
+ */
 package com.example.echo361.Factory;
-
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 
 public abstract class User {
-    private  String userName;
-    private String passWord;
+    private  String userName; // "firstName lastName"
+    private String passWord; // uid
     private ArrayList<String> courses;
 
     public User() {

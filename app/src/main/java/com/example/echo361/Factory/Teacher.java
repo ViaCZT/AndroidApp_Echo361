@@ -1,3 +1,7 @@
+/**
+ * Every teacher only teach one course.
+ * @author Zetian Chen
+ */
 package com.example.echo361.Factory;
 
 import androidx.annotation.NonNull;

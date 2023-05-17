@@ -1,3 +1,7 @@
+/**
+ * A student can take an unlimited number of classes.
+ * @author Zetian Chen
+ */
 package com.example.echo361.Factory;
 
 import androidx.annotation.NonNull;
