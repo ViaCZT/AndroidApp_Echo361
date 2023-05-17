@@ -88,7 +88,9 @@ public class SearchChatTarget extends AppCompatActivity {
                         ArrayList<String> studentsId = new ArrayList<String>();
                         studentsId = course.getStudents();
 
+
                         Log.d("Search chat courses2", "studentsId from chat" + studentsId);
+                        Log.d("Search chat courses2 teacher", "teacherId from chat" + courselist.toString());
 
                         ArrayList<String> storeStudents = new ArrayList<>();
                         ArrayList<String> storeStudentsID = new ArrayList<>();
@@ -105,7 +107,7 @@ public class SearchChatTarget extends AppCompatActivity {
                                     for (HashMap<String, Object> hashMap1 : teachers) {
 
                                         Teacher teacher = new Teacher((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
-                                        if (teacher.getCourses().get(0).equals(courseName)) {
+                                        if (teacher.getCourses().get(0).equals(courseName) && !(teacher.getPassWord().equals(uid))) {
                                             storeTeacher.add(teacher.getUserName());
                                             storeTeacherID.add(teacher.getPassWord());
                                         }
@@ -142,25 +144,17 @@ public class SearchChatTarget extends AppCompatActivity {
 
                                             Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
                                             if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
-//                                            Log.d("final input persed", finalInputPersed);
-                                                if (finalInputPersed.equals("comp2100@anu.au")){
-                                                    storeStudents.add("comp2100@anu.au");
-                                                }else{
-                                                    if (getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
-                                                            getName(student.getUserName())[1].toLowerCase().contains(getName(finalInputPersed)[1].toLowerCase())) {
+                                                    if ((getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
+                                                            getName(student.getUserName())[1].toLowerCase().contains(getName(finalInputPersed)[1].toLowerCase()) ) ||
+                                                            student.getUserName().equals(finalInputPersed)) {
                                                         storeStudents.add(student.getUserName());
                                                         storeStudentsID.add(student.getPassWord());
                                                     }
-                                                }
-
                                             }
                                         }
 
-                                        ArrayList<String> testStudent = new ArrayList<>();
-                                        testStudent.add("comp2100@anu.au");
-
                                         if (finalInputPersed.equals("comp2100@anu.au")){
-                                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, testStudent);
+                                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
                                             studentsList.setAdapter(arrayAdapter);
                                         }else{
                                             ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
