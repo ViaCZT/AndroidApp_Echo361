@@ -112,6 +112,7 @@ public class SearchChatTarget extends AppCompatActivity {
 
                                     }
                                     Log.d("teacher", storeTeacher.toString());
+                                    Log.d("teacherID",storeTeacherID.toString());
 
 
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTeacher);
@@ -119,7 +120,6 @@ public class SearchChatTarget extends AppCompatActivity {
                                     studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
                                         Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
                                         intent.putExtra("currentUserId",uid);
-                                        Log.d("2", storeStudentsID.get(i));
                                         intent.putExtra("receiverUserId",storeTeacherID.get(i));
                                         SearchChatTarget.this.startActivity(intent);
                                     });

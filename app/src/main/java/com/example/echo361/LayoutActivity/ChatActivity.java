@@ -26,7 +26,7 @@ import java.util.List;
 public class ChatActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
-    private List<Msg> msgList = new ArrayList<>();
+    private ArrayList<Msg> msgList = new ArrayList<>();
     private RecyclerView msgRecyclerView;
     private EditText inputText;
     private Button send;
@@ -113,10 +113,11 @@ public class ChatActivity extends AppCompatActivity {
                 //标记为接收到
                 chatRef2.setValue(new Msg(content, Msg.TYPE_RECEIVED, receiverUserId, currentUserId));
 
-                msgList.add(new Msg(content, Msg.TYPE_SEND, currentUserId, receiverUserId));
-                adapter.notifyItemInserted(msgList.size() - 1);
-                msgRecyclerView.scrollToPosition(msgList.size() - 1);
-
+                if(msgList.size()!=0){
+                    msgList.add(new Msg(content, Msg.TYPE_SEND, currentUserId, receiverUserId));
+                    adapter.notifyItemInserted(msgList.size() - 1);
+                    msgRecyclerView.scrollToPosition(msgList.size() - 1);
+                }
 
                 inputText.setText("");
             }
