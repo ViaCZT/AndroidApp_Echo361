@@ -1,9 +1,7 @@
 package com.example.echo361.Search;
-
-import android.util.Log;
+import androidx.annotation.NonNull;
 
 import com.example.echo361.Course;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -32,11 +30,6 @@ public class CourseAVLtree {
         this.leftNode = leftNode;
         this.rightNode = rightNode;
         this.course = course;
-    }
-
-    public  Integer min(){return (leftNode instanceof EmptyCourseAVLtree|| leftNode.courseID==null) ? courseID : leftNode.min();}
-    public  Integer max(){
-        return (rightNode instanceof EmptyCourseAVLtree|| rightNode.courseID==null) ? courseID : rightNode.max();
     }
 
     public CourseAVLtree find(Integer courseID){
@@ -101,7 +94,7 @@ public class CourseAVLtree {
 
     public CourseAVLtree delete(Integer courseID){
 
-//        Log.d("asdfasdfa","ssss" + String.valueOf(this.courseID));
+
         CourseAVLtree newtree = new CourseAVLtree(this.courseID,this.leftNode,this.rightNode,this.course);
         if (courseID.compareTo(this.courseID) > 0) {
             newtree =  new CourseAVLtree(this.courseID,leftNode,rightNode.delete(courseID), this.course);
@@ -159,18 +152,16 @@ public class CourseAVLtree {
         }
     }
 
-    public void setParent(){
-        inOrderBST(this);
-    }
-    public void inOrderBST(CourseAVLtree node){
-        if (!(node instanceof EmptyCourseAVLtree)|| node.courseID == null){
-            inOrderBST(node.leftNode);
-            node.leftNode.parent = node;
-            node.rightNode.parent = node;
-            inOrderBST(node.rightNode);
-        }
-    }
-
+    /**
+     *
+     * @param courses
+     * @param career
+     * @param delivery
+     * @param term
+     * @param code
+     * @param searchCourseID
+     * @return
+     */
     public ArrayList<Course> inOrderBSTqualify(ArrayList<Course> courses,Course.CAREER career, Course.DELIVERY delivery,
                                                Course.TERM term, Course.CODE code,String searchCourseID){
         if (!(this instanceof EmptyCourseAVLtree)&&this.courseID!=null){
@@ -216,6 +207,7 @@ public class CourseAVLtree {
         return (CourseAVLtree) newParent; //
     }
 
+    @NonNull
     public String toString() {
         return "{" +
                 "CourseID=" + courseID +
@@ -224,26 +216,10 @@ public class CourseAVLtree {
                 '}' + "\r\n";
     }
 
-    public boolean isInEnum(Enum choice, Enum[] enumLisit){
-        for (int i = 0; i < enumLisit.length; i++){
-            if(choice == enumLisit[i]){
-                return true;
-            }
-        }
-        return false;
-    }
-
 
 
 
     public static class EmptyCourseAVLtree extends CourseAVLtree{
-        public Integer min() {
-            return null;
-        }
-        public Integer max() {
-            return null;
-        }
-
         public CourseAVLtree find(Integer courseID) {
             return null;
         }
@@ -251,6 +227,7 @@ public class CourseAVLtree {
         public int getHeight() {
             return -1;
         }
+        @NonNull
         public String toString() {
             return "{}";
         }
