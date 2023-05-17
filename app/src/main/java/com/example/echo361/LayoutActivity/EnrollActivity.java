@@ -90,7 +90,6 @@ public class EnrollActivity extends AppCompatActivity {
 
                     ArrayList<String> allCollegeCode = new ArrayList<>();
 
-                    System.out.println(collegeCode);
                     if (!(collegeCode.equals(""))){
                         allCollegeCode = getCollege(String.valueOf(collegeCode));
                     }else{

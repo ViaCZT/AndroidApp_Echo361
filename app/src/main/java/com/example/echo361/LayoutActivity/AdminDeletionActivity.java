@@ -162,8 +162,17 @@ public class AdminDeletionActivity extends AppCompatActivity {
                     String collegeCode = courseinfo[0];
                     String courseCode = courseinfo[1];
 
-                    ArrayList<String> allCollegeCode = getCollege(collegeCode);
+//                    ArrayList<String> allCollegeCode = getCollege(collegeCode);
+                    ArrayList<String> allCollegeCode = new ArrayList<>();
                     ArrayList<String> list = new ArrayList<>();
+
+                    if (!(collegeCode.equals(""))){
+                        allCollegeCode = getCollege(String.valueOf(collegeCode));
+                    }else{
+                        for (Course.CODE i : Course.CODE.values()) {
+                            allCollegeCode.add(String.valueOf(i));
+                        }
+                    }
 
 
                     for (String i : allCollegeCode){
