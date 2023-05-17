@@ -129,7 +129,7 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 ## Application UML
 
-![ClassDiagramExample](./images/ClassDiagramExample.png) <br>
+![UML_1](./images/UML_1.jpg) <br>
 *[Replace the above with a class diagram. You can look at how we have linked an image here as an example of how you can do it too.]*
 
 ## Application Design and Decisions
@@ -161,6 +161,13 @@ By following this protocol, our team has handled conflicts in a respectful and c
 **Design Patterns**
 
 *[What design patterns did your team utilise? Where and why?]*
+
+We used three desgin patterns in our project: 
+
+1. Factory 
+
+   
+
 
 **Grammar(s)**
 
@@ -247,10 +254,10 @@ Feature Category: Firebase Integration <br>
 
 ## Team Meetings
 
-*Here is an example (you could start numbering your meetings from 1):*
-
-- *[Team Meeting 1](./meeting1.md)*
-- ...
+- [Team Meeting 1](./meeting1.md)
+- [Team Meeting 2](./meeting2.md)
+- [Team Meeting 3](./meeting3.md)
+- [Team Meeting 4](./meeting4.md)
 
 * Link to the minutes of your meetings as above. There must be at least 4 team meetings. 
 Note that you must commit your minute meetings shortly after your meeting has taken place (e.g., within 24h), otherwise your meeting minute will not be accepted.
