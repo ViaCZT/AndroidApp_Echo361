@@ -33,8 +33,12 @@
     <string name="the_forum_is_supposed_to_be_collaborative_and_supportive">The forum is supposed to be collaborative and supportive.</string>
     <string name="post">Post</string>
     <string name="block">Block</string>
-    <string name="change_this_is_the_title_for_the_forum">(change)This is the title for the forum</string>
-    <string name="change_this_is_what_the_poster_said">(change)This is what the poster said.</string>
+    <string name="this_is_the_title_for_the_forum">This is the title for the forum</string>
+    <string name="this_is_what_the_poster_said">This is what the poster said.</string>
     <string name="share_your_idea">Share your idea.</string>
     <string name="coursecode">CourseCode</string>
+    <string name="selectedCourseCode">CourseCode</string>
+    <string name="delete">Delete</string>
+    <string name="dropCourse">Drop</string>
+    <string name="enrollCourse">Enroll</string>
 </resources>

@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:gravity="center"
-        android:hint="@string/coursecode"
+        android:text="@string/selectedCourseCode"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="40sp"

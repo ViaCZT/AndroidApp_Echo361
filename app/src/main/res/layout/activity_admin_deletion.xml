@@ -53,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
-        android:hint="CourseCode"
+        android:hint="@string/selectedCourseCode"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="15sp"
@@ -71,7 +71,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Delete"
+        android:text="@string/delete"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -91,8 +91,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_delete" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
