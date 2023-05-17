@@ -158,7 +158,7 @@ public class EnrollActivity extends AppCompatActivity {
         buttonEnroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String selectCourse = String.valueOf(textView.getText());
+                String selectCourse = String.valueOf(textView.getText()).substring(0,8);
 
                 if (!(selectCourse.isEmpty())){
 //
