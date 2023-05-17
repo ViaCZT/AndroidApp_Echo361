@@ -36,4 +36,5 @@
     <string name="change_this_is_the_title_for_the_forum">(change)This is the title for the forum</string>
     <string name="change_this_is_what_the_poster_said">(change)This is what the poster said.</string>
     <string name="share_your_idea">Share your idea.</string>
+    <string name="coursecode">CourseCode</string>
 </resources>
