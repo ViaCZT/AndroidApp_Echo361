@@ -91,9 +91,11 @@ public class SearchChatTarget extends AppCompatActivity {
                         Log.d("Search chat courses2", "studentsId from chat" + studentsId);
 
                         ArrayList<String> storeStudents = new ArrayList<>();
+                        ArrayList<String> storeStudentsID = new ArrayList<>();
 
                         if (finalInputPersed.equals("teacher")){
                             ArrayList<String> storeTeacher = new ArrayList<>();
+                            ArrayList<String> storeTeacherID = new ArrayList<>();
 
                             firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
 
@@ -105,6 +107,7 @@ public class SearchChatTarget extends AppCompatActivity {
                                         Teacher teacher = new Teacher((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
                                         if (teacher.getCourses().get(0).equals(courseName)) {
                                             storeTeacher.add(teacher.getUserName());
+                                            storeTeacherID.add(teacher.getPassWord());
                                         }
 
                                     }
@@ -113,6 +116,14 @@ public class SearchChatTarget extends AppCompatActivity {
 
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTeacher);
                                     studentsList.setAdapter(arrayAdapter);
+                                    studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
+                                        Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
+                                        intent.putExtra("currentUserId",uid);
+                                        Log.d("2", storeStudentsID.get(i));
+                                        intent.putExtra("receiverUserId",storeTeacherID.get(i));
+                                        SearchChatTarget.this.startActivity(intent);
+                                    });
+
                                 }
 
                                 @Override
@@ -122,7 +133,6 @@ public class SearchChatTarget extends AppCompatActivity {
                             });
                         }else{
                             for (String i : studentsId) {
-                                ArrayList<String> finalStudentsId = studentsId;
                                 firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                     @Override
                                     public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
@@ -139,6 +149,7 @@ public class SearchChatTarget extends AppCompatActivity {
                                                     if (getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
                                                             getName(student.getUserName())[1].toLowerCase().contains(getName(finalInputPersed)[1].toLowerCase())) {
                                                         storeStudents.add(student.getUserName());
+                                                        storeStudentsID.add(student.getPassWord());
                                                     }
                                                 }
 
@@ -165,8 +176,8 @@ public class SearchChatTarget extends AppCompatActivity {
                                             Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
                                             intent.putExtra("currentUserId",uid);
                                             Log.d("receiveid",storeStudents.get(i));
-                                            Log.d("2", finalStudentsId.get(i));
-                                            intent.putExtra("receiverUserId",finalStudentsId.get(i));
+                                            Log.d("2", storeStudentsID.get(i));
+                                            intent.putExtra("receiverUserId",storeStudentsID.get(i));
                                             SearchChatTarget.this.startActivity(intent);
 
                                         });
