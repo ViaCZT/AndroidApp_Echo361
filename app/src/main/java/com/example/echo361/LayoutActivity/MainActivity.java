@@ -44,21 +44,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-//        try {
-//            firebaseDAOImpl.initialCoursesData(getApplicationContext());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        try {
-//            firebaseDAOImpl.initialTeacherData(getApplicationContext());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        try {
-//            firebaseDAOImpl.initialStudentData(getApplicationContext());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+        try {
+            firebaseDAOImpl.initialCoursesData(getApplicationContext());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            firebaseDAOImpl.initialTeacherData(getApplicationContext());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            firebaseDAOImpl.initialStudentData(getApplicationContext());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 //        Admin admin = new Admin("Ad Admin","u0000000",null);
 //        ArrayList<String> courseA = new ArrayList<>();
