@@ -69,7 +69,10 @@ public class SearchChatTarget extends AppCompatActivity {
                     inputPersed = parsedExp.show();
                 }
 
+
                 String finalInputPersed = inputPersed;
+
+                if (!(finalInputPersed == null)){
                 firebaseDAOImpl.getData(courseName.substring(0, 4) + "Tree", null, new FirebaseDataCallback<String>() {
 
                     @Override
@@ -196,6 +199,13 @@ public class SearchChatTarget extends AppCompatActivity {
                         // 在这里处理错误
                     }
                 });
+                }else{
+                    Context context = getApplicationContext();
+                    CharSequence text = "Your input is invalid.";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
             }else{
                 Context context = getApplicationContext();
                 CharSequence text = "Input can not be empty.";
