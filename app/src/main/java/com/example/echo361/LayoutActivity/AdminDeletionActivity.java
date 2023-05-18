@@ -6,6 +6,7 @@ import static com.example.echo361.Search.Search.inputToCourse;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Course;
@@ -29,6 +32,10 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @Author Yuan Li u7550484
+ * Delete courses
+ */
 public class AdminDeletionActivity extends AppCompatActivity {
 
     @Override
@@ -48,17 +55,21 @@ public class AdminDeletionActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                            //get the course Admin want to delete
                             String courseCode = String.valueOf(textView.getText());
 
                             int courseID = Integer.parseInt(courseCode.substring(4,8));
+                            //get all courses of same code from firebase
                             firebaseDAOImpl.getData(courseCode.substring(0,4)+"Tree", null, new FirebaseDataCallback<String>() {
 
                                 @Override
                                 public void onDataReceived(String data) {
                             Gson gson = new Gson();
                             CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
+                            //delete course
                             courseAVLtree = courseAVLtree.delete(courseID);
                             FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
+                            //store
                             firebaseDAO.storeData(courseCode.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
                                 }
 
@@ -67,6 +78,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     // 在这里处理错误
                                 }
                             });
+                            //get students and delete the target course from theirs course list and store
                             firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                 @Override
                                 public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
@@ -75,6 +87,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                             ) {
                                         Student student = new Student((String) hashMap1.get("userName"),(String)hashMap1.get("passWord"),(ArrayList<String>) hashMap1.get("courses"));
                                         boolean has = false;
+                                        //check if students has the target course and delete it
                                         for (String course: student.getCourses()) {
                                             if (course.equals(courseCode.substring(0,8))){
                                                 has = true;
@@ -85,6 +98,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                         }
                                         storeStudents.add(student);
                                     }
+                                    //store
                                     FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                                     firebaseDAO.storeData("Students",null,storeStudents);
                                 }
@@ -94,7 +108,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     // 在这里处理错误
                                 }
                             });
-
+                            //delete the target course from teacher
                             firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                 @Override
                                 public void onDataReceived(ArrayList<HashMap<String, Object>> teachers) {
@@ -115,12 +129,16 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                             }
                                         }
                                     }
+                                    //store
                                     FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                                     firebaseDAO.storeData("Teachers",null,storeTeachers);
+
+                                    //在这里处理老师
                                 }
 
                                 @Override
                                 public void onError(DatabaseError error) {
+                                    // 在这里处理错误
                                 }
                             });
 
