@@ -143,7 +143,6 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 ![UML_1](./images/UML_1.jpg) <br>
 ![UML_2](images/UML-2.jpg) <br>
-*[Replace the above with a class diagram. You can look at how we have linked an image here as an example of how you can do it too.]*
 
 ## Application Design and Decisions
 
