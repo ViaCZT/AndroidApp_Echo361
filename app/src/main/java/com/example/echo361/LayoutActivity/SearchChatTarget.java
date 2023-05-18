@@ -40,89 +40,105 @@ public class SearchChatTarget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_chat_target);
 
+        // Initialize Firebase
         FirebaseApp.initializeApp(getBaseContext());
+
+        // Get an instance of FirebaseDAOImpl
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 
         Intent intent0 = getIntent();
+        // Fetching the courseName from previous activity
         String courseName = intent0.getStringExtra("courseName");
+        // Fetching the id of the currently logged-in student from previous activity
         String student_id = intent0.getStringExtra("student_id");
         String uid = intent0.getStringExtra("uid");
 
-        // search
-
+        // Find the list view and text view for displaying student name
         EditText editText_name = findViewById(R.id.ed_searchName);
         ListView studentsList = (ListView) findViewById(R.id.list_name);
 
 
-
+        // Find the button for course search and set its click listener
         Button button = (Button) findViewById(R.id.btn_searchChat);
         View.OnClickListener myListener2 = v -> {
 
+            // If the input is not empty
             if(!(editText_name.getText().toString().isEmpty())) {
+                // Initialize the inputPersed
                 String inputPersed = "";
+                // If the input is "comp2100@anu.au"
                 if(editText_name.getText().toString().equals("comp2100@anu.au")){
                     inputPersed  = "comp2100@anu.au";
                 }else{
+                    // Otherwise, Tokenize the input
                     String searchNameInput = editText_name.getText().toString();
                     NTokenizer tok = new NameTokenizer(searchNameInput);
                     NExp parsedExp = NParser.parseExp(tok);
                     inputPersed = parsedExp.show();
                 }
 
-
+                // store parsed input in a new string
                 String finalInputPersed = inputPersed;
 
+                // if the finalInputPersed is not empty
                 if (!(finalInputPersed == null)){
-                firebaseDAOImpl.getData(courseName.substring(0, 4) + "Tree", null, new FirebaseDataCallback<String>() {
+                    // Get the data from Firebase and process it
+                    firebaseDAOImpl.getData(courseName.substring(0, 4) + "Tree", null, new FirebaseDataCallback<String>() {
 
                     @Override
                     public void onDataReceived(String data) {
-
+                        // Convert the data from JSON to CourseAVLtree
                         Gson gson = new Gson();
                         CourseAVLtree courseAVLtree = gson.fromJson(data, CourseAVLtree.class);
+
+                        // Create a list of qualified courses from the tree
                         ArrayList<Course> courselist = new ArrayList<>();
                         courselist = courseAVLtree.inOrderBSTqualify(courselist, null, null, null, null, courseName.substring(4));
 
+                        // Get the first course from the list, normally there is only one element in this ArrayList
                         Course course = courselist.get(0);
 
-                        System.out.println("N" + course);
-                        Log.d("Search chat courses2", "courses from function" + course);
-
-                        ArrayList<String> studentsId = new ArrayList<String>();
+                        // Get the list of students enrolled in the course
+                        ArrayList<String> studentsId;
                         studentsId = course.getStudents();
-
-
-                        Log.d("Search chat courses2", "studentsId from chat" + studentsId);
-                        Log.d("Search chat courses2 teacher", "teacherId from chat" + courselist.toString());
 
                         ArrayList<String> storeStudents = new ArrayList<>();
                         ArrayList<String> storeStudentsID = new ArrayList<>();
 
+                        // If the finalInputPersed is "teacher"
                         if (finalInputPersed.equals("teacher")){
+
+                            // Create a ArrayList to store teachers' name
                             ArrayList<String> storeTeacher = new ArrayList<>();
+                            // Create a ArrayList to store teachers' id
                             ArrayList<String> storeTeacherID = new ArrayList<>();
 
+                            // Fetch data for all teachers from Firebase
                             firebaseDAOImpl.getData("Teachers", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
 
                                 @Override
                                 public void onDataReceived(ArrayList<HashMap<String, Object>> teachers) {
 
+                                    // Process each teacher's data
                                     for (HashMap<String, Object> hashMap1 : teachers) {
-
+                                        // Get an teacher instance
                                         Teacher teacher = new Teacher((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
+                                        // Check if the teacher teaching the course we selected
                                         if (teacher.getCourses().get(0).equals(courseName) && !(teacher.getPassWord().equals(uid))) {
+                                            // Add teacher's name to storeTeacher
                                             storeTeacher.add(teacher.getUserName());
+                                            // Add teacher's id to storeTeacher
                                             storeTeacherID.add(teacher.getPassWord());
                                         }
-
                                     }
-                                    Log.d("teacher", storeTeacher.toString());
-                                    Log.d("teacherID",storeTeacherID.toString());
 
 
+                                    // Create an ArrayAdapter and set it to the ListView
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeTeacher);
                                     studentsList.setAdapter(arrayAdapter);
+                                    // Set the item click listener for the ListView
                                     studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
+                                        // When an item is clicked, go to the corresponding chat activity
                                         Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
                                         intent.putExtra("currentUserId",uid);
                                         intent.putExtra("receiverUserId",storeTeacherID.get(i));
@@ -133,42 +149,42 @@ public class SearchChatTarget extends AppCompatActivity {
 
                                 @Override
                                 public void onError(DatabaseError error) {
-                                    // 在这里处理错误
+                                    // error
                                 }
                             });
                         }else{
+                            // Otherwise, for all students enrolled in the course
                             for (String i : studentsId) {
+
+                                // Fetching data from the Students node in the Firebase database.
                                 firebaseDAOImpl.getData("Students", null, new FirebaseDataCallback<ArrayList<HashMap<String, Object>>>() {
                                     @Override
                                     public void onDataReceived(ArrayList<HashMap<String, Object>> students) {
 
-
+                                        // Process each student's data
                                         for (HashMap<String, Object> hashMap1 : students) {
-
+                                            // get an student instance
                                             Student student = new Student((String) hashMap1.get("userName"), (String) hashMap1.get("passWord"), (ArrayList<String>) hashMap1.get("courses"));
+                                            //Check if the student is enrolled in this course and is not the student logged in
                                             if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
-                                                    if ((getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
+                                                // Check if the student's name contain the input
+                                                if ((getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
                                                             getName(student.getUserName())[1].toLowerCase().contains(getName(finalInputPersed)[1].toLowerCase()) ) ||
                                                             student.getUserName().equals(finalInputPersed)) {
-                                                        storeStudents.add(student.getUserName());
-                                                        storeStudentsID.add(student.getPassWord());
+                                                    // Stroe studnets name and id
+                                                    storeStudents.add(student.getUserName());
+                                                    storeStudentsID.add(student.getPassWord());
                                                     }
                                             }
                                         }
 
-                                        if (finalInputPersed.toLowerCase().contains("comp2100@anu.au")){
-                                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
-                                            studentsList.setAdapter(arrayAdapter);
-                                        }else{
-                                            ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
-                                            studentsList.setAdapter(arrayAdapter);
-                                        }
+                                        // If the student is "comp2100@anu.au"
+                                        ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
+                                        studentsList.setAdapter(arrayAdapter);
 
 
-                                        //转跳code需要在这里写
+                                        // Set the item click listener for the ListView
                                         studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
-//                                        Intent intent = new Intent(SearchChatTarget.this, .class);
-//
                                             Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
                                             intent.putExtra("currentUserId",uid);
                                             Log.d("receiveid",storeStudents.get(i));
@@ -212,22 +228,6 @@ public class SearchChatTarget extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
-
-
-
-//            ArrayAdapter courseListAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, courses);
-//
-//            readCourseDate(firebaseDAOImpl, courses, courseListAdapter, courseName);
-//
-//            Log.d("Search chat courses", "courses from function" + courses);
-
-
-
-
-
-
-
-            // search there are firstName, lastName
         };
         button.setOnClickListener(myListener2);
 
