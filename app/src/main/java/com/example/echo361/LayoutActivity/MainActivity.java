@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
 
-        // initial course, student, and teacher data in firebase
+//         initial course, student, and teacher data in firebase
 //        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
 //        try {
 //            firebaseDAOImpl.initialCoursesData(getApplicationContext());

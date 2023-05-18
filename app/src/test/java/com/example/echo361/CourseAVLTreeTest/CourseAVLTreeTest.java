@@ -364,7 +364,7 @@ public class CourseAVLTreeTest {
         assertEquals(a2.get(0),c1);
         assertEquals(a3.get(0),c2);
         assertEquals(a4.get(0),c3);
-        assertEquals(a5.get(0),c4);
+        assertEquals(a5.get(0),c5);
         assertEquals(a6.get(0),c6);
     }
 }

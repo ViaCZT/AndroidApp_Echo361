@@ -33,6 +33,7 @@ public class CourseTest {
         Assert.assertEquals("B",course.getTeacher());
         course.setTitle("ab");
         Assert.assertEquals("ab",course.getTitle());
-        Assert.assertEquals("<Course{title='ab', courseID=1, students=[L], teacher='B', code=BIOL, career=Postgraduate, delivery=Blended, term=Semester1}>",course);
+        String re = "Course{title='ab', courseID=1, students=[L], teacher='B', code=BIOL, career=Postgraduate, delivery=Blended, term=Semester1}";
+        Assert.assertEquals(re,course.toString());
     }
 }
