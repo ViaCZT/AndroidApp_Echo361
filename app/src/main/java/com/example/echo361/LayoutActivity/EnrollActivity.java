@@ -49,7 +49,7 @@ import java.util.HashMap;
  * all course information containing that input character will be displayed.
  * <p>
  * There must be input characters in the EditText for the search to work, if the input does not
- * contain letters or numbers then all course information for the university will be displayed.
+ * contain letters or numbers then will promote a reminder.
  */
 public class EnrollActivity extends AppCompatActivity {
 
@@ -111,6 +111,7 @@ public class EnrollActivity extends AppCompatActivity {
                         }
                     }
 
+                    // If the input is not only non-letter/non-number
                     if (!(collegeCode.equals("") && courseCode.equals(""))){
                         // Initialize an array list to store the list of courses
                         ArrayList<String> list = new ArrayList<>();
@@ -161,7 +162,7 @@ public class EnrollActivity extends AppCompatActivity {
 
                         }
                     }else{
-                        // If the input is empty, show a Toast message
+                        // If the input is invalid, show a Toast message
                         Context context = getApplicationContext();
                         CharSequence text = "Your input is invalid.";
                         int duration = Toast.LENGTH_SHORT;

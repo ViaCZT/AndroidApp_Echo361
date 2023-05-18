@@ -1,23 +1,11 @@
 package com.example.echo361.Search;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 
 import com.example.echo361.Course;
-import com.example.echo361.Database.FirebaseDAOImpl;
-import com.example.echo361.Database.FirebaseDataCallback;
-import com.example.echo361.Factory.Student;
-import com.example.echo361.Forum;
-import com.google.firebase.database.DatabaseError;
-import com.google.gson.Gson;
-
-import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
+ * @Author Yitao Zhang, u7504766
  * A class stores some methods for searching courses and students.
  */
 public class Search {
@@ -26,6 +14,7 @@ public class Search {
             "HIST", "LAWS", "MATH", "MGMT", "PHYS"};
 
     /**
+     * @Author Yitao Zhang, u7504766
      * Check that whether the parameter is a letter, regardless of case.
      * @param c A char waiting to be distinguished whether it is a letter
      * @return true is the char is a letter
@@ -35,6 +24,7 @@ public class Search {
     }
 
     /**
+     * @Author Yitao Zhang, u7504766
      *Get the first four letters and first four digits of the parameter, return as college code and course code respectively,
      * if the letters or digits are less than four, only the corresponding number of letters and digits will be return.
      * @param searchInput a String from the EditView
@@ -62,6 +52,7 @@ public class Search {
 
 
     /**
+     * @Author Yitao Zhang, u7504766
      * After using inputToCourse, determine if the collegeCode in it belongs to any known college.
      * The patameter can be part of a known college code and does not need to be identical, and regardless of case.
      * @param collegeCode a string from inputToCourse[0]
@@ -82,6 +73,7 @@ public class Search {
 
 
     /**
+     * @Author Yitao Zhang, u7504766
      * If isInCollege return true, you can use getCollege to get all known college codes that contain this parameter, regardless of case.
      * @param collegeCode a String made isInCollege return true
      * @return an String ArrayList stored each college codes that contains this parameter, return null is the parameter is empty
@@ -103,6 +95,7 @@ public class Search {
 
 
     /**
+     * @Author Yitao Zhang, u7504766
      * Use courseAVLtree.inOrderBSTqualify to get courses that meet all the restrictions from the parameter courseAVLtree
      * If onCampus and Online are both true, add all Blended courses to the Arraylist returned from this method
      * @param courseAVLtree a CourseAVLtree, get courses information from this parameter
@@ -187,6 +180,7 @@ public class Search {
     }
 
     /**
+     * @Author Yitao Zhang, u7504766
      * Get the index of a non-letter char in a string, stored in an ArrayList<Integer>.
      * @param inputPersed a string, will detect what is the index of a non-letter characters of it
      * @return an ArrayList<Integer>, return the index of a non-letter char in the parameter
@@ -202,6 +196,7 @@ public class Search {
     }
 
     /**
+     * @Author Yitao Zhang, u7504766
      * Separates the parameter with non-chars, if there is no interval, returns the parameter as firstName and lastName as empty;
      * if there is an interval/intervals, the first part part is firstName and the last part is lastName.
      * If the parameter is empty, return both firstName and lastName are empty.

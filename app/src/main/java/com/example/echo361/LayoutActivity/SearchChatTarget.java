@@ -33,6 +33,17 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @Author Yitao Zhang, u7504766
+ * This class is responsible for searching for the teachers and students of the selected class and
+ * allows you to click on the search results to jump to their chat activities with the students they have logged in.
+ * <p>
+ * You must have input characters in EditText to search, enter "teacher" to display the tercher for this course.
+ * <p>
+ * The characters entered must contain letters or be "comp2100@anu.au", otherwise an alert will be sent.
+ * If the input contains letters and other illegal input, all illegal input will be ignored and only students
+ * whose names contain the letters entered will be displayed.
+ */
 public class SearchChatTarget extends AppCompatActivity {
 
     @Override
@@ -178,43 +189,38 @@ public class SearchChatTarget extends AppCompatActivity {
                                             }
                                         }
 
-                                        // If the student is "comp2100@anu.au"
+                                        // Create an ArrayAdapter and set it to the studentsList
                                         ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, storeStudents);
                                         studentsList.setAdapter(arrayAdapter);
 
 
                                         // Set the item click listener for the ListView
                                         studentsList.setOnItemClickListener((adapterView, view, i, l) -> {
+                                            // When an item is clicked, go to the corresponding chat activity
                                             Intent intent = new Intent(SearchChatTarget.this,ChatActivity.class);
                                             intent.putExtra("currentUserId",uid);
-                                            Log.d("receiveid",storeStudents.get(i));
-                                            Log.d("2", storeStudentsID.get(i));
                                             intent.putExtra("receiverUserId",storeStudentsID.get(i));
                                             SearchChatTarget.this.startActivity(intent);
-
                                         });
-
-
                                     }
-
                                     @Override
                                     public void onError(DatabaseError error) {
-                                        // 在这里处理错误
+                                        // error
                                     }
                                 });
                             }
                         }
 
 
-
                     }
 
                     @Override
                     public void onError(DatabaseError error) {
-                        // 在这里处理错误
+                        // error
                     }
                 });
                 }else{
+                    // Otherwise, toast "Your input is invalid."
                     Context context = getApplicationContext();
                     CharSequence text = "Your input is invalid.";
                     int duration = Toast.LENGTH_SHORT;
@@ -222,6 +228,7 @@ public class SearchChatTarget extends AppCompatActivity {
                     toast.show();
                 }
             }else{
+                // If the input is empty, show a Toast message
                 Context context = getApplicationContext();
                 CharSequence text = "Input can not be empty.";
                 int duration = Toast.LENGTH_SHORT;
@@ -232,10 +239,4 @@ public class SearchChatTarget extends AppCompatActivity {
         button.setOnClickListener(myListener2);
 
     }
-
-    // additional functions
-    public static boolean isWord(char c){
-        return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
-    }
-
 }
