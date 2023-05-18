@@ -64,17 +64,17 @@ public class SearchChatTarget extends AppCompatActivity {
 
         // Find the list view and text view for displaying student name
         EditText editText_name = findViewById(R.id.ed_searchName);
-        ListView studentsList = (ListView) findViewById(R.id.list_name);
+        ListView studentsList = findViewById(R.id.list_name);
 
 
         // Find the button for course search and set its click listener
-        Button button = (Button) findViewById(R.id.btn_searchChat);
+        Button button = findViewById(R.id.btn_searchChat);
         View.OnClickListener myListener2 = v -> {
 
             // If the input is not empty
             if(!(editText_name.getText().toString().isEmpty())) {
                 // Initialize the inputPersed
-                String inputPersed = "";
+                String inputPersed;
                 // If the input is "comp2100@anu.au"
                 if(editText_name.getText().toString().equals("comp2100@anu.au")){
                     inputPersed  = "comp2100@anu.au";
