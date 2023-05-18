@@ -182,11 +182,15 @@ we used the following data Structures in our project:
 
 1. AVLtree
 
-    * Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature and [Data Visualization].
+    * Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
    
     * Locations: CourseAVLtree.java
       * Line 70, 172 in AdminDeletionActivity.java, 
       * Line 269-279 in FirebaseDAOImpl.java
+      * Line 122 in DropActivity.java
+      * Line 129, 194 in EnrollActivity.java
+      * Line 108 in SearchChatTarget.java
+      * Line 109-196 in Search.java
 
    * Reasons:
 
@@ -195,13 +199,18 @@ we used the following data Structures in our project:
 
 2. ArrayList
 
-    * Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature and [Data Visualization].
+    * Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
 
     * Locations: 
       * Line 84, 113 in AdminDeletionActivity.java,
       * Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
       * Line 13, 28, 70, 78 in User.java
       * Line 21 in UserFactory.java
+      * Line 65, 83, 121, 128 in DropActivity.java
+      * Line 98, 113, 128, 193, 200, 224 in EnrollActivity.java
+      * Line 56, 77 in MyCourseActivity.java
+      * Line 107, 114, 117, 124 in SearchChatTarget.java
+      * Line 83, 111-180, 189, 211 in Search.java
 
     * Reasons:
 
@@ -255,16 +264,17 @@ We used 3 desgin patterns in our project:
 
 Production Rules:
     
-    <Non-Terminal> ::= <some output>
-    <Non-Terminal> ::= <some output>
+    <exp> ::= <factor> | <factor> <exp>
+    <factor> ::= <token>
 
-*[How do you design the grammar? What are the advantages of your designs?]*
-
-*If there are several grammars, list them all under this section and what they relate to.*
+   This Grammar is designed to allow the search for a student's name to be converted into tokens and then sorted in order of input. This helps us to distinguish between first name and last name, and when searching by students' name, the first and last names can be searched separately to provide more accurate results.
 
 **Tokenizer and Parsers**
 
-*[Where do you use tokenisers and parsers? How are they built? What are the advantages of the designs?]*
+   The NameTokenizer class is an implementation of the NTokenizer abstract class for splitting a given input text as words, removing all non-letter symbols from it and treating these non-letter symbols as spacers, with the word being defined as sequences of consecutive letters.
+
+   The NParser class arranges the tokens by input order using the NAddExp and NLitExp to implement the Grammar above and adds a separator, a space, between each token. This makes it easier to identify the first name and last name of the input. When searching by student name, we treat the first token as the first name and the last token as the last name, and find all students whose first and last names contain the information entered by searching. This provides more accurate search results while enabling partial searches.
+
 
 **Surprise Item**
 
