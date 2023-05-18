@@ -11,6 +11,15 @@ import com.example.echo361.R;
 
 import java.util.ArrayList;
 
+/**
+ * The StudentMainpageActivity class is for implementing the jump to different page for students.
+ * Button "Enroll" leads to the course enroll page.
+ * Button "Drop" leads to the course drop page.
+ * Button "MyCourse" leads to the current course page.
+ *
+ * @author Yijun Huang, u7564899
+ * @author Yitao Zhang, u7504766
+ */
 public class StudentMainpageActivity extends AppCompatActivity {
 
     @Override
