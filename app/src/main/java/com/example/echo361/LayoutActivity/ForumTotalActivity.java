@@ -150,6 +150,7 @@ public class ForumTotalActivity extends AppCompatActivity {
                         ForumPost forumPost = new ForumPost(title0, content0, name0, new ArrayList<>(), true);
                         postTitles.add(forumPost.getTitle());
                         visiblePostsTitles.add(forumPost.getTitle());
+                        visiblePosts.add(forumPost);
                         postTitlesForAdapter.add(forumPost.getTitle());
                         arrayAdapter.notifyDataSetChanged();
                         forum[0].getPosts().add(forumPost);
