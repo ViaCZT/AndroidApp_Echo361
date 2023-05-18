@@ -184,7 +184,6 @@ public class FirebaseDAOImpl implements FirebaseDAO {
      */
     @Override
     public <E> void storeData(String refpath,String childpath,E input){
-
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = firebaseDatabase.getReference(refpath);
         if (childpath == null||childpath.equals("")){
