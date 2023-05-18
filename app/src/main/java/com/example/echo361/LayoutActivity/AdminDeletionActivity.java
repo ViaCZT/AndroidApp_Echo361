@@ -75,7 +75,6 @@ public class AdminDeletionActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onError(DatabaseError error) {
-                                    // 在这里处理错误
                                 }
                             });
                             //get students and delete the target course from theirs course list and store
@@ -105,7 +104,6 @@ public class AdminDeletionActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onError(DatabaseError error) {
-                                    // 在这里处理错误
                                 }
                             });
                             //delete the target course from teacher
@@ -132,13 +130,10 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     //store
                                     FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                                     firebaseDAO.storeData("Teachers",null,storeTeachers);
-
-                                    //在这里处理老师
                                 }
 
                                 @Override
                                 public void onError(DatabaseError error) {
-                                    // 在这里处理错误
                                 }
                             });
 
