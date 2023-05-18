@@ -2,16 +2,13 @@ package com.example.echo361.LayoutActivity;
 
 import static com.example.echo361.Search.Search.getName;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,6 +23,7 @@ import com.example.echo361.Search.NExp;
 import com.example.echo361.Search.NParser;
 import com.example.echo361.Search.NTokenizer;
 import com.example.echo361.Search.NameTokenizer;
+import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
@@ -221,19 +219,11 @@ public class SearchChatTarget extends AppCompatActivity {
                 });
                 }else{
                     // Otherwise, toast "Your input is invalid."
-                    Context context = getApplicationContext();
-                    CharSequence text = "Your input is invalid.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    ToastUtil.showMsg(SearchChatTarget.this, "Your input is invalid.");
                 }
             }else{
                 // If the input is empty, show a Toast message
-                Context context = getApplicationContext();
-                CharSequence text = "Input can not be empty.";
-                int duration = Toast.LENGTH_SHORT;
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                ToastUtil.showMsg(SearchChatTarget.this, "Input can not be empty.");
             }
         };
         button.setOnClickListener(myListener2);

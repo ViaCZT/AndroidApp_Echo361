@@ -6,7 +6,6 @@ import static com.example.echo361.Search.Search.inputToCourse;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,8 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.Course;
@@ -25,6 +22,7 @@ import com.example.echo361.Factory.Student;
 import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
 import com.example.echo361.Search.CourseAVLtree;
+import com.example.echo361.util.ToastUtil;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
 
@@ -119,13 +117,10 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                     }
                                     FirebaseDAOImpl firebaseDAO = FirebaseDAOImpl.getInstance();
                                     firebaseDAO.storeData("Teachers",null,storeTeachers);
-
-                                    //在这里处理老师
                                 }
 
                                 @Override
                                 public void onError(DatabaseError error) {
-                                    // 在这里处理错误
                                 }
                             });
 
@@ -185,10 +180,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
 
                 }else{
                     Context context = getApplicationContext();
-                    CharSequence text = "Input can not be empty.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    ToastUtil.showMsg(AdminDeletionActivity.this, "Input can not be empty.");
                 }
             }
         });

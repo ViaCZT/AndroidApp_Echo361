@@ -27,19 +27,6 @@ public class CourseMainpageActivity extends AppCompatActivity {
         TextView courseNameTextView = findViewById(R.id.tx_currCourseCode);
         courseNameTextView.setText(courseName);
 
-//        FirebaseApp.initializeApp(getBaseContext());
-//        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-//
-//        ArrayList<Course> courses = new ArrayList<Course>();
-//
-//        ArrayAdapter courseListAdapter = new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, courses);
-//
-//        readCourseDate(firebaseDAOImpl, courses, courseListAdapter, courseName);
-//
-//        Log.d("Search chat courses2", "courses from function" + courses);
-//
-//        Log.d("Search chat courses2", "courses from function" + courses);
-
 
         Button toChat = findViewById(R.id.btn_gotoChat);
         Intent intent2 = getIntent();
@@ -50,7 +37,6 @@ public class CourseMainpageActivity extends AppCompatActivity {
             Log.d("123",course_name);
         boolean is_teacher = intent2.getBooleanExtra("is_teacher",false);
         toChat.setOnClickListener(view -> {
-//            Intent intent0 = new Intent(CourseMainpageActivity.this, ChatActivity.class);
             Intent intent0 = new Intent(CourseMainpageActivity.this, SearchChatTarget.class);
             intent0.putExtra("courseName", courseName);
             intent0.putExtra("student_id", student_id);

@@ -1,16 +1,13 @@
 package com.example.echo361.LayoutActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +17,7 @@ import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
 import com.example.echo361.R;
 import com.example.echo361.Search.CourseAVLtree;
+import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
@@ -144,12 +142,7 @@ public class DropActivity extends AppCompatActivity {
                             firebaseDAO.storeData(selectCourse.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
 
                             // Display a toast to confirm successful drop
-                            Context context = getApplicationContext();
-                            CharSequence text = "You dropped this course.";
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
-
+                            ToastUtil.showMsg(DropActivity.this, "You dropped this course.");
                         }
 
                         @Override
@@ -196,11 +189,7 @@ public class DropActivity extends AppCompatActivity {
 
                 }else{
                     // If no course has been selected, display a toast to prompt the user to select a course
-                    Context context = getApplicationContext();
-                    CharSequence text = "You must select a course.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    ToastUtil.showMsg(DropActivity.this, "You must select a course.");
                 }
 
             }
