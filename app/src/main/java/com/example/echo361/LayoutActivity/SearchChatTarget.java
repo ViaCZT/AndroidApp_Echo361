@@ -50,6 +50,7 @@ public class SearchChatTarget extends AppCompatActivity {
         setContentView(R.layout.activity_search_chat_target);
 
         Search Search = new Search();
+        NParser NParser = new NParser();
 
         // Initialize Firebase
         FirebaseApp.initializeApp(getBaseContext());

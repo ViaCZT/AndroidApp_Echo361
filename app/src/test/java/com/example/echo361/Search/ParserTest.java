@@ -19,6 +19,7 @@ public class ParserTest {
     // test an example mixed with letters-space-numbers "Yitao 123"
     @Test(timeout=1000)
     public void testTest1Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test1);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -28,6 +29,7 @@ public class ParserTest {
     // test an example mixed with letters-space-numbersLetters "Yitao 123Zhang"
     @Test(timeout=1000)
     public void testTest2Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test2);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -37,6 +39,7 @@ public class ParserTest {
     // test the lowercase "yitao"
     @Test(timeout=1000)
     public void testTest3Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test3);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -46,6 +49,7 @@ public class ParserTest {
     // test an example mixed with letters-letters "Yi tao"
     @Test(timeout=1000)
     public void testTest4Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test4);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -55,6 +59,7 @@ public class ParserTest {
     // test an example mixed with lettersNumbersLetters "Yi123tao"
     @Test(timeout=1000)
     public void testTest5Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test5);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -64,6 +69,7 @@ public class ParserTest {
     // test an example mixed with lettersNumbersLetters-symbols-letter "Yi123ta*&o"
     @Test(timeout=1000)
     public void testTest6Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test6);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -73,6 +79,7 @@ public class ParserTest {
     // test an example mixed with numbersLettersNumbersLetters "123Yi123tao"
     @Test(timeout=1000)
     public void testTest7Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test7);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();
@@ -82,6 +89,7 @@ public class ParserTest {
     // test an example mixed with spaces-numbersLetters-space-lettersNumbers-numbers-letters-spaces "  123Yi tao123 123 Zhang  "
     @Test(timeout=1000)
     public void testTest8Perser() {
+        NParser NParser = new NParser();
         NTokenizer tok = new NameTokenizer(test8);
         NExp parsedExp = NParser.parseExp(tok);
         String inputPersed = parsedExp.show();

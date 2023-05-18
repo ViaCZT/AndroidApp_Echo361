@@ -24,7 +24,7 @@ public class NParser {
      * @param tok NTokenizer
      * @return parsed expression for <exp>
      */
-    public static NExp parseExp(NTokenizer tok) {
+    public NExp parseExp(NTokenizer tok) {
         NExp term = parseFactor(tok);
 
 
@@ -47,7 +47,7 @@ public class NParser {
      * @param tok Tokenizer
      * @return parsed expression for <factor>
      */
-    private static NExp parseFactor(NTokenizer tok) {
+    private NExp parseFactor(NTokenizer tok) {
         NExp lit = new NLitExp((String) tok.current());
         tok.next();
         return lit;
