@@ -32,9 +32,9 @@ The following is a report template to help your team successfully provide all th
 1. u7564812, Zetian Chen, I contribute 20% of the code. Here are my contributions:
    * All classes in the [Database folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/java/com/example/echo361/Database)
    * All classes in the [Factory folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/java/com/example/echo361/Factory)
-2. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
+2. u7550484, Yuan Li, I contribute 20% of the code. Here are my contributions:
+   * FirebaseDAOImpl.class: getData(),storeData,initialStudentData(),initialTeacherData(),initialCoursesData() in the [Database folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/java/com/example/echo361/Database)
+   * CourseAVLtree.class in the [Search folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/java/com/example/echo361/Search)
 3. UID1, Name1, I contribute 20% of the code. Here are my contributions:
    * A.class
    * B.class: function1(), function2(), ...
@@ -157,6 +157,39 @@ By following this protocol, our team has handled conflicts in a respectful and c
 **Data Structures**
 
 *[What data structures did your team utilise? Where and why?]*
+
+we used 2 data Structures in our project:
+
+1. *AVLtree*
+
+    * *Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature and [Data Visualization].*
+   
+    * *Locations: line 70, 172 in AdminDeletionActivity.java, 
+    * CourseAVLtree.java
+    * FirebaseDAOImpl.java
+    * , etc.*
+
+   * *Reasons:*
+
+   * *It is faster for searching with a time complexity O(log n)*
+
+   * *It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance*
+
+2. *ArrayList*
+
+    * *Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature and [Data Visualization].*
+
+    * *Locations: line 84, 113 in AdminDeletionActivity.java,
+    * FirebaseDAOImpl.java
+    * , etc.*
+
+    * *Reasons:*
+
+    * *ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.*
+
+    * *It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.*
+
+    * *It is adapter for ListView component*
 
 **Design Patterns**
 
