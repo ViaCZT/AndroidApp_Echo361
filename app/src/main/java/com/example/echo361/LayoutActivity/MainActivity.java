@@ -26,6 +26,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The MainActivity is for login feature.
+ * There are three roles: Students, Teacher and Admin.
+ *
+ * @author Zetian Chen, u7564812
+ * @author Yuan Li u7550484
+ * @author Zihan Ai, u7528678
+ */
+
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference studentsReference;
@@ -60,26 +69,6 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
 
-//        Admin admin = new Admin("Ad Admin","u0000000",null);
-//        ArrayList<String> courseA = new ArrayList<>();
-//        courseA.add("COMP0001");
-//        Student student = new Student("comp2100@anu.au","comp2100",courseA);
-//        Teacher teacher = new Teacher("comp6442@anu.au","comp6442",courseA);
-//        firebaseDAOImpl.storeData("Admin",admin);
-//        firebaseDAOImpl.storeData("Students","2000",student);
-//        firebaseDAOImpl.storeData("Teachers","500",teacher);
-//
-//        try {
-//            firebaseDAOImpl.initialStudentData(getApplicationContext());
-//            firebaseDAOImpl.initialTeacherData(getApplicationContext());
-//            firebaseDAOImpl.initialCoursesData(getApplicationContext());
-////            firebaseDAOImpl.initialForumData(getApplicationContext());
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        ForumPost post = new ForumPost("","","",null,true);
-//        firebaseDAOImpl.updateForumPost("BIOL0024","0",post);
-
 
         Button mBtnLogin = findViewById(R.id.btn_login);
         EditText editText1 = findViewById(R.id.ed_user);
@@ -110,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                                 // login successfully, go to student page
                                 String studentName = userSnapshot.child("userName").getValue(String.class);
                                 String studentID = userSnapshot.child("passWord").getValue(String.class);
-                                // 获取课程列表
+                                // Get course list
                                 GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
                                 List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
 //                                Log.d(TAG, coursesList.get(0));
@@ -125,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                         if (!userFound) {
-                            // 查询教师子节点
+                            // Query teacher child nodes
                             teachersReference.orderByChild("userName").equalTo(inputUsername).addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -136,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
                                         String storedPassword = userSnapshot.child("passWord").getValue(String.class);
                                         if (storedPassword != null && storedPassword.equals(inputPassword)) {
                                             userFound = true;
-                                            // 登录成功，教师用户
+                                            // Teacher Login successful
                                             GenericTypeIndicator<List<String>> typeIndicator = new GenericTypeIndicator<List<String>>() {};
                                             List<String> coursesList = userSnapshot.child("courses").getValue(typeIndicator);
                                             String course = (coursesList != null) ? coursesList.get(0) : null;
@@ -152,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     }
 
-                                    if (!userFound) { // 查询管理员子节点
+                                    if (!userFound) { // Query Admin child nodes
                                         adminReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -162,11 +151,11 @@ public class MainActivity extends AppCompatActivity {
                                                 if (storedPassword != null && storedUsername != null
                                                         && storedUsername.equals(inputUsername) && storedPassword.equals(inputPassword)){
                                                     userFound = true;
-                                                    // 登录成功，管理员用户
+                                                    // Admin Login successful
                                                     Intent intent = new Intent(getApplicationContext(), AdminDeletionActivity.class);
                                                     startActivity(intent);
                                                 }
-
+                                                // Failded login, with toast.
                                                 if (!userFound) {
                                                     ToastUtil.showMsg(MainActivity.this, "Login failed: No user found with username " + inputUsername + " and password " + inputPassword);
                                                 }

@@ -11,6 +11,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.echo361.R;
 
+/**
+ * The CourseMainpageActivity class is for implementing the jump to different page of this course.
+ * Button "Go to forum" leads to the total forums page.
+ * Button "Let's chat" leads to page that user can search the one to chat with.
+ *
+ * @author Zetian Chen, u7564812
+ * @author Yitao Zhang, u7504766
+ * @author Zihan Ai, u7528678
+ */
+
 public class CourseMainpageActivity extends AppCompatActivity {
 
     @Override
@@ -27,7 +37,6 @@ public class CourseMainpageActivity extends AppCompatActivity {
         TextView courseNameTextView = findViewById(R.id.tx_currCourseCode);
         courseNameTextView.setText(courseName);
 
-
         Button toChat = findViewById(R.id.btn_gotoChat);
         Intent intent2 = getIntent();
         String course_name =  intent2.getStringExtra("courseName");
@@ -37,6 +46,7 @@ public class CourseMainpageActivity extends AppCompatActivity {
             Log.d("123",course_name);
         boolean is_teacher = intent2.getBooleanExtra("is_teacher",false);
         toChat.setOnClickListener(view -> {
+//            Intent intent0 = new Intent(CourseMainpageActivity.this, ChatActivity.class);
             Intent intent0 = new Intent(CourseMainpageActivity.this, SearchChatTarget.class);
             intent0.putExtra("courseName", courseName);
             intent0.putExtra("student_id", student_id);
