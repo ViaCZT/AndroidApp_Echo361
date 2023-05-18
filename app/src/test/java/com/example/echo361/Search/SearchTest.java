@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SearchTest {
 
@@ -114,24 +115,24 @@ public class SearchTest {
 
         // test a wrong 4 letters input
         ArrayList<String> getCollegeTest = new ArrayList<>();
-        assertArrayEquals(getCollegeTest.toArray(), Search.getCollege("COME").toArray());
+        assertArrayEquals(getCollegeTest.toArray(), Objects.requireNonNull(Search.getCollege("COME")).toArray());
 
         // test a correct 4 letters input
         ArrayList<String> getCollegeTest1 = new ArrayList<>();
         getCollegeTest1.add("COMP");
-        assertArrayEquals(getCollegeTest1.toArray(), Search.getCollege("COMP").toArray());
+        assertArrayEquals(getCollegeTest1.toArray(), Objects.requireNonNull(Search.getCollege("COMP")).toArray());
 
         // test a correct input less than 4 letters
         ArrayList<String> getCollegeTest2 = new ArrayList<>();
         getCollegeTest2.add("COMP");
-        assertArrayEquals(getCollegeTest2.toArray(), Search.getCollege("COM").toArray());
+        assertArrayEquals(getCollegeTest2.toArray(), Objects.requireNonNull(Search.getCollege("COM")).toArray());
 
         // test a correct input has letter
         ArrayList<String> getCollegeTest3 = new ArrayList<>();
         getCollegeTest3.add("CBEA");
         getCollegeTest3.add("CHEM");
         getCollegeTest3.add("COMP");
-        assertArrayEquals(getCollegeTest3.toArray(), Search.getCollege("C").toArray());
+        assertArrayEquals(getCollegeTest3.toArray(), Objects.requireNonNull(Search.getCollege("C")).toArray());
     }
 
 
@@ -139,7 +140,7 @@ public class SearchTest {
     public void indexOfSpaceTest() {
 
         // input is empty
-        ArrayList<Integer> indexOfSpcetest= new ArrayList<Integer>();
+        ArrayList<Integer> indexOfSpcetest= new ArrayList<>();
         assertArrayEquals(indexOfSpcetest.toArray(),Search.indexOfSpace("").toArray());
 
         // input hasn't non-letter char
@@ -149,22 +150,22 @@ public class SearchTest {
         assertArrayEquals(indexOfSpcetest.toArray(),Search.indexOfSpace("Yitao").toArray());
 
         // the non-letter char is at head and the non-letter char is a space
-        ArrayList<Integer> indexOfSpcetest1= new ArrayList<Integer>();
+        ArrayList<Integer> indexOfSpcetest1= new ArrayList<>();
         indexOfSpcetest1.add(0);
         assertArrayEquals(indexOfSpcetest1.toArray(),Search.indexOfSpace(" Yitao").toArray());
 
         // the non-letter char is at end and the non-letter char is a symbol
-        ArrayList<Integer> indexOfSpcetest2= new ArrayList<Integer>();
+        ArrayList<Integer> indexOfSpcetest2= new ArrayList<>();
         indexOfSpcetest2.add(5);
         assertArrayEquals(indexOfSpcetest2.toArray(),Search.indexOfSpace("Yitao%").toArray());
 
         // the non-letter char is at middle and the non-letter char is a space
-        ArrayList<Integer> indexOfSpcetest3= new ArrayList<Integer>();
+        ArrayList<Integer> indexOfSpcetest3= new ArrayList<>();
         indexOfSpcetest3.add(2);
         assertArrayEquals(indexOfSpcetest3.toArray(),Search.indexOfSpace("Yi tao").toArray());
 
         // more than one the non-letter char and the non-letter chars are symbols
-        ArrayList<Integer> indexOfSpcetest4= new ArrayList<Integer>();
+        ArrayList<Integer> indexOfSpcetest4= new ArrayList<>();
         indexOfSpcetest4.add(2);
         indexOfSpcetest4.add(5);
         assertArrayEquals(indexOfSpcetest4.toArray(),Search.indexOfSpace("Yi%ta%o").toArray());

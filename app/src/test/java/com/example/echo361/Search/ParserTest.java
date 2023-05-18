@@ -6,7 +6,6 @@ import static org.junit.Assert.*;
 
 public class ParserTest {
 
-    private static NTokenizer tokenizer;
     private static final String test1 = "Yitao 123";
     private static final String test2 = "Yitao 123Zhang";
     private static final String test3 = "yitao";
