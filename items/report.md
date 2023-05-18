@@ -168,8 +168,6 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 **Data Structures**
 
-*[What data structures did your team utilise? Where and why?]*
-
 we used the following data Structures in our project:
 
 1. AVLtree
@@ -183,7 +181,6 @@ we used the following data Structures in our project:
    * Reasons:
 
      * It is faster for searching with a time complexity O(log n)
-
      * It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance
 
 2. ArrayList
@@ -199,50 +196,41 @@ we used the following data Structures in our project:
     * Reasons:
 
       * ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
-
       * It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
-
       * It is adapter for ListView component
 
 **Design Patterns**
 
 We used 3 desgin patterns in our project:
 
-**1. Factory**
+1. Factory
 
 The abstract class `User` has three subclasses, `Student class`, `Teacher class`, and `Admin class`. And the `UserFactory class` is responsible for creating instances of User subclasses based on the provided user type. It encapsulates the object creation logic and returns the appropriate User object. The method `getUser(String userType, String userName, String passWord, ArrayList<String> courses)` creates and returns a User object based on the specified user type, username, password, and courses.
 
 Overall, the Factory design pattern was utilized in our Android project to encapsulate the object creation process, enhance flexibility, and promote code maintainability. It allowed us to abstract the creation logic from the client code, decoupling the object instantiation from the rest of the application and facilitating future modifications or extensions to the user creation process.
 
-**2. DAO (Data Access Object)**
+2. DAO (Data Access Object)
 
 Our team utilized the DAO (Data Access Object) design pattern in our Android project. The DAO design pattern provides an abstraction layer between the application and the database, allowing for separation of concerns and easier maintenance.
 
 In our implementation, we have two interfaces and one entity class as follows:
 
-* `FirebaseDAO` interface:
+   * `FirebaseDAO` interface:
 
-   * getData(String refPath, String childPath, FirebaseDataCallback<T> callback): This method retrieves data from Firebase based on the reference and child paths provided and invokes the callback with the received data.
+     * `getData(String refPath, String childPath, FirebaseDataCallback<T> callback)`: This method retrieves data from Firebase based on the reference and child paths provided and invokes the callback with the received data.
+     * `storeData(String refPath, String childPath, E input)`: This method stores data in Firebase based on the reference and child paths provided, along with the input data.
+     * `initialStudentData(Context context) throws IOException`: This method initializes student data by reading it from a file and storing it in Firebase. It requires a Context object for file access.
+     * `initialTeacherData(Context context) throws IOException`: This method initializes teacher data by reading it from a file and storing it in Firebase. It also requires a Context object.
+     * `initialCoursesData(Context context) throws IOException`: This method initializes courses data by reading it from a file and storing it in Firebase. It requires a Context object as well.
+     * `initialForumData(Context context) throws IOException`: This method initializes forum data by reading it from a file and storing it in Firebase. It also requires a Context object.
 
-   * storeData(String refPath, String childPath, E input): This method stores data in Firebase based on the reference and child paths provided, along with the input data.
+   * `FirebaseDAOImpl` class: This class implements the FirebaseDAO interface and provides the actual implementation of the methods. It uses Singleton design pattern.
 
-   * initialStudentData(Context context) throws IOException: This method initializes student data by reading it from a file and storing it in Firebase. It requires a Context object for file access.
-
-   * initialTeacherData(Context context) throws IOException: This method initializes teacher data by reading it from a file and storing it in Firebase. It also requires a Context object.
-
-   * initialCoursesData(Context context) throws IOException: This method initializes courses data by reading it from a file and storing it in Firebase. It requires a Context object as well.
-
-   * initialForumData(Context context) throws IOException: This method initializes forum data by reading it from a file and storing it in Firebase. It also requires a Context object.
-
-
-* `FirebaseDAOImpl` class: This class implements the FirebaseDAO interface and provides the actual implementation of the methods. It uses Singleton design pattern.
-
-
-* `FirebaseDataCallback<T>` interface: This interface defines callback methods for handling data received from Firebase. It includes `onDataReceived(T data)` method, which is called when data is received successfully, and `onError(DatabaseError error)` method, which is called when there is an error retrieving data from Firebase.
+   * `FirebaseDataCallback<T>` interface: This interface defines callback methods for handling data received from Firebase. It includes `onDataReceived(T data)` method, which is called when data is received successfully, and `onError(DatabaseError error)` method, which is called when there is an error retrieving data from Firebase.
 
 We used the DAO design pattern in our project to encapsulate the logic for accessing and manipulating data in Firebase. It allows us to separate the data access code from the rest of the application and provides a clear and consistent interface for interacting with the database. By using this design pattern, we achieved better code organization, maintainability, and testability in our Android project.
 
-**3. Singleton**
+3. Singleton
 
 In addition to the DAO (Data Access Object) design pattern mentioned earlier, our team also utilized the Singleton design pattern in the `FirebaseDAOImpl` class of our Android project.
 
