@@ -351,7 +351,8 @@ Especially, students only need to type “teacher” to chat with the exact teac
 
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
 1. [Data-Deletion] (hard) We apply AVL tree data structure. Admin can delete a course with its teachers and enrolled students.
-    * Class CourseAVLtree, AdminDeletionActivity.
+    * Class CourseAVLtree,method: delete(),Lines of 131-184
+    * Class AdAdminDeletionActivity, method:setOnClickListener , Lines of  55-141
 
 ## Team Meetings
 
