@@ -265,30 +265,58 @@ Production Rules:
 *[What features have you implemented?]*
 
 ### Basic App
-1. [Login]. Description of the feature and your implementation (easy)
-    * Class X, methods Z, Y, Lines of code: 10-100
-    * Additional description: ...
+1. [Login] (easy) We use realtime database by Firebase to stock the user information.
+     * Class MainActivity,
+       Firebase link: https://console.firebase.google.com/project/echo361/overview
+      * Additional description: There are three user roles: Student, Teacher and Admin.
+        All the usernames and passwords can be seen in students.csv and teachers.csv. or Firebase.
+        Admin login with special username “Ad Admin” and password “u0000000”.
       <br>
-2. [Data Visualization]. Description  ... ...
-<br><br>
+2. [Data Instance] (easy) There are more than 3,000 valid data instances in our Firebase, which include user, course, forum and chat instances.<br>
+3. [Data Visualization] (medium) Users are able to load data from Firebase and visualise it. We apply the AVLtree structure. When users use the app, they can see clear lists of courses and users to chat with.
+    * Class CourseAVLtree <br>
+4. [Search Information] (medium) Users are able to search for the class to enroll or drop, and the other user to chat with on our app.
+    * Search folder,  Class SearchChatTarget,  Class EnrollActivity
+      <br><br>
 
 ### General Features
-Feature Category: Privacy <br>
-1. [Privacy-Request]. Description of the feature and your implementation (easy)
-   * Class X, methods Z, Y, Lines of code: 10-100
-   * Class Y, methods K, L, M, Lines of code: 35-150
-   * Additional description: ...
-<br>
-2. [Privacy-Block]. Description ... ... (medium)
-    * ... ...
-<br>
-
 Feature Category: Firebase Integration <br>
-3. [FB-Auth] Description of the feature and your implementation (easy)
-   * Class A: methods A, B, C, lines of code: whole file
-   * …
+Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
+1. [FB-Auth] (easy) Only the users stocked in our Firebase have authentication to the app.<br>
+2. [FB-Persist] (medium) We use Firebase to persist all data used in your app.<br>
+3. [FB-Syn] (hard) Any changes in Firebase will be applied immediately without restarting the app.
 
-*List all features you have completed in their separate categories with their difficulty classification. If they are features that are suggested and approved, please state this somewhere as well.*
+<br>
+
+Feature Category: UI Design and Testing <br>
+1. [UI-Layout] (easy) Our UI has reasonable portrait and landscape layout variants as well as support for different screen sizes. And as all data is stocked in Firebase, rotating the telephone at any time will not affect the existing data.
+    * res folder
+<br>
+
+Feature Category: Search-related features <br>
+1. [Search-Invalid] (medium) We have a tokenizer and parser with a formal grammar of our own creation so that search functionality can handle partially valid and invalid search queries. For example, if searching for punctuation marks like a comma, an invalid toast will show up. 
+And if searching a chat target with only numbers, this is invalid too, as we set this to search letters like real names in reality (comp2100@anu.au is an exception).<br>
+2. [Search-Filter] (easy) We implement the filter function so that students can use checkboxes to select from undergraduate, graduate, online, on-campus, and blended courses.
+    * Search folder, Class SearchChatTarget, Class EnrollActivity
+<br>
+
+Feature Category: Privacy <br>
+1. [Privacy-Visibility] (easy) A student can only see a course’s main page after enrolling in this course.<br>
+2. [Privacy-Block] (medium) Teachers can block the forum, that is, change the visibility of this forum so that students cannot see it while teachers still can.
+     * Class ForumTotalActivity
+<br>
+
+Feature Category: Peer-to-Peer Messaging <br>
+1. [P2P-DM] (hard) Students and teachers have the ability to message the person involved in the same course in private.  <br>
+2. [P2P-Restriction] (hard) The chat function is assessed on the course main page of a certain course. By searching the chat target, users cannot search for students and teachers who are not involved in the same course to chat. 
+Especially, students only need to type “teacher” to chat with the exact teacher who delivered this course.
+     * Class Msg, MsgAdapter, ChatActivity, SearchChatTarget.
+
+<br>
+
+Feature Category: Greater Data Usage, Handling and Sophistication <br>
+1. [Data-Deletion] (hard) We apply AVL tree data structure. Admin can delete a course with its teachers and enrolled students.
+    * Class CourseAVLtree, AdminDeletionActivity.
 
 ## Team Meetings
 
