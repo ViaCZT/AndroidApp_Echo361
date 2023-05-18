@@ -271,10 +271,12 @@ Production Rules:
 
 1. *Bug 1:*
 
-- *A space bar (' ') in the sign in email will crash the application.*
+- *Deleting courses from bottom to top in one searching round causes exceptions.*
 - ...
 
 2. *Bug 2:*
+
+
 3. ...
 
 *List all the known errors and bugs here. If we find bugs/errors that your team does not know of, it shows that your testing is not thorough.*
