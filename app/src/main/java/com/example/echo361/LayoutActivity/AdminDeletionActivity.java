@@ -29,6 +29,8 @@ import com.example.echo361.util.ToastUtil;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -55,8 +57,15 @@ public class AdminDeletionActivity extends AppCompatActivity {
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+                ArrayList<String > list1 = new ArrayList<>();
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,list1);
+                listView.setAdapter(arrayAdapter);
                             //get the course Admin want to delete
                             String courseCode = String.valueOf(textView.getText());
+
 
                             int courseID = Integer.parseInt(courseCode.substring(4,8));
                             //get all courses of same code from firebase
