@@ -1,8 +1,5 @@
 package com.example.echo361.LayoutActivity;
 
-import static com.example.echo361.Search.Search.courseListFilted;
-import static com.example.echo361.Search.Search.getCollege;
-import static com.example.echo361.Search.Search.inputToCourse;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +18,7 @@ import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
 import com.example.echo361.R;
 import com.example.echo361.Search.CourseAVLtree;
+import com.example.echo361.Search.Search;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
@@ -54,6 +52,9 @@ public class EnrollActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enroll);
+
+        Search Search = new Search();
+
 
         // Initialize Firebase in this context
         FirebaseApp.initializeApp(getBaseContext());
@@ -89,7 +90,7 @@ public class EnrollActivity extends AppCompatActivity {
             if (!(input.isEmpty())) {
 
                 // Get the course code and college code from the input
-                String[] courseinfo = inputToCourse(input);
+                String[] courseinfo = Search.inputToCourse(input);
                 String collegeCode = courseinfo[0];
                 String courseCode = courseinfo[1];
 
@@ -98,7 +99,7 @@ public class EnrollActivity extends AppCompatActivity {
 
                 // If the college code is not empty, get the corresponding college
                 if (!(collegeCode.equals(""))){
-                    allCollegeCode = getCollege(collegeCode);
+                    allCollegeCode = Search.getCollege(collegeCode);
                 }else{
                     // Otherwise, add all possible colleges
                     for (Course.CODE i : Course.CODE.values()) {
@@ -125,7 +126,7 @@ public class EnrollActivity extends AppCompatActivity {
 
                                 // Get the list of courses filtered by four check box and course code
                                 ArrayList<Course> courselist;
-                                courselist = courseListFilted(courseAVLtree, underG_cb.isChecked(), postG_cb.isChecked(),
+                                courselist = Search.courseListFilted(courseAVLtree, underG_cb.isChecked(), postG_cb.isChecked(),
                                         onC_cb.isChecked(), online_cb.isChecked(), courseCode);
 
                                 // For each course in the courselist

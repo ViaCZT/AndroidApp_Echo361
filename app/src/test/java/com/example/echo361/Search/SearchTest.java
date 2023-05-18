@@ -11,6 +11,7 @@ public class SearchTest {
 
     @Test(timeout = 1000)
     public void isWordTest() {
+        Search Search = new Search();
 
         // check the lowercase
         assertTrue(Search.isWord('a'));
@@ -27,6 +28,7 @@ public class SearchTest {
 
     @Test(timeout = 1000)
     public void inputToCourseTest() {
+        Search Search = new Search();
 
         // check the empty
         assertArrayEquals(new String[]{"",""}, Search.inputToCourse(""));
@@ -77,6 +79,7 @@ public class SearchTest {
 
     @Test(timeout = 1000)
     public void isInCollegeTest() {
+        Search Search = new Search();
 
         // check a right case with uppercase and lowercase
         assertTrue(Search.isInCollege("Comp"));
@@ -109,6 +112,7 @@ public class SearchTest {
 
     @Test(timeout = 1000)
     public void getCollegeTest() {
+        Search Search = new Search();
 
         // test empty input
         assertNull(Search.getCollege(""));
@@ -138,6 +142,7 @@ public class SearchTest {
 
     @Test(timeout = 1000)
     public void indexOfSpaceTest() {
+        Search Search = new Search();
 
         // input is empty
         ArrayList<Integer> indexOfSpcetest= new ArrayList<>();
@@ -174,6 +179,7 @@ public class SearchTest {
 
     @Test(timeout = 1000)
     public void getNameTest() {
+        Search Search = new Search();
         // input is empty
         String[] fALNameTest = new String[]{"", ""};
         assertArrayEquals(fALNameTest, Search.getName(""));

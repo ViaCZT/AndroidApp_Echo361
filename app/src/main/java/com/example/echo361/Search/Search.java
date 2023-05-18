@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Search {
 
-    private static final String[] allColleges = {"BIOL", "BUSN", "CBEA", "CHEM", "COMP", "ENGN",
+    private final String[] allColleges = {"BIOL", "BUSN", "CBEA", "CHEM", "COMP", "ENGN",
             "HIST", "LAWS", "MATH", "MGMT", "PHYS"};
 
     /**
@@ -19,7 +19,7 @@ public class Search {
      * @param c A char waiting to be distinguished whether it is a letter
      * @return true is the char is a letter
      */
-    public static boolean isWord(char c){
+    public boolean isWord(char c){
         return (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
     }
 
@@ -30,7 +30,7 @@ public class Search {
      * @param searchInput a String from the EditView
      * @return a String array,  college code and course code respectively, both not more than 4 letters or digits
      */
-    public static String[] inputToCourse(String searchInput){
+    public String[] inputToCourse(String searchInput){
         StringBuilder courseCode = new StringBuilder();
         StringBuilder collegeCode = new StringBuilder();
         int numOfCourseCode = 0;
@@ -58,7 +58,7 @@ public class Search {
      * @param collegeCode a string from inputToCourse[0]
      * @return a boolean, return true if the parameter is a part of any of the known college codes
      */
-    public static boolean isInCollege(String collegeCode){
+    public boolean isInCollege(String collegeCode){
         if (!collegeCode.isEmpty()){
             boolean a;
             for (String i : allColleges){
@@ -78,7 +78,7 @@ public class Search {
      * @param collegeCode a String made isInCollege return true
      * @return an String ArrayList stored each college codes that contains this parameter, return null is the parameter is empty
      */
-    public static ArrayList<String> getCollege(String collegeCode){
+    public ArrayList<String> getCollege(String collegeCode){
         if (!(collegeCode.isEmpty())){
             ArrayList<String> collegeName = new ArrayList<>();
             if ((isInCollege(collegeCode))){
@@ -106,7 +106,7 @@ public class Search {
      * @param courseCode String, indicate the course want to filter, from getCollege
      * @return
      */
-    public static ArrayList<Course> courseListFilted(CourseAVLtree courseAVLtree, Boolean underG, Boolean postG,
+    public ArrayList<Course> courseListFilted(CourseAVLtree courseAVLtree, Boolean underG, Boolean postG,
                                                      Boolean onCampus, Boolean Online, String courseCode){
         ArrayList<Course> courselist = new ArrayList<>();
         ArrayList<Course> courselist1 = new ArrayList<>();
@@ -185,7 +185,7 @@ public class Search {
      * @param inputPersed a string, will detect what is the index of a non-letter characters of it
      * @return an ArrayList<Integer>, return the index of a non-letter char in the parameter
      */
-    public static ArrayList<Integer> indexOfSpace(String inputPersed){
+    public ArrayList<Integer> indexOfSpace(String inputPersed){
         ArrayList<Integer> indexOfSpce= new ArrayList<Integer>();
         for (int i = 0; i < inputPersed.length(); i++){
             if (!isWord(inputPersed.charAt(i))){
@@ -203,7 +203,7 @@ public class Search {
      * @param inputPersed a String, will detect what is firstName and lastName
      * @return a String array only contain two elements, the first element is firstName, the second element is lastName.
      */
-    public static String[] getName(String inputPersed){
+    public String[] getName(String inputPersed){
 
         String firstName = "";
         String lastName = "";

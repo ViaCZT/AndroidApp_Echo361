@@ -1,6 +1,5 @@
 package com.example.echo361.LayoutActivity;
 
-import static com.example.echo361.Search.Search.getName;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import com.example.echo361.Search.NExp;
 import com.example.echo361.Search.NParser;
 import com.example.echo361.Search.NTokenizer;
 import com.example.echo361.Search.NameTokenizer;
+import com.example.echo361.Search.Search;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
@@ -48,6 +48,8 @@ public class SearchChatTarget extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_chat_target);
+
+        Search Search = new Search();
 
         // Initialize Firebase
         FirebaseApp.initializeApp(getBaseContext());
@@ -177,8 +179,8 @@ public class SearchChatTarget extends AppCompatActivity {
                                             //Check if the student is enrolled in this course and is not the student logged in
                                             if (student.getPassWord().equals(i) && !(student.getPassWord().equals(student_id))) {
                                                 // Check if the student's name contain the input
-                                                if ((getName(student.getUserName())[0].toLowerCase().contains(getName(finalInputPersed)[0].toLowerCase()) &&
-                                                            getName(student.getUserName())[1].toLowerCase().contains(getName(finalInputPersed)[1].toLowerCase()) ) ||
+                                                if ((Search.getName(student.getUserName())[0].toLowerCase().contains(Search.getName(finalInputPersed)[0].toLowerCase()) &&
+                                                        Search.getName(student.getUserName())[1].toLowerCase().contains(Search.getName(finalInputPersed)[1].toLowerCase()) ) ||
                                                             student.getUserName().equals(finalInputPersed)) {
                                                     // Stroe studnets name and id
                                                     storeStudents.add(student.getUserName());

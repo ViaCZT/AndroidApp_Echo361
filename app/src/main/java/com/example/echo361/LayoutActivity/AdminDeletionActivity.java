@@ -1,12 +1,8 @@
 package com.example.echo361.LayoutActivity;
 
-import static com.example.echo361.Search.Search.courseListFilted;
-import static com.example.echo361.Search.Search.getCollege;
-import static com.example.echo361.Search.Search.inputToCourse;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,11 +20,10 @@ import com.example.echo361.Factory.Student;
 import com.example.echo361.Factory.Teacher;
 import com.example.echo361.R;
 import com.example.echo361.Search.CourseAVLtree;
+import com.example.echo361.Search.Search;
 import com.example.echo361.util.ToastUtil;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
-
-import org.checkerframework.checker.units.qual.A;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -158,15 +152,16 @@ public class AdminDeletionActivity extends AppCompatActivity {
 
                 if (!(input.isEmpty())) {
 
+                    Search Search = new Search();
                     // get course code and college code
-                    String[] courseinfo = inputToCourse(input);
+                    String[] courseinfo = Search.inputToCourse(input);
                     String collegeCode = courseinfo[0];
                     String courseCode = courseinfo[1];
                     ArrayList<String> allCollegeCode = new ArrayList<>();
                     ArrayList<String> list = new ArrayList<>();
 
                     if (!(collegeCode.equals(""))){
-                        allCollegeCode = getCollege(String.valueOf(collegeCode));
+                        allCollegeCode = Search.getCollege(String.valueOf(collegeCode));
                     }else{
                         for (Course.CODE i : Course.CODE.values()) {
                             allCollegeCode.add(String.valueOf(i));
@@ -180,7 +175,7 @@ public class AdminDeletionActivity extends AppCompatActivity {
                                 Gson gson = new Gson();
                                 CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
                                 ArrayList<Course> courselist = new ArrayList<>();
-                                courselist = courseListFilted(courseAVLtree, false, false, false, false, courseCode);
+                                courselist = Search.courseListFilted(courseAVLtree, false, false, false, false, courseCode);
                                 for (Course c :courselist) {
                                     list.add(c.getTitle() +"-"+ c.getDelivery()+ "-"+c.getCareer());
                                 }
