@@ -1,39 +1,9 @@
 package com.example.echo361.Search;
 
-import static com.example.echo361.Search.Search.courseListFilted;
-
-import static com.example.echo361.Search.Search.getCollege;
-import static com.example.echo361.Search.Search.indexOfSpace;
-import static com.example.echo361.Search.Search.inputToCourse;
-
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import android.content.Context;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-
-import androidx.annotation.NonNull;
-
-import com.example.echo361.Course;
-import com.example.echo361.Database.FirebaseDAOImpl;
-import com.example.echo361.Database.FirebaseDataCallback;
-import com.example.echo361.Search.CourseAVLtree;
-import com.example.echo361.Search.Search;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class SearchTest {
@@ -228,74 +198,6 @@ public class SearchTest {
         assertArrayEquals(fALNameTest5, Search.getName("Yit$ao$Zh$ang"));
     }
 
-
-
-
-
-//    @Test(timeout = 1000)
-//    public void courseListFiltedTest() {
-//
-//        String collegeCode = "COMP";
-//        String courseCode = "0001";
-//
-//        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-//        FirebaseApp.initializeApp(context);
-//
-//        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-//        // 读取数据
-//        DatabaseReference usersRef = database.child(collegeCode + "Tree");
-//        usersRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                // 处理数据快照
-//                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-//                    String data = (String) userSnapshot.getValue();
-//                    Gson gson = new Gson();
-//                    CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-//                    ArrayList<Course> courselist = new ArrayList<>();
-//                    courselist = courseAVLtree.inOrderBSTqualify(courselist, Course.CAREER.Undergraduate,null,null,null,courseCode);
-//
-//                    assertArrayEquals(courselist.toArray(), courseListFilted(courseAVLtree, true, false,
-//                            false, false, courseCode).toArray());
-////                    String email = userSnapshot.child("email").getValue(String.class);
-////                    System.out.println("Username: " + username + ", Email: " + email);
-//                }
-//            }
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                // 处理取消操作
-//            }
-//        });
-//
-//
-////        String collegeCode = "COMP";
-////        String courseCode = "0001";
-////
-////        ArrayList<String> allCollegeCode = getCollege(String.valueOf(collegeCode));
-////        ArrayList<String> list = new ArrayList<>();
-////
-////        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-////
-////            firebaseDAOImpl.getData(collegeCode+"Tree", null, new FirebaseDataCallback<String>() {
-////
-////                @Override
-////                public void onDataReceived(String data) {
-////                    Gson gson = new Gson();
-////                    CourseAVLtree courseAVLtree = gson.fromJson(data,CourseAVLtree.class);
-////                    ArrayList<Course> courselist = new ArrayList<>();
-////                    courselist = courseAVLtree.inOrderBSTqualify(courselist, Course.CAREER.Undergraduate,null,null,null,courseCode);
-////
-////                    assertArrayEquals(courselist.toArray(), courseListFilted(courseAVLtree, true, false,
-////                            false, false, courseCode).toArray());
-////
-////
-////                }
-////                @Override
-////                public void onError(DatabaseError error) {
-////                    // 在这里处理错误
-////                }
-////            });
-//    }
 
 
 
