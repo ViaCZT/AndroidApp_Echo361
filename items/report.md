@@ -271,9 +271,9 @@ Production Rules:
 
 **Tokenizer and Parsers**
 
-   The NameTokenizer class is an implementation of the NTokenizer abstract class for splitting a given input text as words, removing all non-letter symbols from it and treating these non-letter symbols as spacers, with the word being defined as sequences of consecutive letters.
+   The `NameTokenizer` class is an implementation of the `NTokenizer` abstract class for splitting a given input text as words, removing all non-letter symbols from it and treating these non-letter symbols as spacers, with the word being defined as sequences of consecutive letters.
 
-   The NParser class arranges the tokens by input order using the NAddExp and NLitExp to implement the Grammar above and adds a separator, a space, between each token. This makes it easier to identify the first name and last name of the input. When searching by student name, we treat the first token as the first name and the last token as the last name, and find all students whose first and last names contain the information entered by searching. This provides more accurate search results while enabling partial searches.
+   The `NParser` class arranges the tokens by input order using the `NAddExp` and `NLitExp` to implement the Grammar above and adds a separator, a space, between each token. This makes it easier to identify the first name and last name of the input. When searching by student name, we treat the first token as the first name and the last token as the last name, and find all students whose first and last names contain the information entered by searching. This provides more accurate search results while enabling partial searches.
 
 
 **Surprise Item**
