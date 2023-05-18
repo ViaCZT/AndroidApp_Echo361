@@ -4,7 +4,6 @@ import static com.example.echo361.Search.Search.courseListFilted;
 import static com.example.echo361.Search.Search.getCollege;
 import static com.example.echo361.Search.Search.inputToCourse;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +23,7 @@ import com.example.echo361.Database.FirebaseDataCallback;
 import com.example.echo361.Factory.Student;
 import com.example.echo361.R;
 import com.example.echo361.Search.CourseAVLtree;
+import com.example.echo361.util.ToastUtil;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseError;
 import com.google.gson.Gson;
@@ -163,20 +162,12 @@ public class EnrollActivity extends AppCompatActivity {
                         }
                     }else{
                         // If the input is invalid, show a Toast message
-                        Context context = getApplicationContext();
-                        CharSequence text = "Your input is invalid.";
-                        int duration = Toast.LENGTH_SHORT;
-                        Toast toast = Toast.makeText(context, text, duration);
-                        toast.show();
+                        ToastUtil.showMsg(EnrollActivity.this, "Your input is invalid.");
                     }
 
                 }else{
                     // If the input is empty, show a Toast message
-                    Context context = getApplicationContext();
-                    CharSequence text = "Input can not be empty.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    ToastUtil.showMsg(EnrollActivity.this, "Input can not be empty.");
                 }
 
 
@@ -188,11 +179,11 @@ public class EnrollActivity extends AppCompatActivity {
         buttonEnroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Extract the selected course from the TextView
-                String selectCourse = String.valueOf(textView.getText()).substring(0,8);
 
                 // Check if a course has been selected
-                if (!(selectCourse.isEmpty())){
+                if (!(textView.getText().toString().isEmpty() || textView.getText().toString().equals("CourseCode"))){
+                    // Extract the selected course from the TextView
+                    String selectCourse = String.valueOf(textView.getText()).substring(0,8);
 
                     // Extract the course code from the selectedCourse
                     int courseID = Integer.parseInt(selectCourse.substring(4));
@@ -224,12 +215,7 @@ public class EnrollActivity extends AppCompatActivity {
                             firebaseDAO.storeData(selectCourse.substring(0,4)+"Tree",null,gson.toJson(courseAVLtree));
 
                             // Display a toast to confirm successful enrollment
-                            Context context = getApplicationContext();
-                            CharSequence text = "You enrolled in this course.";
-                            int duration = Toast.LENGTH_SHORT;
-                            Toast toast = Toast.makeText(context, text, duration);
-                            toast.show();
-
+                            ToastUtil.showMsg(EnrollActivity.this, "You enrolled in this course.");
                         }
 
                         @Override
@@ -276,11 +262,7 @@ public class EnrollActivity extends AppCompatActivity {
 //
                 }else{
                     // If no course has been selected, display a toast to prompt the user to select a course
-                    Context context = getApplicationContext();
-                    CharSequence text = "You must select a course.";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    ToastUtil.showMsg(EnrollActivity.this, "You must select a course.");
                 }
             }
         });
