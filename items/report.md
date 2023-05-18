@@ -170,38 +170,39 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 *[What data structures did your team utilise? Where and why?]*
 
-we used 2 data Structures in our project:
+we used the following data Structures in our project:
 
-1. *AVLtree*
+1. AVLtree
 
-    * *Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature and [Data Visualization].*
+    * Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature and [Data Visualization].
    
-    * *Locations: line 70, 172 in AdminDeletionActivity.java, 
-    * CourseAVLtree.java
-    * FirebaseDAOImpl.java
-    * , etc.*
+    * Locations: CourseAVLtree.java
+      * Line 70, 172 in AdminDeletionActivity.java, 
+      * Line 269-279 in FirebaseDAOImpl.java
 
-   * *Reasons:*
+   * Reasons:
 
-   * *It is faster for searching with a time complexity O(log n)*
+     * It is faster for searching with a time complexity O(log n)
 
-   * *It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance*
+     * It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance
 
-2. *ArrayList*
+2. ArrayList
 
-    * *Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature and [Data Visualization].*
+    * Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature and [Data Visualization].
 
-    * *Locations: line 84, 113 in AdminDeletionActivity.java,
-    * FirebaseDAOImpl.java
-    * , etc.*
+    * Locations: 
+      * Line 84, 113 in AdminDeletionActivity.java,
+      * Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
+      * Line 13, 28, 70, 78 in User.java
+      * Line 21 in UserFactory.java
 
-    * *Reasons:*
+    * Reasons:
 
-    * *ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.*
+      * ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
 
-    * *It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.*
+      * It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
 
-    * *It is adapter for ListView component*
+      * It is adapter for ListView component
 
 **Design Patterns**
 
