@@ -1,3 +1,31 @@
+package com.example.echo361.Database;
+
+import android.content.Context;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import com.example.echo361.Course;
+import com.example.echo361.Factory.Student;
+import com.example.echo361.Factory.Teacher;
+import com.example.echo361.Factory.User;
+import com.example.echo361.Factory.UserFactory;
+import com.example.echo361.Search.CourseAVLtree;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  * This class provides an implementation of FirebaseDAO interface, which defines methods for
  * retrieving and storing data to the Firebase Realtime Database. The class uses Firebase SDK to
@@ -24,35 +52,6 @@
  *
  * @author Zetian Chen, u7564812
  */
-package com.example.echo361.Database;
-
-import android.content.Context;
-import android.util.Log;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.echo361.Course;
-import com.example.echo361.Factory.Student;
-import com.example.echo361.Factory.Teacher;
-import com.example.echo361.Factory.User;
-import com.example.echo361.Factory.UserFactory;
-import com.example.echo361.Search.CourseAVLtree;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Collections;
-
 public class FirebaseDAOImpl implements FirebaseDAO {
     private static FirebaseDAOImpl instance = null;
 

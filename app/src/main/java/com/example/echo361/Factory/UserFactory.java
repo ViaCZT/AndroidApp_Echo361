@@ -1,13 +1,13 @@
+package com.example.echo361.Factory;
+
+import java.util.ArrayList;
+
 /**
  * The UserFactory class is responsible for creating instances of User subclasses based on the provided user type.
  * It encapsulates the object creation logic and returns the appropriate User object.
  *
  * @author Zetian Chen, u7564812
  */
-package com.example.echo361.Factory;
-
-import java.util.ArrayList;
-
 public class UserFactory {
     /**
      * Creates and returns a User object based on the specified user type, username, password, and courses.

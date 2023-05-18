@@ -50,24 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseApp.initializeApp(getBaseContext());
 
-
-
-        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
-        try {
-            firebaseDAOImpl.initialCoursesData(getApplicationContext());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            firebaseDAOImpl.initialTeacherData(getApplicationContext());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            firebaseDAOImpl.initialStudentData(getApplicationContext());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        // initial course, student, and teacher data in firebase
+//        FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
+//        try {
+//            firebaseDAOImpl.initialCoursesData(getApplicationContext());
+//            firebaseDAOImpl.initialTeacherData(getApplicationContext());
+//            firebaseDAOImpl.initialStudentData(getApplicationContext());
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
 
 
         Button mBtnLogin = findViewById(R.id.btn_login);

@@ -1,15 +1,15 @@
-/**
- * Interface for Firebase Data Access Object (DAO).
- * Provides methods to retrieve and store data in Firebase.
- *
- * @author Zetian Chen, u7564812
- */
 package com.example.echo361.Database;
 
 import android.content.Context;
 
 import java.io.IOException;
 
+/**
+ * Interface for Firebase Data Access Object (DAO).
+ * Provides methods to retrieve and store data in Firebase.
+ *
+ * @author Zetian Chen, u7564812
+ */
 public interface FirebaseDAO {
     /**
      * Retrieves data from Firebase based on the reference and child paths provided.
