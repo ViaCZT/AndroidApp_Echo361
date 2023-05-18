@@ -117,10 +117,10 @@ public class ForumTotalActivity extends AppCompatActivity {
                         selectedPost.setVisible(!selectedPostBlock.getVisible());
                         arrayAdapter.notifyDataSetChanged();
                         if(selectedPost.getVisible()==true) {
-                            ToastUtil.showMsg(ForumTotalActivity.this, "Visibility for post " + selectedPostBlock.getTitle()+" true");
+                            ToastUtil.showMsg(ForumTotalActivity.this, "Visibility for post " + selectedPostBlock.getTitle()+" IS TRUE");
                         }
                         else
-                            ToastUtil.showMsg(ForumTotalActivity.this, "Visibility for post " + selectedPostBlock.getTitle()+" false");
+                            ToastUtil.showMsg(ForumTotalActivity.this, "Visibility for post " + selectedPostBlock.getTitle()+" IS FALSE");
 
                         // update posts in Firebase
                         String forumId = course_name;

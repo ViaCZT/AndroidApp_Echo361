@@ -22,6 +22,10 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
+/**
+ * @Author Zihan Ai, u7528678
+ * The ForumDetailActivity class represents an activity that displays the details of a specific forum post.
+ */
 public class ForumDetailActivity extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
@@ -42,7 +46,7 @@ public class ForumDetailActivity extends AppCompatActivity {
 
         Button newPost = findViewById(R.id.btn_postIdea);
 
-        // 更新Firebase中的回复
+        // Update replies in Firebase
         FirebaseDAOImpl firebaseDAOImpl = FirebaseDAOImpl.getInstance();
         firebaseDAOImpl.getData("Forums", course_name, new FirebaseDataCallback<String>() {
             @Override
@@ -60,7 +64,7 @@ public class ForumDetailActivity extends AppCompatActivity {
                     String content0 = editText.getText().toString();
                     editText.setText("");
                     arrayAdapter.notifyDataSetChanged();
-                    // 更新课程论坛并将其存储在Firebase中
+                    // Update the course forum and store it in Firebase
                     forum.getPosts().get(postIndex).getFloors().add(content0);
                     String updatedForumJson = gson.toJson(forum);
                     firebaseDAOImpl.storeData("Forums" , course_name, updatedForumJson);
@@ -70,7 +74,7 @@ public class ForumDetailActivity extends AppCompatActivity {
 
             @Override
             public void onError(DatabaseError error) {
-                // 处理错误
+                // Handle errors
             }
         });
 

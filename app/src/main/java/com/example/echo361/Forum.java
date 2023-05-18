@@ -2,24 +2,21 @@ package com.example.echo361;
 
 import java.util.ArrayList;
 
-
+/**
+ * @Author Zihan Ai, u7528678
+ * The Forum class represents a forum that contains a list of forum posts.
+ */
 public class Forum {
 
-    private String courseName;
     private ArrayList<ForumPost> posts;
 
+    /**
+     * Constructs a new Forum for a specific course with the given list of forum posts.
+     *
+     * @param courseName The name of the course the forum belongs to
+     * @param posts      The list of forum posts in the forum
+     */
     public Forum(String courseName, ArrayList<ForumPost> posts){
-        this.courseName = courseName;
-        this.posts = posts;
-    }
-
-    public void setCourseName(String courseName){this.courseName = courseName;}
-
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setPosts(ArrayList<ForumPost> posts) {
         this.posts = posts;
     }
 
@@ -27,9 +24,6 @@ public class Forum {
         return posts;
     }
 
-    public void addPost(ForumPost forumPost){
-        this.posts.add(forumPost);
-    }
 
 
 }
