@@ -318,12 +318,11 @@ Production Rules:
       * Additional description: There are three user roles: Student, Teacher and Admin.
         All the usernames and passwords can be seen in students.csv and teachers.csv from assets folder or Firebase.
         Admin login with special username “Ad Admin” and password “u0000000”.
-      <br>
 2. [Data Instance] (easy) There are more than 3,000 valid data instances in our Firebase, which include user, course, forum and chat instances.<br>
-3. [Data Visualization] (medium) Users are able to load data from Firebase and visualise it. We apply the AVLtree structure. When users use the app, they can see clear lists of courses and users to chat with.
-    * Class CourseAVLtree <br>
+3. [Data Visualization] (medium) Application are able to load data from Firebase and visualise it. When users use the app, they can see clear lists of courses, posts in the forum, users to chat with, and the contents of peer to peer messaging.
+    * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget <br>
 4. [Search Information] (medium) Users are able to search for the class to enroll or drop, and the other user to chat with on our app.
-    * Search folder,  Class SearchChatTarget,  Class EnrollActivity
+    * Search folder,  Class SearchChatTarget, EnrollActivity
       <br><br>
 
 ### General Features
@@ -332,7 +331,6 @@ Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
 1. [FB-Auth] (easy) Only the users stocked in our Firebase have authentication to the app.<br>
 2. [FB-Persist] (medium) We use Firebase to persist all data used in your app.<br>
 3. [FB-Syn] (hard) Any changes in Firebase will be applied immediately without restarting the app.
-
 <br>
 
 Feature Category: UI Design and Testing <br>
