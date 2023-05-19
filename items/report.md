@@ -98,7 +98,7 @@ u7564899, Yijun Huang
 | 2. Design Patterns                  |                         Zetian Chen (u7564812)                         |
 | 3. Grammars & Tokenizer and Parsers |                         Yitao Zhang (u7504766)                         |
 | Summary of Known Errors and Bugs    |                         Yijun Huang (u7564899)                         |
-| Testing Summary                     |                                  All                                   |
+| Testing Summary                     |                          Zihan Ai (u7528678)                           |
 | Implemented Features                | Yijun Huang (u7564899), Zetian Chen (u7564812), Yitao Zhang (u7504766) |
 
 **Slide preparation** 
