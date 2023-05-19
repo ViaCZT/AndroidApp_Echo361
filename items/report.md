@@ -265,9 +265,7 @@ Production Rules:
 
 ## Summary of Known Errors and Bugs
 
-1. Bug 1: Deleting courses from bottom to top in one searching round with rapid speed may causes exceptions.
-
-2. Bug 2: The Grammar makes the search cannot search rare numbers for the given account (comp2100@anu.au). To search this, we should search comp or comp2100 etc.
+1. Bug 1: The Grammar makes the search cannot search pure numbers. For example, you cannot search "2" or "2100" for the given account (comp2100@anu.au), because we assume that names are made up of letters only and that other symbols such as numbers, punctuations, etc. will be ignored. So, you can search "comp" or "comp2100" or "com" etc. for this account. 
 
 ## Testing Summary
 
@@ -287,74 +285,75 @@ Production Rules:
 
 ### Basic App
 1. [Login] (easy) We use realtime database by Firebase to stock the user information.
-     * Class MainActivity, lines of code: whole file <br>
-       Firebase link: https://console.firebase.google.com/project/echo361/overview
-      * Additional description: There are three user roles: Student, Teacher and Admin.
-        All the usernames and passwords can be seen in students.csv and teachers.csv from assets folder or Firebase.
-        Admin login with special username “Ad Admin” and password “u0000000”.
-<br>
+   * Class MainActivity, lines of code: whole file <br>
+   * Firebase link: https://console.firebase.google.com/project/echo361/overview
+   * Additional description: There are three user roles: Student, Teacher and Admin. All the usernames and passwords can be seen in students.csv and teachers.csv from assets folder or Firebase. Admin login with special username “Ad Admin” and password “u0000000”.
+
 2. [Data Instance] (easy) There are more than 3,000 valid data instances in our Firebase, which include user, course, forum and chat instances.
-<br>
+
 3. [Data Visualization] (medium) Application are able to load data from Firebase and visualise it. When users use the app, they can see clear lists of courses, posts in the forum, users to chat with, and the contents of peer to peer messaging.
-    * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget 
-<br>
+   * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget 
+
 4. [Search Information] (medium) Users are able to search for the class to enroll or delete and the other users to chat with on our app.
-    * All classes in the Search folder
-    * Class SearchChatTarget, EnrollActivity
-<br><br>
+   * All classes in the Search folder
+   * Class SearchChatTarget, EnrollActivity
+   <br><br>
 
 ### General Features
-Feature Category: Firebase Integration <br>
+**Feature Category: Firebase Integration**
+
 Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
+
 1. [FB-Auth] (easy) Only the users stocked in our Firebase have authentication to the app.
    * Class MainActivity, FirebaseDAO, FirebaseDAOImpl, FirebaseDataCallback, lines of code: whole file
    * Additional description: MainActivity class implements the log in function, which reads the user data from Firebase.
-<br>
+
 2. [FB-Persist] (medium) We use Firebase to persist all data used in our app.
    * Class MainActivity, lines of code: 53-61
    * Class FirebaseDAOImpl, method initialStudentData, initialTeacherData, initialCourseData, initialForumData, lines of code: 203-479
    * Additional description: The data initialisation is performed only once, which is to convert the files (students.csv, teachers.csv, courses.scv) in the asset folder into the correct data structure and store them in the Firebase, so these code in the MainActivity class is commented now.
-<br>
+   
 3. [FB-Syn] (hard) Any changes in Firebase will be applied immediately without restarting the app.
-<br>
 
-Feature Category: UI Design and Testing <br>
+
+**Feature Category: UI Design and Testing** 
+
 1. [UI-Layout] (easy) Our UI has reasonable portrait and landscape layout variants as well as support for different screen sizes. And as all data is stocked in Firebase, rotating the telephone at any time will not affect the existing data.
-    * res folder
-<br>
+   * res folder
 
-Feature Category: Search-related features <br>
+**Feature Category: Search-related features** 
+
 1. [Search-Invalid] (medium) We have a tokenizer and parser with a formal grammar of our own creation so that search functionality can handle partially valid and invalid search queries. For example, if searching for punctuation marks like a comma, an invalid toast will show up. 
 And if searching a chat target with only numbers, this is invalid too, as we set this to search letters like real names in reality (comp2100@anu.au is an exception).
    * AdminDeletionActivity.class (to search courses), lines of code: 146-204
    * EnrollActivity.class (to search courses), lines of code: 84-169
    * SearchChatTarget.class (to search students), lines of code: 75-234
-<br>
+
 2. [Search-Filter] (easy) We implement the filter function so that students can use checkboxes to select from undergraduate, graduate, online, on-campus, and blended courses.
    * Class Search: method courseListFilted(), lines of code: 109-180
-<br>
 
-Feature Category: Privacy <br>
+**Feature Category: Privacy** 
+
 1. [Privacy-Visibility] (easy) A student can only see a course’s main page after enrolling in this course.
    * Additional description: this is implement with combination of UI design, data structure and Firebase.
-<br>
-2. [Privacy-Block] (medium) Teachers can block the forum, that is, change the visibility of this forum so that students cannot see it while teachers still can.
-     * Class ForumTotalActivity, lines of code: 111-123
-<br>
 
-Feature Category: Peer-to-Peer Messaging <br>
+2. [Privacy-Block] (medium) Teachers can block the forum, that is, change the visibility of this forum so that students cannot see it while teachers still can.
+   * Class ForumTotalActivity, lines of code: 111-123
+
+**Feature Category: Peer-to-Peer Messaging** 
+
 1. [P2P-DM] (hard) Students and teachers have the ability to message the person involved in the same course in private.  
    * Class Chat Activity, Msg, MsgAdapter, lines of code: whole file
-<br>
+
 2. [P2P-Restriction] (hard) The chat function is assessed on the course main page of a certain course. By searching the chat target, users cannot search for students and teachers who are not involved in the same course to chat. 
 Especially, students only need to type “teacher” to chat with the exact teacher who delivered this course.
    * Class SearchChatTarget, lines of code: 183 -184
-<br>
 
-Feature Category: Greater Data Usage, Handling and Sophistication <br>
+**Feature Category: Greater Data Usage, Handling and Sophistication** 
+
 1. [Data-Deletion] (hard) We apply AVL tree data structure. Admin can delete a course with its teachers and enrolled students.
-    * Class CourseAVLtree: method delete(), lines of code: 131-184
-    * Class AdminDeletionActivity: method buttonDelete.setOnClickListener(), lines of code 51-145
+   * Class CourseAVLtree: method delete(), lines of code: 131-184
+   * Class AdminDeletionActivity: method buttonDelete.setOnClickListener(), lines of code 51-145
 
 ## Team Meetings
 
