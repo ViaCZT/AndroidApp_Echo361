@@ -172,12 +172,12 @@ we used the following data Structures in our project:
     * Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
    
     * Locations: CourseAVLtree.java
-      * Line 70, 172 in AdminDeletionActivity.java, 
+      * Line 71, 73, 176, 178 in AdminDeletionActivity.java, 
       * Line 269-279 in FirebaseDAOImpl.java
-      * Line 122 in DropActivity.java
-      * Line 129, 194 in EnrollActivity.java
-      * Line 108 in SearchChatTarget.java
-      * Line 109-196 in Search.java
+      * Line 118, 122 in DropActivity.java
+      * Line 125, 129, 190, 194 in EnrollActivity.java
+      * Line 104, 108 in SearchChatTarget.java
+      * Line 109-162 in Search.java
 
    * Reasons:
 
@@ -193,11 +193,11 @@ we used the following data Structures in our project:
       * Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
       * Line 13, 28, 70, 78 in User.java
       * Line 21 in UserFactory.java
-      * Line 65, 83, 121, 128 in DropActivity.java
-      * Line 98, 113, 128, 193, 200, 224 in EnrollActivity.java
-      * Line 56, 77 in MyCourseActivity.java
-      * Line 107, 114, 117, 124 in SearchChatTarget.java
-      * Line 83, 111-180, 189, 211 in Search.java
+      * Line 60, 65, 70, 83, 121, 128 in DropActivity.java
+      * Line 98, 113, 128, 193, 200, 219, 224 in EnrollActivity.java
+      * Line 52, 56, 61, 77 in MyCourseActivity.java
+      * Line 107, 114, 117-118, 124-126, 129, 137, 172, 179,  in SearchChatTarget.java
+      * Line 81, 83, 109-180, 199-189, 211 in Search.java
 
     * Reasons:
 
