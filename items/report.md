@@ -254,14 +254,13 @@ Production Rules:
     <exp> ::= <factor> | <factor> <exp>
     <factor> ::= <token>
 
-   This Grammar is designed to allow the search for a student's name to be converted into tokens and then sorted in order of input. This helps us to distinguish between first name and last name, and when searching by students' name, the first and last names can be searched separately to provide more accurate results.
+   This Grammar is designed to allow the search for a student's name to be converted into tokens and then sorted in order of input. This helps us to distinguish between first name and last name. Tokenizer and Parser will help us to put all consecutive letters together as one word, and to use all non-letter symbols as separators. When searching by student name, although when we enter only one word we can only treat it as a student's first name to search, when we search for a student by last name and first name, we treat the first token as the first name and the last token as the last name and find all students whose first and last names contain the information entered in the search. This provides more accurate search results while enabling partial searches.
 
 **Tokenizer and Parsers**
 
    The `NameTokenizer` class is an implementation of the `NTokenizer` abstract class for splitting a given input text as words, removing all non-letter symbols from it and treating these non-letter symbols as spacers, with the word being defined as sequences of consecutive letters.
 
-   The `NParser` class arranges the tokens by input order using the `NAddExp` and `NLitExp` to implement the Grammar above and adds a separator, a space, between each token. This makes it easier to identify the first name and last name of the input. When searching by student name, we treat the first token as the first name and the last token as the last name, and find all students whose first and last names contain the information entered by searching. This provides more accurate search results while enabling partial searches.
-
+   The `NParser` class arranges the tokens by input order using the `NAddExp` and `NLitExp` to implement the Grammar above and adds a separator, a space, between each token. This makes it easier to identify the first name and last name of the input. When searching by student name, although when we enter only one word we can only treat it as a student's first name to search, when we search for a student by last name and first name, we treat the first token as the first name and the last token as the last name, and find all students whose first and last names contain the information entered by searching. This provides more accurate search results while enabling partial searches.
 
 ## Summary of Known Errors and Bugs
 
@@ -292,9 +291,19 @@ Production Rules:
 2. [Data Instance] (easy) There are more than 3,000 valid data instances in our Firebase, which include user, course, forum and chat instances.
 
 3. [Data Visualization] (medium) Application are able to load data from Firebase and visualise it. When users use the app, they can see clear lists of courses, posts in the forum, users to chat with, and the contents of peer to peer messaging.
+   * Class AdminDeletionActivity(search courses then visualize), lines of code: 146-183
+   * Class DropActivity(get courses then visualize), lines of code: 60-97
+   * Class EnrollActivity(search courses then visualize), lines of code: 84-140
+   * Class MyCourseActivity(get courses then visualize), lines of code: 52-74
+   * Class SearchChatTarget(search students then visualize), lines of code: 74-150, 172-195
    * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget 
 
-4. [Search Information] (medium) Users are able to search for the class to enroll or delete and the other users to chat with on our app.
+4. [Search Information] (medium) Users are able to search for/get the class to enroll or delete and the other users to chat with on our app.
+   * Class AdminDeletionActivity(search courses), lines of code: 146-181
+   * Class DropActivity(get courses), lines of code: 60-76
+   * Class EnrollActivity(search courses), lines of code: 84-136
+   * Class MyCourseActivity(get courses), lines of code: 52-70
+   * Class SearchChatTarget(search students), lines of code: 74-145, 167-191
    * All classes in the Search folder
    * Class SearchChatTarget, EnrollActivity
    <br><br>
