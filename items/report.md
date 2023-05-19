@@ -281,69 +281,69 @@ Production Rules:
 ![](images/TestSummary.png)
 
 * courseAVLTreeTest:
-- * Number of test cases: 18
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: AVLTree insertion, deletion, null check, find specific node.
+- Number of test cases: 18
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: AVLTree insertion, deletion, null check, find specific node.
 
 * courseTest:
-- * Number of test cases: 1
-- * Code coverage: Class: 100%, Method: 68%, Line: 75%
-- * Types of tests created: add course, setters and getters tests.
+- Number of test cases: 1
+- Code coverage: Class: 100%, Method: 68%, Line: 75%
+- Types of tests created: add course, setters and getters tests.
 
 * AdminTest:
-- * Number of test cases: 3
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: initialization, setter, toString method.
+- Number of test cases: 3
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: initialization, setter, toString method.
 
 * StudentTest:
-- * Number of test cases: 3
-- * Code coverage: Class: 100%, Method: 66%, Line: 66%
-- * Types of tests created: initialization, setter, toString method.
+- Number of test cases: 3
+- Code coverage: Class: 100%, Method: 66%, Line: 66%
+- Types of tests created: initialization, setter, toString method.
 
 * TeacherTest:
-- * Number of test cases: 2
-- * Code coverage: Class: 100%, Method: 66%, Line: 66%
-- * Types of tests created: initialization, toString method.
+- Number of test cases: 2
+- Code coverage: Class: 100%, Method: 66%, Line: 66%
+- Types of tests created: initialization, toString method.
 
 * UserFactoryTest:
-- * Number of test cases: 5
-- * Code coverage: Class: 100%, Method: 66%, Line: 66%
-- * Types of tests created: setters and getters, null check.
+- Number of test cases: 5
+- Code coverage: Class: 100%, Method: 66%, Line: 66%
+- Types of tests created: setters and getters, null check.
 
 * UserTest:
-- * Number of test cases: 3
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: initialization, setter, toString method.
+- Number of test cases: 3
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: initialization, setter, toString method.
 
 * NtokenizerTest:
-- * Number of test cases: 3
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: tokenizing.
+- Number of test cases: 3
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: tokenizing.
 
 * ParserTest:
-- * Number of test cases: 8
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: Parsing.
+- Number of test cases: 8
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: Parsing.
 
 * SearchTest:
-- * Number of test cases: 6
-- * Code coverage: Class: 100%, Method: 85%, Line: 48%
-- * Types of tests created: course name test, name test, word test, college name test, validation test.
+- Number of test cases: 6
+- Code coverage: Class: 100%, Method: 85%, Line: 48%
+- Types of tests created: course name test, name test, word test, college name test, validation test.
 
 * ForumTest:
-- * Number of test cases: 5
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: tests about Forum constructor.
+- Number of test cases: 5
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: tests about Forum constructor.
 
 * ForumPostTest:
-- * Number of test cases: 10
-- * Code coverage: Class: 100%, Method: 100%, Line: 100%
-- * Types of tests created: tests about ForumPost constructor.
+- Number of test cases: 10
+- Code coverage: Class: 100%, Method: 100%, Line: 100%
+- Types of tests created: tests about ForumPost constructor.
 
 * MsgTest:
-- * Number of test cases: 6
-- * Code coverage: Class: 100%, Method: 83%, Line: 90%
-- * Types of tests created: tests about Msg constructor.
+- Number of test cases: 6
+- Code coverage: Class: 100%, Method: 83%, Line: 90%
+- Types of tests created: tests about Msg constructor.
 
 
 ## Implemented Features
