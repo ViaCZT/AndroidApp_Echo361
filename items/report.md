@@ -83,19 +83,19 @@ u7564899, Yijun Huang
 
 **Report Writing**
 
-| Report Part                         |                    Assignee                    |
-|:------------------------------------|:----------------------------------------------:|
-| Summary of Individual Contributions |                      All                       |
-| Conflict Resolution Protocol        |             Zetian Chen (u7564812)             |
-| Application Description             |               Yuan Li (u7550484)               |
-| Application UML                     | Zetian Chen (u7564812), Yitao Zhang (u7504766) |
-| Application Design and Decisions    |                                                |
-| 1. Data Structures                  |   Yuan Li (u7550484), Yitao Zhang (u7504766)   |
-| 2. Design Patterns                  |             Zetian Chen (u7564812)             |
-| 3. Grammars & Tokenizer and Parsers |             Yitao Zhang (u7504766)             |
-| Summary of Known Errors and Bugs    |             Yijun Huang (u7564899)             |
-| Testing Summary                     |                      All                       |
-| Implemented Features                |             Yijun Huang (u7564899)             |
+| Report Part                         |                                Assignee                                |
+|:------------------------------------|:----------------------------------------------------------------------:|
+| Summary of Individual Contributions |                                  All                                   |
+| Conflict Resolution Protocol        |                         Zetian Chen (u7564812)                         |
+| Application Description             |                           Yuan Li (u7550484)                           |
+| Application UML                     |             Zetian Chen (u7564812), Yitao Zhang (u7504766)             |
+| Application Design and Decisions    |                                                                        |
+| 1. Data Structures                  |               Yuan Li (u7550484), Yitao Zhang (u7504766)               |
+| 2. Design Patterns                  |                         Zetian Chen (u7564812)                         |
+| 3. Grammars & Tokenizer and Parsers |                         Yitao Zhang (u7504766)                         |
+| Summary of Known Errors and Bugs    |                         Yijun Huang (u7564899)                         |
+| Testing Summary                     |                                  All                                   |
+| Implemented Features                | Yijun Huang (u7564899), Zetian Chen (u7564812), Yitao Zhang (u7504766) |
 
 **Slide preparation** 
 
@@ -304,7 +304,7 @@ Production Rules:
    * Class EnrollActivity(search courses), lines of code: 84-136
    * Class MyCourseActivity(get courses), lines of code: 52-70
    * Class SearchChatTarget(search students), lines of code: 74-145, 167-191
-   * All classes in the Search folder
+   * All classes in the Search folder(Tokenizer, Parser, and methods used for searching): all methods
    * Class SearchChatTarget, EnrollActivity
    <br><br>
 
@@ -332,11 +332,15 @@ Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
 
 **Feature Category: Search-related features** 
 
-1. [Search-Invalid] (medium) We have a tokenizer and parser with a formal grammar of our own creation so that search functionality can handle partially valid and invalid search queries. For example, if searching for punctuation marks like a comma, an invalid toast will show up. 
+1. [Search-Invalid] (medium) When we search by a name of student, we have a tokenizer and parser with a formal grammar of our own creation so that search functionality can handle partially valid and invalid search queries. For example, if searching for punctuation marks like a comma, an invalid toast will show up. 
 And if searching a chat target with only numbers, this is invalid too, as we set this to search letters like real names in reality (comp2100@anu.au is an exception).
-   * AdminDeletionActivity.class (to search courses), lines of code: 146-204
-   * EnrollActivity.class (to search courses), lines of code: 84-169
-   * SearchChatTarget.class (to search students), lines of code: 75-234
+When we search for courses, we use the first four letters as the college code and the first four digits as the corses code by checking each character entered, using the college code and corses code to achieve a precise search. If less than four letters or numbers are entered, the letters will be treated as the college code and the numbers as the courses code, displaying the course information for all courses that contain the information entered.
+   * Class AdminDeletionActivity(to search courses), lines of code: 155-161 
+   * Class EnrollActivity(to search courses), lines of code: 93-108
+   * Class Search: method getCollege(), lines of code:
+   * Class SearchChatTarget(to search students), lines of code: 78-90
+   * Class NameTokenizer: all methods
+   * class NParser: all methods
 
 2. [Search-Filter] (easy) We implement the filter function so that students can use checkboxes to select from undergraduate, graduate, online, on-campus, and blended courses.
    * Class Search: method courseListFilted(), lines of code: 109-180
