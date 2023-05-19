@@ -324,7 +324,8 @@ Production Rules:
 
 ## Summary of Known Errors and Bugs
 
-1. Bug 1: When searching for a student to chat with, the search function does not support searching for pure numbers. For example, you cannot search "2" or "2100" for the given account (comp2100@anu.au), because we assume that names are made up of letters only and that other symbols such as numbers, punctuations, etc. will be ignored. Alternatively, you can search "comp" or "comp2100" or "com" etc. for this account. 
+1. When searching for a student to chat with, the search function does not support searching for pure numbers. For example, you cannot search "2" or "2100" for the given account (comp2100@anu.au), because we assume that names are made up of letters only and that other symbols such as numbers, punctuations, etc. will be ignored. Alternatively, you can search "comp" or "comp2100" or "com" etc. for this account. 
+2. Admin can get a search result of all the courses by typing symbols casually, as a shortcut for admin account. On the contrary, this kind of typing is regarded as invalid input for students and teachers account.
 
 ## Testing Summary
 
@@ -412,7 +413,8 @@ Production Rules:
    * Class EnrollActivity(search courses then visualize), lines of code: 84-140
    * Class MyCourseActivity(get courses then visualize), lines of code: 52-74
    * Class SearchChatTarget(search students then visualize), lines of code: 74-150, 172-195
-   * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget 
+   * Class ForumDetailActivity, ForumTotalActivity (users forum fuction visualise), lines of code: whole file
+   * Class ChatActivity, Msg, MsgAdapter (users chat function visualize), lines of code: whole file
 
 4. [Search Information] (medium) Users are able to search for/get the class to enroll or delete and the other users to chat with on our app.
    * Class AdminDeletionActivity(search courses), lines of code: 146-181
@@ -420,7 +422,7 @@ Production Rules:
    * Class EnrollActivity(search courses), lines of code: 84-136
    * Class MyCourseActivity(get courses), lines of code: 52-70
    * Class SearchChatTarget(search students), lines of code: 74-145, 167-191
-   * All classes in the Search folder(Tokenizer, Parser, and methods used for searching): all methods
+   * All classes in the Search folder(Tokenizer, Parser, and methods used for searching), lines of code: whole file
    <br><br>
 
 ### General Features
@@ -438,11 +440,11 @@ Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
    * Additional description: The data initialisation is performed only once, which is to convert the files (students.csv, teachers.csv, courses.scv) in the asset folder into the correct data structure and store them in the Firebase, so these code in the MainActivity class is commented now.
    
 3. [FB-Syn] (hard) Any changes in Firebase will be applied immediately without restarting the app.
-   * Class ForumTotalActivity, line of code: 62-181
-   * Class ForumDetailActivity, line of code: 53-73
-   * class ChatActivity, line of code: 75-133
-   * class EnrollActivity, line of code: 122-151
-   * class DropActivity, line of code: 62-91
+   * Class ForumTotalActivity, lines of code: 62-181
+   * Class ForumDetailActivity, lines of code: 53-73
+   * class ChatActivity, lines of code: 75-133
+   * class EnrollActivity, lines of code: 122-151
+   * class DropActivity, lines of code: 62-91
    * Additional description: The "onDataReceived" function is a function that gets called after data has been downloaded from Firebase.
 
 **Feature Category: UI Design and Testing** 
@@ -457,13 +459,13 @@ And if searching a chat target with only numbers, this is invalid too, as we set
 When we search for courses, we use the first four letters as the college code and the first four digits as the corses code by checking each character entered, using the college code and corses code to achieve a precise search. If less than four letters or numbers are entered, the letters will be treated as the college code and the numbers as the courses code, displaying the course information for all courses that contain the information entered.
    * Class AdminDeletionActivity(to search courses), lines of code: 155-161 
    * Class EnrollActivity(to search courses), lines of code: 93-108
-   * Class Search: method getCollege(), lines of code:
+   * Class Search, method getCollege(), lines of code:
    * Class SearchChatTarget(to search students), lines of code: 78-90
-   * Class NameTokenizer: all methods
-   * class NParser: all methods
+   * Class NameTokenizer, lines of code: whole file
+   * class NParser, lines of code: whole file
 
 2. [Search-Filter] (easy) We implement the filter function so that students can use checkboxes to select from undergraduate, graduate, online, on-campus, and blended courses.
-   * Class Search: method courseListFilted(), lines of code: 109-180
+   * Class Search, method courseListFilted(), lines of code: 109-180
 
 **Feature Category: Privacy** 
 
@@ -472,7 +474,7 @@ When we search for courses, we use the first four letters as the college code an
 
 2. [Privacy-Block] (medium) Teachers can block the forum, that is, change the visibility of this forum so that students cannot see it while teachers still can.
    * Class ForumTotalActivity, lines of code: 114-123, 168-178
-   * Additional description: To activate block function,first click block button then choose the post.
+   * Additional description: To activate the block function, first click Block button then choose the forum to change its visibility.
 
 **Feature Category: Peer-to-Peer Messaging** 
 

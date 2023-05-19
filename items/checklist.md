@@ -11,7 +11,7 @@ The following markdown document is a checklist of items you **should** complete 
 - [x] A conflict resolution protocol is documented and well-defined.
 - [x] All Team Meeting Minutes (at least 4, with links in the report). 
 - [ ] Create a video titled  `features.(mp4|mov|wmv)` that demonstrates each implemented feature (basic + general), in the same order as listed in the report.
-- [ ] A working standalone **APK**, i.e., an APK that can be loaded and execute correctly on an AVD.
+- [x] A working standalone **APK**, i.e., an APK that can be loaded and execute correctly on an AVD.
 - [x] Have a markdown report document titled 'report.md'.
 - [x] **Statement of Originality**: All members have read and signed the [statement of originality](./statement-of-originality.yml). Failure to do so will result in zero marks.
 - [x] All external code, assets or help received outside the group is documented in the [statement of originality](./statement-of-originality.yml) and relevant parts in the code.
@@ -22,14 +22,14 @@ Please remove all instructions and sample content (example reasonable parts such
 in the templates for both report and meeting minutes before submitting.
 - [x] The UID, name and roles (team structure) of all group members.
 - [x] A summary of individual contributions is well detailed by each member, with links to the key code contributions.
-- [ ] A description of your application.
-- [ ] Examples/use cases of your application.
+- [x] A description of your application.
+- [x] Examples/use cases of your application.
 - [x] A UML diagram of your application (e.g. class diagram).
 - [x] A description of the application design (with a diagram if necessary).
 - [x] A description of design decisions made with regards to the data structures, tokenizers, parsers, design patterns and any other items you feel are relevant.
 - [ ] A description of how your team addressed the surprise item and any decisions your team had to make in the process.
-- [ ] All known bugs and errors are listed.
-- [ ] Details of tests provided such as the type, number and coverage.
+- [x] All known bugs and errors are listed.
+- [x] Details of tests provided such as the type, number and coverage.
 - [x] Summary of all implemented features (categorised by overall feature and classified by their difficulty levels).
 
 
