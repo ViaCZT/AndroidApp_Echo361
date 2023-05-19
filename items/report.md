@@ -60,9 +60,13 @@
    * [ToastUtil.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/util/ToastUtil.java)
    * [Msg.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/Msg.java)
    * [MsgAdapter.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/MsgAdapter.java)
-5. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
+5. U7528678, Zihan Ai, I contribute 20% of the code. Here are my contributions:
+   * [Forum.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/Forum.java)
+   * [ForumPost.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/ForumPost.java)
+   * [ChatActivity](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/ChatActivity.java)
+   * [ForumTotalActivity](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/ForumTotalActivity.java)
+   * [ForumDetailActivity](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/ForumDetailActivity.java)
+   * All class in the [utilsTest folder under test](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/test/java/com/example/echo361/utilsTest)
 
 **Code Design**
 
@@ -322,7 +326,12 @@ Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
    * Additional description: The data initialisation is performed only once, which is to convert the files (students.csv, teachers.csv, courses.scv) in the asset folder into the correct data structure and store them in the Firebase, so these code in the MainActivity class is commented now.
    
 3. [FB-Syn] (hard) Any changes in Firebase will be applied immediately without restarting the app.
-
+   * Class ForumTotalActivity, line of code: 62-181
+   * Class ForumDetailActivity, line of code: 53-73
+   * class ChatActivity, line of code: 75-133
+   * class EnrollActivity, line of code: 122-151
+   * class DropActivity, line of code: 62-91
+   * Additional description: The "onDataReceived" function is a function that gets called after data has been downloaded from Firebase.
 
 **Feature Category: UI Design and Testing** 
 
@@ -350,7 +359,8 @@ When we search for courses, we use the first four letters as the college code an
    * Additional description: this is implement with combination of UI design, data structure and Firebase.
 
 2. [Privacy-Block] (medium) Teachers can block the forum, that is, change the visibility of this forum so that students cannot see it while teachers still can.
-   * Class ForumTotalActivity, lines of code: 111-123
+   * Class ForumTotalActivity, lines of code: 114-123, 168-178
+   * Additional description: To activate block function,first click block button then choose the post.
 
 **Feature Category: Peer-to-Peer Messaging** 
 
