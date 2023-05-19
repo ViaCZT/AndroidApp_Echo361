@@ -1,6 +1,5 @@
 # [Group 3 - Echo361] Report
 
-The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
 
 ## Table of Contents
 
@@ -21,7 +20,7 @@ The following is a report template to help your team successfully provide all th
 |:---------|:-----------:|-------------------------:|
 | u7564812 | Zetian Chen | Design Pattern, Database |
 | u7528678 |  Zihan Ai   |              Forum, Chat |
-| u7564899 | Yijun Huang |                UI, video |
+| u7564899 | Yijun Huang |   UI, App Testing, Video |
 | u7550484 |   Yuan Li   |      Tree Data Structure |
 | u7504766 | Yitao Zhang |                   Search |
 
@@ -56,9 +55,11 @@ The following is a report template to help your team successfully provide all th
    * [NameTokenizer.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/Search/NameTokenizer.java)
    * [Search.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/Search/Search.java)
    * All classes in the [Search folder under test](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/test/java/com/example/echo361/Search)
-4. UID1, Name1, I contribute 20% of the code. Here are my contributions:
-   * A.class
-   * B.class: function1(), function2(), ...
+4. u7564899, Yijun Huang, I contribute 20% of the code. Here are my contributions:
+   * [res folder](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/tree/main/app/src/main/res)
+   * [ToastUtil.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/util/ToastUtil.java)
+   * [Msg.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/Msg.java)
+   * [MsgAdapter.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/MsgAdapter.java)
 5. UID1, Name1, I contribute 20% of the code. Here are my contributions:
    * A.class
    * B.class: function1(), function2(), ...
@@ -69,9 +70,16 @@ The following is a report template to help your team successfully provide all th
 2. Data structures (AVL tree): u7550484, Yuan Li
 
 **UI Design**
-*[UI Design. Specify what design did the involved member propose? What tools were used for the design?]*
 
 u7564899, Yijun Huang
+
+1. UI theme. I set the app theme with gradient background from cool purple and neutral blue to make it elegant. With strong contrast, the text color are set white so that users can clearly read.
+2. UI design for different user roles. Our group brought out the initial idea that the target users of echo361 are students and teachers, with an admin account to control the courses. 
+   * Students. The students main page leads them to different page so that they can enroll courses, drop courses, and go to all current courses page. When enrolling courses, checkboxes are applied to implement the Search-Filter feature. Furthermore, in each course's main page, students can go to forums or chat with the ones involved in the same courses.
+   * Teachers. We simply set that one teacher only teaches one course, so they directly go to the course's main page like what students see. The main different between their pages are that in the forum total page, there is a Block button whose visibility varies from students and teachers. By this button, teachers can control the forums' visibility (Privacy-Block feature).
+   * Admin. The admin deletion page enables admin to search and delete courses with involved students and teachers.
+3. Toast. I find a reference to write the [ToastUtil.class](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/util/ToastUtil.java)  so that my teammates can simply write toasts without redundant codes to give some information to users. Also, a little bug leading us to find solutions for a long time was simply solved by changing the toast length, which is somewhat fun.
+4. Dialog box by .9.png format. It is difficult to only use our basic knowledge to write a great chat page which shows like that in reality that the received messages are aligned to the left, and the send messages are aligned to the right. Luckily, I also find some reference and successfully solved it. 
 
 **Report Writing**
 
@@ -79,10 +87,10 @@ u7564899, Yijun Huang
 |:------------------------------------|:----------------------------------------------:|
 | Summary of Individual Contributions |                      All                       |
 | Conflict Resolution Protocol        |             Zetian Chen (u7564812)             |
-| Application Description             |             Yijun Huang (u7564899)             |
+| Application Description             |               Yuan Li (u7550484)               |
 | Application UML                     | Zetian Chen (u7564812), Yitao Zhang (u7504766) |
 | Application Design and Decisions    |                                                |
-| 1. Data Structures                  |                      All                       |
+| 1. Data Structures                  |   Yuan Li (u7550484), Yitao Zhang (u7504766)   |
 | 2. Design Patterns                  |             Zetian Chen (u7564812)             |
 | 3. Grammars & Tokenizer and Parsers |             Yitao Zhang (u7504766)             |
 | Summary of Known Errors and Bugs    |             Yijun Huang (u7564899)             |
@@ -96,7 +104,6 @@ u7564812, Zetian Chen
 **Video preparation** 
 
 u7564899, Yijun Huang
-
 
 ## Conflict Resolution Protocol
 
@@ -156,26 +163,6 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 ## Application Design and Decisions
 
-*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design. Here is an example for the subsection `Data Structures`:*
-
-*I used the following data structures in my project:*
-
-1. *LinkedList*
-
-   * *Objective: It is used for storing xxxx for xxx feature.*
-
-   * *Locations: line xxx in XXX.java, ..., etc.*
-
-   * *Reasons:*
-
-     * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
-
-     * *We don't need to access the item by index for this feature*
-
-2. ...
-
-3. ...
-
 **Data Structures**
 
 we used the following data Structures in our project:
@@ -194,8 +181,8 @@ we used the following data Structures in our project:
 
    * Reasons:
 
-     * It is faster for searching with a time complexity O(log n)
-     * It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance
+     * It is faster for searching with a time complexity O(log n).
+     * It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance.
 
 2. ArrayList
 
@@ -216,7 +203,7 @@ we used the following data Structures in our project:
 
       * ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
       * It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
-      * It is adapter for ListView component
+      * It is adapter for ListView component.
 
 **Design Patterns**
 
@@ -276,31 +263,11 @@ Production Rules:
    The `NParser` class arranges the tokens by input order using the `NAddExp` and `NLitExp` to implement the Grammar above and adds a separator, a space, between each token. This makes it easier to identify the first name and last name of the input. When searching by student name, we treat the first token as the first name and the last token as the last name, and find all students whose first and last names contain the information entered by searching. This provides more accurate search results while enabling partial searches.
 
 
-**Surprise Item**
-
-*[If you implement the surprise item, explain how your solution addresses the surprise task. What decisions do your team make in addressing the problem?]*
-
-**Other**
-
-*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
-
 ## Summary of Known Errors and Bugs
 
-*[Where are the known errors and bugs? What consequences might they lead to?]*
+1. Bug 1: Deleting courses from bottom to top in one searching round with rapid speed may causes exceptions.
 
-*Here is an example:*
-
-1. *Bug 1:*
-
-- *Deleting courses from bottom to top in one searching round causes exceptions.*
-- ...
-
-2. *Bug 2:*
-
-
-3. ...
-
-*List all the known errors and bugs here. If we find bugs/errors that your team does not know of, it shows that your testing is not thorough.*
+2. Bug 2: The Grammar makes the search cannot search rare numbers for the given account (comp2100@anu.au). To search this, we should search comp or comp2100 etc.
 
 ## Testing Summary
 
@@ -318,19 +285,20 @@ Production Rules:
 
 ## Implemented Features
 
-*[What features have you implemented?]*
-
 ### Basic App
 1. [Login] (easy) We use realtime database by Firebase to stock the user information.
-     * Class MainActivity, lines of code: whole file
+     * Class MainActivity, lines of code: whole file <br>
        Firebase link: https://console.firebase.google.com/project/echo361/overview
       * Additional description: There are three user roles: Student, Teacher and Admin.
         All the usernames and passwords can be seen in students.csv and teachers.csv from assets folder or Firebase.
         Admin login with special username “Ad Admin” and password “u0000000”.
-2. [Data Instance] (easy) There are more than 3,000 valid data instances in our Firebase, which include user, course, forum and chat instances.<br>
+<br>
+2. [Data Instance] (easy) There are more than 3,000 valid data instances in our Firebase, which include user, course, forum and chat instances.
+<br>
 3. [Data Visualization] (medium) Application are able to load data from Firebase and visualise it. When users use the app, they can see clear lists of courses, posts in the forum, users to chat with, and the contents of peer to peer messaging.
-    * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget <br>
-4. [Search Information] (medium) Users are able to search for the class to enroll or drop, and the other user to chat with on our app.
+    * Class AdminDeletionActivity, ChatActivity, DropActivity, EnrollActivity, ForumDetailActivity, ForumTotalActivity, MyCourseActivity, SearchChatTarget 
+<br>
+4. [Search Information] (medium) Users are able to search for the class to enroll or delete and the other users to chat with on our app.
     * All classes in the Search folder
     * Class SearchChatTarget, EnrollActivity
 <br><br>
@@ -338,13 +306,15 @@ Production Rules:
 ### General Features
 Feature Category: Firebase Integration <br>
 Firebase link: https://console.firebase.google.com/project/echo361/overview <br>
-1. [FB-Auth] (easy) Only the users stocked in our Firebase have authentication to the app.<br>
-   * Class MainActivity, FirebaseDAO, FirebaseDAOImpl, FirebaseDataCallback
+1. [FB-Auth] (easy) Only the users stocked in our Firebase have authentication to the app.
+   * Class MainActivity, FirebaseDAO, FirebaseDAOImpl, FirebaseDataCallback, lines of code: whole file
    * Additional description: MainActivity class implements the log in function, which reads the user data from Firebase.
-2. [FB-Persist] (medium) We use Firebase to persist all data used in our app.<br> 
+<br>
+2. [FB-Persist] (medium) We use Firebase to persist all data used in our app.
    * Class MainActivity, lines of code: 53-61
-   * Class FirebaseDAOImpl: method initialStudentData, initialTeacherData, initialCourseData, initialForumData, lines of code: 203-479
+   * Class FirebaseDAOImpl, method initialStudentData, initialTeacherData, initialCourseData, initialForumData, lines of code: 203-479
    * Additional description: The data initialisation is performed only once, which is to convert the files (students.csv, teachers.csv, courses.scv) in the asset folder into the correct data structure and store them in the Firebase, so these code in the MainActivity class is commented now.
+<br>
 3. [FB-Syn] (hard) Any changes in Firebase will be applied immediately without restarting the app.
 <br>
 
@@ -355,33 +325,36 @@ Feature Category: UI Design and Testing <br>
 
 Feature Category: Search-related features <br>
 1. [Search-Invalid] (medium) We have a tokenizer and parser with a formal grammar of our own creation so that search functionality can handle partially valid and invalid search queries. For example, if searching for punctuation marks like a comma, an invalid toast will show up. 
-And if searching a chat target with only numbers, this is invalid too, as we set this to search letters like real names in reality (comp2100@anu.au is an exception).<br>
-   * AdminDeletionActivity.class(search courses): Lines of 146-204
-   * EnrollActivity.class(search courses): Lines of 84-169
-   * SearchChatTarget.class(search students): Lines of 75-234
+And if searching a chat target with only numbers, this is invalid too, as we set this to search letters like real names in reality (comp2100@anu.au is an exception).
+   * AdminDeletionActivity.class (to search courses), lines of code: 146-204
+   * EnrollActivity.class (to search courses), lines of code: 84-169
+   * SearchChatTarget.class (to search students), lines of code: 75-234
+<br>
 2. [Search-Filter] (easy) We implement the filter function so that students can use checkboxes to select from undergraduate, graduate, online, on-campus, and blended courses.
-   * Class Search: Method courseListFilted(): Lines of 109-180
+   * Class Search: method courseListFilted(), lines of code: 109-180
 <br>
 
 Feature Category: Privacy <br>
-1. [Privacy-Visibility] (easy) A student can only see a course’s main page after enrolling in this course.<br>
+1. [Privacy-Visibility] (easy) A student can only see a course’s main page after enrolling in this course.
+   * Additional description: this is implement with combination of UI design, data structure and Firebase.
+<br>
 2. [Privacy-Block] (medium) Teachers can block the forum, that is, change the visibility of this forum so that students cannot see it while teachers still can.
-     * Class ForumTotalActivity
+     * Class ForumTotalActivity, lines of code: 111-123
 <br>
 
 Feature Category: Peer-to-Peer Messaging <br>
-1. [P2P-DM] (hard) Students and teachers have the ability to message the person involved in the same course in private.  <br>
+1. [P2P-DM] (hard) Students and teachers have the ability to message the person involved in the same course in private.  
+   * Class Chat Activity, Msg, MsgAdapter, lines of code: whole file
+<br>
 2. [P2P-Restriction] (hard) The chat function is assessed on the course main page of a certain course. By searching the chat target, users cannot search for students and teachers who are not involved in the same course to chat. 
 Especially, students only need to type “teacher” to chat with the exact teacher who delivered this course.
-   * Class SearchChatTarget： Line of 183 -184
-   
-   * Class Msg, MsgAdapter, ChatActivity, SearchChatTarget.
-
+   * Class SearchChatTarget, lines of code: 183 -184
 <br>
+
 Feature Category: Greater Data Usage, Handling and Sophistication <br>
 1. [Data-Deletion] (hard) We apply AVL tree data structure. Admin can delete a course with its teachers and enrolled students.
-    * Class CourseAVLtree: method delete(), Lines of 131-184
-    * Class AdAdminDeletionActivity: method buttonDelete.setOnClickListener(), Lines of 55-141
+    * Class CourseAVLtree: method delete(), lines of code: 131-184
+    * Class AdminDeletionActivity: method buttonDelete.setOnClickListener(), lines of code 51-145
 
 ## Team Meetings
 
@@ -390,7 +363,4 @@ Feature Category: Greater Data Usage, Handling and Sophistication <br>
 - [Team Meeting 3](./meeting3.md)
 - [Team Meeting 4](./meeting4.md)
 
-* Link to the minutes of your meetings as above. There must be at least 4 team meetings. 
-Note that you must commit your minute meetings shortly after your meeting has taken place (e.g., within 24h), otherwise your meeting minute will not be accepted.
-Your meetings (and each member's commits) should also have a reasonable date span across Week 6 to 11.*
  
