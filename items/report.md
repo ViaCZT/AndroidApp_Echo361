@@ -141,27 +141,27 @@ Use case 1: Rylie Brown wants to enroll in CHEM0309
 
 
 Use case 2: Rylie Brown wants to have a chat with Bella Cave about BUSN0146
-1. Rylie Brown logged in
+1. Rylie Brown logs in
 2. Rylie Brown and Bella Cave are classmates of BUSN0146<br>
 ![](images/case2.png)<br>
-3. Rylie Brown finded her and sends a hi to her
-4. Bella Cave told Rylie Brown there is a huge workload in BUSN0146
-5. Then Rylie Brown dropped BUSN0146
+3. Rylie Brown finds her and sends a hi to her
+4. Bella Cave informs Rylie Brown that there is a huge workload in BUSN0146
+5. Then Rylie Brown drops BUSN0146
 
 
 
 Use case 3: Aubree Smith(teacher) wants to post something in the forum
 
-1. Aubree Smith logged in and go to his course page
-2. He saw the first post in the forum and decide to block it
-3. Then he posted some homeworks.<br>
+1. Aubree Smith logs in and goes to his course page
+2. He sees the first post in the forum and decides to block it
+3. Then he posts some homeworks.<br>
 ![](images/case3.png)<br>
 
 Use case 4: Admin wants to delete COMP0010
 
 1. The teacher of COMP0010 is going to retire. So there will be no teacher for COMP0010 next semester.
-2. Admin logged in
-3. He finded COMP0010 and delete it.<br>
+2. Admin logs in
+3. He finds COMP0010 and deletes it.<br>
 ![](images/case4.png)<br>
 
 
