@@ -356,12 +356,11 @@ Feature Category: UI Design and Testing <br>
 Feature Category: Search-related features <br>
 1. [Search-Invalid] (medium) We have a tokenizer and parser with a formal grammar of our own creation so that search functionality can handle partially valid and invalid search queries. For example, if searching for punctuation marks like a comma, an invalid toast will show up. 
 And if searching a chat target with only numbers, this is invalid too, as we set this to search letters like real names in reality (comp2100@anu.au is an exception).<br>
-   [AdminDeletionActivity.class(search courses)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/AdminDeletionActivity.java#L146-204)
-   [EnrollActivity.class(search courses)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/EnrollActivity.java#L84-169)
+   [AdminDeletionActivity.class(search courses)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/AdminDeletionActivity.java#L146-204),
+   [EnrollActivity.class(search courses)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/EnrollActivity.java#L84-169),
    [SearchChatTarget.class(search students)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/SearchChatTarget.java#L75-234)
 2. [Search-Filter] (easy) We implement the filter function so that students can use checkboxes to select from undergraduate, graduate, online, on-campus, and blended courses.
-   [EnrollActivity.class(search teacher)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/SearchChatTarget.java#L139)
-   [EnrollActivity.class(search student)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/SearchChatTarget.java#L183)
+   [EnrollActivity.class(search student)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/SearchChatTarget.java#L183),
     * Search folder, Class SearchChatTarget, Class EnrollActivity
 <br>
 
@@ -375,7 +374,7 @@ Feature Category: Peer-to-Peer Messaging <br>
 1. [P2P-DM] (hard) Students and teachers have the ability to message the person involved in the same course in private.  <br>
 2. [P2P-Restriction] (hard) The chat function is assessed on the course main page of a certain course. By searching the chat target, users cannot search for students and teachers who are not involved in the same course to chat. 
 Especially, students only need to type “teacher” to chat with the exact teacher who delivered this course.
-   [SearchChatTarget.class(search students)]()
+   [SearchChatTarget.class(search students)](https://gitlab.cecs.anu.edu.au/u7528678/ga-23s1-comp2100-6442/-/blob/main/app/src/main/java/com/example/echo361/LayoutActivity/SearchChatTarget.java#L183)
    * Class Msg, MsgAdapter, ChatActivity, SearchChatTarget.
 
 <br>
