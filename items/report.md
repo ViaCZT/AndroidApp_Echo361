@@ -373,7 +373,7 @@ Feature Category: Peer-to-Peer Messaging <br>
 1. [P2P-DM] (hard) Students and teachers have the ability to message the person involved in the same course in private.  <br>
 2. [P2P-Restriction] (hard) The chat function is assessed on the course main page of a certain course. By searching the chat target, users cannot search for students and teachers who are not involved in the same course to chat. 
 Especially, students only need to type “teacher” to chat with the exact teacher who delivered this course.
-   * Class SearchChatTarget： Line of 183
+   * Class SearchChatTarget： Line of 183 -184
    
    * Class Msg, MsgAdapter, ChatActivity, SearchChatTarget.
 
