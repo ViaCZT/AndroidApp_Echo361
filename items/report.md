@@ -126,39 +126,29 @@ By following this protocol, our team has handled conflicts in a respectful and c
 
 ## Application Description
 
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
-
-*Here is a pet specific application example*
-
-*PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
+Echo361 is an educational software designed for teachers and students to engage in online discussions.
+It provides various features where students can enroll and drop courses, post in the forums of their respective courses, or chat with other people in the same course. 
+Teachers can engage in private conversations with students, post in forums, and manage discussions. The admin is responsible for course administration. 
 
 **Application Use Cases and or Examples**
 
 *[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
 
-*Here is a pet training application example*
+Use case 1: Login
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
+Target users: Students/Teachers/Admin
+[img.png](images/login.png)
+1. The user enters his/her username
+2. The user enters his/her password
+3. Press Login Button
 
-*Here is a map navigation application example*
+Use case 2: A student wants to enroll in a course
+[](images/enroll.png)
+Target users: Students
+1. He/she clicks enroll button
+2. He/she searches for the course
+3. He/she chicks the target course and clicks enroll
 
-*Targets Users: Drivers*
-
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
-
-*Target Users: Those who want to find some good restaurants*
-
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
-
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
 
 ## Application UML
 
@@ -173,41 +163,41 @@ we used the following data Structures in our project:
 
 1. AVLtree
 
-    * Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
+   Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
    
-    * Locations: CourseAVLtree.java
-      * Line 71, 73, 176, 178 in AdminDeletionActivity.java, 
-      * Line 269-279 in FirebaseDAOImpl.java
-      * Line 118, 122 in DropActivity.java
-      * Line 125, 129, 190, 194 in EnrollActivity.java
-      * Line 104, 108 in SearchChatTarget.java
-      * Line 109-162 in Search.java
+   Locations: CourseAVLtree.java
+    Line 70, 172 in AdminDeletionActivity.java, 
+    Line 269-279 in FirebaseDAOImpl.java
+    Line 122 in DropActivity.java
+    Line 129, 194 in EnrollActivity.java
+    Line 108 in SearchChatTarget.java
+    Line 109-196 in Search.java
 
-   * Reasons:
+   Reasons:
 
-     * It is faster for searching with a time complexity O(log n).
-     * It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance.
+     It is faster for searching with a time complexity O(log n).
+     It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance.
 
 2. ArrayList
 
-    * Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
+   Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
 
-    * Locations: 
-      * Line 84, 113 in AdminDeletionActivity.java,
-      * Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
-      * Line 13, 28, 70, 78 in User.java
-      * Line 21 in UserFactory.java
-      * Line 60, 65, 70, 83, 121, 128 in DropActivity.java
-      * Line 98, 113, 128, 193, 200, 219, 224 in EnrollActivity.java
-      * Line 52, 56, 61, 77 in MyCourseActivity.java
-      * Line 107, 114, 117-118, 124-126, 129, 137, 172, 179,  in SearchChatTarget.java
-      * Line 81, 83, 109-180, 199-189, 211 in Search.java
+   Locations: 
+    Line 84, 113 in AdminDeletionActivity.java,
+    Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
+    Line 13, 28, 70, 78 in User.java
+    Line 21 in UserFactory.java
+    Line 65, 83, 121, 128 in DropActivity.java
+    Line 98, 113, 128, 193, 200, 224 in EnrollActivity.java
+    Line 56, 77 in MyCourseActivity.java
+    Line 107, 114, 117, 124 in SearchChatTarget.java
+    Line 83, 111-180, 189, 211 in Search.java
 
-    * Reasons:
+   Reasons:
 
-      * ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
-      * It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
-      * It is adapter for ListView component.
+    ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
+    It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
+    It is adapter for ListView component.
 
 **Design Patterns**
 
