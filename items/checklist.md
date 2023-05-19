@@ -10,7 +10,7 @@ The following markdown document is a checklist of items you **should** complete 
 ## Documents (all non-android files) located in a folder named `items`
 - [x] A conflict resolution protocol is documented and well-defined.
 - [x] All Team Meeting Minutes (at least 4, with links in the report). 
-- [ ] Create a video titled  `features.(mp4|mov|wmv)` that demonstrates each implemented feature (basic + general), in the same order as listed in the report.
+- [x] Create a video titled  `features.(mp4|mov|wmv)` that demonstrates each implemented feature (basic + general), in the same order as listed in the report.
 - [x] A working standalone **APK**, i.e., an APK that can be loaded and execute correctly on an AVD.
 - [x] Have a markdown report document titled 'report.md'.
 - [x] **Statement of Originality**: All members have read and signed the [statement of originality](./statement-of-originality.yml). Failure to do so will result in zero marks.
@@ -35,8 +35,8 @@ in the templates for both report and meeting minutes before submitting.
 
 ## Individual Reflections
 Please note that each member must complete their individual submissions for the following items on Wattle (same due date as the project submission).
-- [ ] All members have submitted their 100 to 120 word individual reflections related to their experience during the group project.
-- [ ] All members have submitted their peer- and self-evaluation as instructed on Wattle.
+- [x] All members have submitted their 100 to 120 word individual reflections related to their experience during the group project.
+- [x] All members have submitted their peer- and self-evaluation as instructed on Wattle.
 
 ## Helpful (Optional)
 The following are some optional items that are conducive to your final marks. These are not necessary for your final submission but will assist in achieving a higher overall mark. Feel free to add additional items here for your own team to keep track of!
