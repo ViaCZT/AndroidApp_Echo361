@@ -146,7 +146,7 @@ Use case 2: Rylie Brown wants to have a chat with Bella Cave about BUSN0146
 ![](images/case2.png)<br>
 3. Rylie Brown finded her and sends a hi to her
 4. Bella Cave told Rylie Brown there is a huge workload in BUSN0146
-5Then Rylie Brown dropped BUSN0146
+5. Then Rylie Brown dropped BUSN0146
 
 
 
@@ -163,6 +163,7 @@ Use case 4: Admin wants to delete COMP0010
 2. Admin logged in
 3. He finded COMP0010 and delete it.<br>
 ![](images/case4.png)<br>
+
 
 ## Application UML
 
