@@ -130,91 +130,39 @@ Echo361 is an educational software designed for teachers and students to engage 
 It provides various features where students can enroll and drop courses, post in the forums of their respective courses, or chat with other people in the same course. 
 Teachers can engage in private conversations with students, post in forums, and manage discussions. The admin is responsible for course administration. 
 
+Target users: Teachers, Students and an Admin
+
 **Application Use Cases and or Examples**
 
-Use case 1: Login
-
-Target users: Students/Teachers/Admin
-
-![](images/login.png)
-
-1. The user enters his/her username
-2. The user enters his/her password
-3. Press the Login Button
-
-Use case 2: A student wants to enroll in a course
-
-![](images/enroll.png)
-
-Target users: Students
-1. He/she clicks the Enroll button
-2. He/she searches for the course by typing something in the box and clicking the Search button
-3. He/she chicks the the target course and clicks Enroll
-
-Use case 3: A student wants to drop a course
-
-![drop.png](./images/drop.png)
-
-Target users: Students
-
-1. He/she clicks the Drop button
-2. He/she selects the course
-3. He/she clicks the Drop
-
-Use case 4: A student/teacher wants to chat with another person
-
-Target users: Students/Teachers
+Use case 1: Rylie Brown wants to enroll in CHEM0309
+1. Rylie Brown logs in
+2. Rylie Brown searches for CHEM0309 and enrolls it<br>
+![](images/case1.png)<br>
 
 
-1. He/she clicks the MyCourse button
-2. He/she selects the course
-3. He/she clicks the Let's chat button
-4. He/she searches for another person by typing something in the box and clicking the Search button
-
-![ChatSearch.png](./images/ChatSearch.png)
-
-5. He/she clicks the target person
-6. He/she types something and clicks the Send button to send a message
-
-![chat.png](./images/chat.png)
-
-
-Use case 5: A student/teacher wants to post something in the forum
-
-Target users: Students/Teachers
-
-![forum.png](images/forum.png)
-
-1. He/she clicks MyCourse button(students)
-2. He/she selects the course(students)
-3. He/she clicks the Go to forum button
-4. He/she searches for another person by typing something in the box and clicking the Search button
-5. He/she types something and clicks the Post button to post a message
+Use case 2: Rylie Brown wants to have a chat with Bella Cave about BUSN0146
+1. Rylie Brown logged in
+2. Rylie Brown and Bella Cave are classmates of BUSN0146<br>
+![](images/case2.png)<br>
+3. Rylie Brown finded her and sends a hi to her
+4. Bella Cave told Rylie Brown there is a huge workload in BUSN0146
+5Then Rylie Brown dropped BUSN0146
 
 
 
-Use case 6: A teacher wants to block/unblock a post in the forum
+Use case 3: Aubree Smith(teacher) wants to post something in the forum
 
-Target users: Teachers
+1. Aubree Smith logged in and go to his course page
+2. He saw the first post in the forum and decide to block it
+3. Then he posted some homeworks.<br>
+![](images/case3.png)<br>
 
-![block.png](images/block.png)
+Use case 4: Admin wants to delete COMP0010
 
-1. He/she clicks Go to forum button
-2. He/she clicks the Block button
-3. He/she selects a post to block/unblock
-
-
-Use case 7: An admin wants to delete a course
-
-Target user: Admin
-
-![delete.png](images/delete.png)
-
-1. He/she searches for some courses by typing something in the box and clicking the Search button
-2. He/she selects one course
-3. He/she clicks the Delete button
-
-
+1. The teacher of COMP0010 is going to retire. So there will be no teacher for COMP0010 next semester.
+2. Admin logged in
+3. He finded COMP0010 and delete it.<br>
+![](images/case4.png)<br>
 
 ## Application UML
 
@@ -229,41 +177,41 @@ we used the following data Structures in our project:
 
 1. AVLtree
 
-   Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
-   
-   Locations: CourseAVLtree.java
-    Line 70, 172 in AdminDeletionActivity.java, 
-    Line 269-279 in FirebaseDAOImpl.java
-    Line 122 in DropActivity.java
-    Line 129, 194 in EnrollActivity.java
-    Line 108 in SearchChatTarget.java
-    Line 109-196 in Search.java
+   * Objective: It is used for storing Courses for [Data-Deletion] feature ,[Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
 
-   Reasons:
+   * Locations: CourseAVLtree.java
+    * Line 70, 172 in AdminDeletionActivity.java, 
+    * Line 269-279 in FirebaseDAOImpl.java
+    * Line 122 in DropActivity.java
+    * Line 129, 194 in EnrollActivity.java
+    * Line 108 in SearchChatTarget.java
+    * Line 109-196 in Search.java
 
-     It is faster for searching with a time complexity O(log n).
-     It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance.
+   * Reasons:
+
+     * It is faster for searching with a time complexity O(log n).
+     * It is balanced which ensures fast performance in various operations and avoids performance degradation caused by tree imbalance.
 
 2. ArrayList
 
-   Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
+   * Objective: It is used for storing Students and Teachers for [Data-Deletion] feature, [Search-Filter] feature, [Data Visualization] and [P2P-Restriction] feature.
 
-   Locations: 
-    Line 84, 113 in AdminDeletionActivity.java,
-    Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
-    Line 13, 28, 70, 78 in User.java
-    Line 21 in UserFactory.java
-    Line 65, 83, 121, 128 in DropActivity.java
-    Line 98, 113, 128, 193, 200, 224 in EnrollActivity.java
-    Line 56, 77 in MyCourseActivity.java
-    Line 107, 114, 117, 124 in SearchChatTarget.java
-    Line 83, 111-180, 189, 211 in Search.java
+    * Locations: 
+    * Line 84, 113 in AdminDeletionActivity.java,
+    *  Line 208, 212, 235, 239, 286 in FirebaseDAOImpl.java
+    *  Line 13, 28, 70, 78 in User.java
+    *  Line 21 in UserFactory.java
+    *  Line 65, 83, 121, 128 in DropActivity.java
+    *  Line 98, 113, 128, 193, 200, 224 in EnrollActivity.java
+    * Line 56, 77 in MyCourseActivity.java
+    * Line 107, 114, 117, 124 in SearchChatTarget.java
+    *  Line 83, 111-180, 189, 211 in Search.java
 
-   Reasons:
+   * Reasons:
 
-    ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
-    It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
-    It is adapter for ListView component.
+    * ArrayList stores elements in contiguous memory blocks, enabling efficient utilization of hardware caches and improving access efficiency.
+    * It automatically adjusts its capacity based on the number of elements, allowing for efficient resizing as needed.
+    * It is adapter for ListView component.
 
 **Design Patterns**
 
