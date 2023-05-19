@@ -146,8 +146,8 @@ Use case 2: Rylie Brown wants to have a chat with Bella Cave about BUSN0146
 ![](images/case2.png)<br>
 3. Rylie Brown finds her and sends a hi to her
 4. Bella Cave informs Rylie Brown that there is a huge workload in BUSN0146
-5. Then Rylie Brown drops BUSN0146
-
+5. Then Rylie Brown drops BUSN0146<br>
+![](images/drop.png)<br>
 
 
 Use case 3: Aubree Smith(teacher) wants to post something in the forum
