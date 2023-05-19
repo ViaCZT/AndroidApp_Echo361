@@ -142,10 +142,10 @@ Use case 1: Rylie Brown wants to enroll in CHEM0309
 
 Use case 2: Rylie Brown wants to have a chat with Bella Cave about BUSN0146
 1. Rylie Brown logs in
-2. Rylie Brown and Bella Cave are classmates of BUSN0146<br>
+2. Rylie Brown and Bella Davis are classmates of BUSN0146<br>
 ![](images/case2.png)<br>
 3. Rylie Brown finds her and sends a hi to her
-4. Bella Cave informs Rylie Brown that there is a huge workload in BUSN0146
+4. Bella Davis informs Rylie Brown that there is a huge workload in BUSN0146
 5. Then Rylie Brown drops BUSN0146<br>
 ![](images/drop.png)<br>
 
