@@ -360,7 +360,7 @@ When we search for courses, we use the first four letters as the college code an
 
 2. [P2P-Restriction] (hard) The chat function is assessed on the course main page of a certain course. By searching the chat target, users cannot search for students and teachers who are not involved in the same course to chat. 
 Especially, students only need to type “teacher” to chat with the exact teacher who delivered this course.
-   * Class SearchChatTarget, lines of code: 137-139, 169-181
+   * Class SearchChatTarget, lines of code: 121, 137-139, 167-181
 
 **Feature Category: Greater Data Usage, Handling and Sophistication** 
 
