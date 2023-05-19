@@ -305,7 +305,6 @@ Production Rules:
    * Class MyCourseActivity(get courses), lines of code: 52-70
    * Class SearchChatTarget(search students), lines of code: 74-145, 167-191
    * All classes in the Search folder(Tokenizer, Parser, and methods used for searching): all methods
-   * Class SearchChatTarget, EnrollActivity
    <br><br>
 
 ### General Features
