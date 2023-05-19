@@ -265,7 +265,7 @@ Production Rules:
 
 ## Summary of Known Errors and Bugs
 
-1. Bug 1: When searching for a student to chat with, the search function does not support searching for pure numbers. For example, you cannot search "2" or "2100" for the given account (comp2100@anu.au), because we assume that names are made up of letters only and that other symbols such as numbers, punctuations, etc. will be ignored. So, you can search "comp" or "comp2100" or "com" etc. for this account. 
+1. Bug 1: When searching for a student to chat with, the search function does not support searching for pure numbers. For example, you cannot search "2" or "2100" for the given account (comp2100@anu.au), because we assume that names are made up of letters only and that other symbols such as numbers, punctuations, etc. will be ignored. Alternatively, you can search "comp" or "comp2100" or "com" etc. for this account. 
 
 ## Testing Summary
 
