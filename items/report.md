@@ -132,22 +132,61 @@ Teachers can engage in private conversations with students, post in forums, and 
 
 **Application Use Cases and or Examples**
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
-
 Use case 1: Login
 
 Target users: Students/Teachers/Admin
-[img.png](images/login.png)
+![login.png](.images/login.png)
 1. The user enters his/her username
 2. The user enters his/her password
-3. Press Login Button
+3. Press the Login Button
 
 Use case 2: A student wants to enroll in a course
-[](images/enroll.png)
+![enroll.png](.images/enroll.png)
 Target users: Students
-1. He/she clicks enroll button
-2. He/she searches for the course
-3. He/she chicks the target course and clicks enroll
+1. He/she clicks the Enroll button
+2. He/she searches for the course by typing something in the box and clicking the Search button
+3. He/she chicks the the target course and clicks Enroll
+
+Use case 3: A student wants to drop a course
+![drop.png](./images/drop.png)
+Target users: Students
+1. He/she clicks the Drop button
+2. He/she selects the course
+3. He/she clicks the Drop
+
+Use case 4: A student/teacher wants to chat with another person
+Target users: Students/Teachers
+1. He/she clicks the MyCourse button
+2. He/she selects the course
+3. He/she clicks the Let's chat button
+4. He/she searches for another person by typing something in the box and clicking the Search button
+![ChatSearch.png](./images/ChatSearch.png)
+5. He/she clicks the target person
+6. He/she types something and clicks the Send button to send a message
+![chat.png](./images/chat.png)
+
+Use case 5: A student/teacher wants to post something in the forum
+Target users: Students/Teachers
+1. He/she clicks MyCourse button(students)
+2. He/she selects the course(students)
+3. He/she clicks the Go to forum button
+4. He/she searches for another person by typing something in the box and clicking the Search button
+5. He/she types something and clicks the Post button to post a message
+![forum.png](images/forum.png)
+
+Use case 6: A teacher wants to block/unblock a post in the forum
+Target users: Teachers
+1. He/she clicks Go to forum button
+2. He/she clicks the Block button
+3. He/she selects a post to block/unblock
+![block.png](images/block.png)
+
+Use case 7: An admin wants to delete a course
+Target user: Admin
+1. He/she searches for some courses by typing something in the box and clicking the Search button
+2. He/she selects one course
+3. He/she clicks the Delete button
+![delete.png](images/delete.png)
 
 
 ## Application UML
