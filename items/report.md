@@ -328,77 +328,73 @@ Production Rules:
 
 ## Testing Summary
 
-*[What features have you tested? What is your testing coverage?]*
-
 ![](images/TestSummary.png)
 
-*courseAVLTreeTest:*
+* courseAVLTreeTest:
 - * Number of test cases: 18
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: AVLTree insertion, deletion, null check, find specific node.
 
-*courseTest:*
+* courseTest:
 - * Number of test cases: 1
 - * Code coverage: Class: 100%, Method: 68%, Line: 75%
 - * Types of tests created: add course, setters and getters tests.
 
-*AdminTest:*
+* AdminTest:
 - * Number of test cases: 3
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: initialization, setter, toString method.
 
-*StudentTest:*
+* StudentTest:
 - * Number of test cases: 3
 - * Code coverage: Class: 100%, Method: 66%, Line: 66%
 - * Types of tests created: initialization, setter, toString method.
 
-*TeacherTest:*
+* TeacherTest:
 - * Number of test cases: 2
 - * Code coverage: Class: 100%, Method: 66%, Line: 66%
 - * Types of tests created: initialization, toString method.
 
-*UserFactoryTest:*
+* UserFactoryTest:
 - * Number of test cases: 5
 - * Code coverage: Class: 100%, Method: 66%, Line: 66%
 - * Types of tests created: setters and getters, null check.
 
-*UserTest:*
+* UserTest:
 - * Number of test cases: 3
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: initialization, setter, toString method.
 
-*NtokenizerTest:*
+* NtokenizerTest:
 - * Number of test cases: 3
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: tokenizing.
 
-*ParserTest:*
+* ParserTest:
 - * Number of test cases: 8
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: Parsing.
 
-*SearchTest:*
+* SearchTest:
 - * Number of test cases: 6
 - * Code coverage: Class: 100%, Method: 85%, Line: 48%
 - * Types of tests created: course name test, name test, word test, college name test, validation test.
 
-*ForumTest:*
+* ForumTest:
 - * Number of test cases: 5
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: tests about Forum constructor.
 
-*ForumPostTest:*
+* ForumPostTest:
 - * Number of test cases: 10
 - * Code coverage: Class: 100%, Method: 100%, Line: 100%
 - * Types of tests created: tests about ForumPost constructor.
 
-*MsgTest:*
+* MsgTest:
 - * Number of test cases: 6
 - * Code coverage: Class: 100%, Method: 83%, Line: 90%
 - * Types of tests created: tests about Msg constructor.
 
-
-*Please provide some screenshots of your testing summary, showing the achieved testing coverage. Feel free to provide further details on your tests.*
 
 ## Implemented Features
 
